@@ -1,0 +1,14 @@
+- title "パスワードを忘れた場合 - revenger"
+.well
+  = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: 'form-horizontal' }) do |f|
+    %fieldset
+      %legend パスワードを忘れた場合
+      %p.form-instruction ユーザ登録をした時のメールアドレスを入力してください。メールにてパスワード再設定用のURLをお送りします。
+      = render 'errors', model: resource
+      .control-group
+        = f.label :email, class: 'control-label'
+        .controls
+          = f.email_field :email
+      .control-group.form-actions
+        = f.submit '送信', class: 'btn btn-success'
+

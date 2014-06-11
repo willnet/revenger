@@ -1,0 +1,3 @@
+%a.btn.btn-small.btn-success{ 'data-behavior' => 'update' }
+  %i.icon-cloud-upload
+  update!

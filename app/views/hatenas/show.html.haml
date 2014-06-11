@@ -1,0 +1,14 @@
+- title 'はてなブックマーク連携 - revenger'
+.well
+  %legend
+    はてなブックマーク連携
+  %p はてなブックマークでブックマークをしたときに、revengerにブックマークのURLとコメントを投稿することが出来ます。設定するためには、下記の設定項目ををはてなブックマークの「設定→外部サイト連携→Web Hook」に入力してください。
+  %h3 イベント通知を受けとるURL
+  %input.input-xlarge{type:'text', value: 'http://revenger.in/api/hatena'}
+  %h3 キー
+  %input.input-xlarge{type:'text', value: current_user.hatena_key}
+  %h3 受け取るイベントの種類
+  %h4 ブックマークの追加/更新/削除
+  %p オン
+  %h4 非公開ブックマークのイベント通知も送信する
+  %p 任意でオン／オフを切り替えてください

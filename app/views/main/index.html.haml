@@ -1,0 +1,39 @@
+#eyecatch
+  .container
+    .row
+      .span8
+        %p
+          復習しないのは勉強しないのと同じ！
+          %br
+            revenger で復習しよう。
+      .span4
+        #sign_up
+          = form_for(:user, :url => user_path) do |f|
+            = f.email_field :email, placeholder: 'メールアドレス'
+            = f.password_field :password, placeholder: 'パスワード'
+            = f.password_field :password_confirmation, placeholder: 'パスワード(確認用)'
+            %label.checkbox
+              = f.check_box :agree
+              = link_to '利用規約', terms_path
+              に同意する
+            = f.submit 'ユーザ登録', class: 'btn btn-primary'
+.container
+  .row
+    .span4
+      %h2
+        %i.icon-star
+        revenger とは？
+      %p
+        「忘れないようにメモしておこう」とブログや twitter 、evernote などにメモを残しても、結局見返さなかった、メモしたこと自体忘れてしまった。そんなことはありませんか？ revenger は、そんなあなたの復習ライフをサポートします。
+    .span4
+      %h2
+        %i.icon-pencil
+        復習メモを残そう
+      %p
+        revenger で書いたメモは、全て「復習メモ」になります。復習メモは、レビューページに何度も現れます。レビューページをチェックして、知識を自分の頭の中に定着させましょう！
+    .span4
+      %h2
+        %i.icon-heart
+        習慣づけのサポート
+      %p
+        revenger にアクセスすること自体を忘れてしまったら元も子もありません。そこで revenger では、過去に書いた復習メモを一つ添えてリマインダメールをあなたに送ります。新しい習慣を定着させるのは大変ですが、頑張りましょう！

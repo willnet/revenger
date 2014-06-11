@@ -1,0 +1,13 @@
+- title "確認メールの再送 - revenger"
+
+= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :method => :post, :html => { class: 'form-horizontal' }) do |f|
+  %fieldset
+    %legend 確認メールの再送
+    %p ユーザ登録を行ったにもかかわらずメールが届かない場合は、登録確認メールを再送させていただきます。
+    = render 'errors', model: resource
+    .control-group
+      = f.label :email, class: 'control-label'
+      .controls
+        = f.email_field :email
+    .control-group.form-actions
+      = f.submit '確認メールの再送', class: 'btn btn-success'

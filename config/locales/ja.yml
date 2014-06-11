@@ -1,0 +1,253 @@
+ja:
+  helpers:
+    select:
+      prompt: "選択してください。"
+    submit:
+      create: "登録する"
+      update: "更新する"
+      submit: "保存する"
+    label:
+      user:
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード確認"
+        current_password: "現在のパスワード"
+        remember_me: "ログイン状態を保持"
+      post:
+        title: "タイトル"
+        body: "本文"
+  misc:
+    password:
+      new:
+        title: "パスワードを忘れた場合"
+        link: "パスワードを忘れた場合"
+        submit: "パスワードリセット"
+      edit:
+        title: "パスワードの更新"
+        submit: "パスワードリセット"
+        password: "新しいパスワード"
+        password_confirmation: "新しいパスワードの確認"
+    user:
+      edit:
+        title: "ユーザ編集"
+        password_annotation: "(パスワードを変更しない場合は空白のままにしてください)"
+        current_password_annotation: "(パスワードを変更しない場合は空白のままにしてください)"
+        cancel_title: "ユーザ削除"
+        cancel_link: "ユーザ削除"
+        cancel_confirm: "本当に削除しますか？"
+    unlock:
+      title: "アカウント凍結解除"
+      link: "アカウント凍結解除"
+      submit: "アカウント凍結解除"
+    confirmation:
+      title: "確認メールの再送"
+      link: "確認メールの再送"
+      submit: "確認メールの再送"
+    sign_in: "ログイン"
+    sign_out: "ログアウト"
+    sign_up: "ユーザ登録"
+    help: "ヘルプ"
+    noscript: "このページではJavaScriptを使用しています。JavaScriptを有効にしてください"
+  posts:
+    index: "ノーマル"
+    review: "レビュー"
+    new: "新規作成"
+    edit: "編集"
+    create: "作成"
+    created: "作成しました"
+    update: "編集"
+    updated: "編集しました"
+    search: "検索"
+  title:
+    posts:
+      index: "復習ページ - revenger"
+      new: "新規作成 - revenger"
+      all: "全てのページ - revenger"
+  date:
+    formats:
+      default: "%Y/%m/%d"
+      short: "%m/%d"
+      long: "%Y年%m月%d日(%a)"
+
+    day_names: [日曜日, 月曜日, 火曜日, 水曜日, 木曜日, 金曜日, 土曜日]
+    abbr_day_names: [日, 月, 火, 水, 木, 金, 土]
+
+    month_names: [~, 1月, 2月, 3月, 4月, 5月, 6月, 7月, 8月, 9月, 10月, 11月, 12月]
+    abbr_month_names: [~, 1月, 2月, 3月, 4月, 5月, 6月, 7月, 8月, 9月, 10月, 11月, 12月]
+
+    order:
+      - :year
+      - :month
+      - :day
+
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
+      short: "%y/%m/%d %H:%M"
+      long: "%Y年%m月%d日(%a) %H時%M分%S秒 %Z"
+    am: "午前"
+    pm: "午後"
+
+  support:
+    array:
+      sentence_connector: "と"
+      skip_last_comma: true
+      words_connector: "と"
+      two_words_connector: "と"
+      last_word_connector: "と"
+
+    select:
+      prompt: "選択してください。"
+
+  number:
+    format:
+      separator: "."
+      delimiter: ","
+      precision: 3
+      significant: false
+      strip_insignificant_zeros: false
+
+    currency:
+      format:
+        format: "%n%u"
+        unit: "円"
+        separator: "."
+        delimiter: ","
+        precision: 3
+        significant: false
+        strip_insignificant_zeros: false
+
+    percentage:
+      format:
+        delimiter: ""
+
+    precision:
+      format:
+        delimiter: ""
+
+    human:
+      format:
+        delimiter: ""
+        precision: 3
+        significant: true
+        strip_insignificant_zeros: true
+
+      storage_units:
+        format: "%n%u"
+        units:
+          byte: "バイト"
+          kb: "キロバイト"
+          mb: "メガバイト"
+          gb: "ギガバイト"
+          tb: "テラバイト"
+
+      decimal_units:
+        format: "%n %u"
+        units:
+          unit: ""
+          thousand: "千"
+          million: "百万"
+          billion: "十億"
+          trillion: "兆"
+          quadrillion: "千兆"
+
+  datetime:
+    distance_in_words:
+      half_a_minute: "30秒前後"
+      less_than_x_seconds:
+        one:   "1秒以内"
+        other: "%{count}秒以内"
+      x_seconds:
+        one:   "1秒"
+        other: "%{count}秒"
+      less_than_x_minutes:
+        one:   "1分以内"
+        other: "%{count}分以内"
+      x_minutes:
+        one:   "1分"
+        other: "%{count}分"
+      about_x_hours:
+        one:   "約1時間"
+        other: "約%{count}時間"
+      x_days:
+        one:   "1日"
+        other: "%{count}日"
+      about_x_months:
+        one:   "約1ヶ月"
+        other: "約%{count}ヶ月"
+      x_months:
+        one:   "1ヶ月"
+        other: "%{count}ヶ月"
+      about_x_years:
+        one:   "約1年"
+        other: "約%{count}年"
+      over_x_years:
+        one:   "1年以上"
+        other: "%{count}年以上"
+      almost_x_years:
+        one:   "1年弱"
+        other: "%{count}年弱"
+
+    prompts:
+      year:   "年"
+      month:  "月"
+      day:    "日"
+      hour:   "時"
+      minute: "分"
+      second: "秒"
+
+  errors:
+    format: "%{attribute}%{message}"
+
+    messages: &errors_messages
+      inclusion: "は一覧にありません。"
+      exclusion: "は予約されています。"
+      invalid: "は不正な値です。"
+      confirmation: "が一致しません。"
+      accepted: "に同意してください。"
+      empty: "を入力してください。"
+      blank: "を入力してください。"
+      too_long: "は%{count}文字以内で入力してください。"
+      too_short: "は%{count}文字以上で入力してください。"
+      wrong_length: "は%{count}文字で入力してください。"
+      not_a_number: "は数値で入力してください。"
+      not_an_integer: "は整数で入力してください。"
+      greater_than: "は%{count}より大きい値にしてください。"
+      greater_than_or_equal_to: "は%{count}以上の値にしてください。"
+      equal_to: "は%{count}にしてください。"
+      less_than: "は%{count}より小さい値にしてください。"
+      less_than_or_equal_to: "は%{count}以下の値にしてください。"
+      odd: "は奇数にしてください。"
+      even: "は偶数にしてください。"
+
+  activerecord:
+    errors:
+      template:
+        header:
+          one:   "%{model}にエラーが発生しました。"
+          other: "%{model}に%{count}つのエラーが発生しました。"
+        body: "次の項目を確認してください。"
+
+      messages:
+        taken: "はすでに存在します。"
+        record_invalid: "バリデーションに失敗しました。 %{errors}"
+        <<: *errors_messages
+
+      full_messages:
+        format: "%{attribute}%{message}"
+    models:
+      post: "投稿"
+      user: "ユーザー"
+    attributes:
+      post:
+        title: "タイトル"
+        body: "本文"
+        read: "既読"
+        modified_at: "変更日時"
+      user:
+        email: "メールアドレス"
+        password: "パスワード"
+        current_password: "現在のパスワード"
+        default_duration: "デフォルト復習間隔"
+        confirmation_token: "認証トークン"
+        agree: "利用規約"

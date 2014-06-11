@@ -1,0 +1,52 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  helpers:
+    select:
+      prompt: "please select"
+    submit:
+      create: "create"
+      update: "update"
+      submit: "submit"
+  misc:
+    sign_in: "Sign in"
+    sign_out: "Sign out"
+    sign_up: "Sign up"
+    password:
+      new:
+        title: "Forgot your password?"
+        link: "Forgot your password?"
+        submit: "Send me reset password instructions"
+      edit:
+        title: "Change your password"
+        submit: "Change my password"
+        password: "New password"
+        password_confirmation: "Confirm new password"        
+    user:
+      edit:
+        title: "Edit User"
+        password_annotation: "(leave blank if you don't want to change it)"
+        current_password_annotation: "(we need your current password to confirm your changes)"
+        cancel_title: "Cancel my account"
+        cancel_link: "Cancel my account"
+        cancel_confirm: "Are you sure?"
+    unlock:
+      title: "Resend unlock instructions"
+      link: "Didn't receive unlock instructions?"
+      submit: "Resend unlock instructions"
+    confirmation: "Didn't receive confirmation instructions?"
+    resend_confirmation: "Resend confirmation instructions"
+    help: "help"
+    noscript: "This page uses Javascript. Please turn it on."
+  posts:
+    new: "new"
+    edit: "edit"
+    create: "create"
+    update: "update"
+    created: "created"
+    updated: "updated"
+    search: "search"
+  title:
+    review: "復習ページ - revenger"
+

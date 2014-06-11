@@ -1,0 +1,25 @@
+- title "ログイン - revenger"
+
+= form_for(resource, :as => resource_name, :url => login_path, html: { class: 'form-horizontal'}) do |f|
+  %fieldset
+    %legend ログイン
+    .control-group
+      = f.label :email, class: 'control-label'
+      .controls
+        = f.email_field :email
+    .control-group
+      = f.label :password, class: 'control-label'
+      .controls
+        = f.password_field :password
+    - if devise_mapping.rememberable?
+      .control-group
+        .controls
+          = content_tag :label, class: 'checkbox' do
+            = f.check_box :remember_me
+            = t 'helpers.label.user.remember_me'
+    .control-group
+      .controls
+        = link_to '※パスワードを忘れた場合', new_password_path('user')
+    .control-group.form-actions
+      = f.submit 'ログイン', class: 'btn btn-success'
+

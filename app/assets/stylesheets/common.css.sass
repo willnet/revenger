@@ -1,0 +1,83 @@
+@include sticky-footer(80px)
+
+$post-color: #E8E8E8
+
+body
+  font-family: Lucida Grande,Lucida Sans Unicode
+  background-image: url(asset-path("debut_light.png", images))
+
+.top-container
+  margin-top: 20px
+
+legend
+  @include zurui-line-bottom(.1, 1.0)
+
+.form-actions
+  @include zurui-line-top(.1, 1.0)
+
+#footer
+  width: 940px
+  margin: 0 auto
+
+  text-align: center
+  .footer-links
+    li
+      display: inline
+
+#notice
+  padding: 5px 8px
+  margin: 10px 0
+  background-color: #CFC
+  border: solid #6C6
+
+#alert
+  padding: 5px 8px
+  margin: 10px 0
+  background-color: #FCC
+  border: solid #C66
+
+.alert.alert-error
+  ul
+    margin: 0 0 0 24px
+
+#flash
+  margin: 0
+
+#error_explanation
+  width: 450px
+  border: 2px solid red
+  padding: 7px
+  margin-bottom: 20px
+  ul li
+    font-size: 16px
+    list-style: square
+    margin-left: 15px
+
+#post_body
+  width: 98%
+
+#system
+  text-align: center
+
+h2
+  font-size: 21px
+  @include text-shadow(-1px 1px rgba(255, 255, 255, 1))
+  @include zurui-line-bottom(.1, 1.0)
+
+h3
+  font-size: 18px
+
+h4
+  font-size: 14px
+
+a.brand
+  font-family: 'Gravitas One', cursive
+
+p
+  line-height: 150%
+
+hr
+  @include zurui-line-top(.1, 1.0)
+
+.form-instruction
+  padding: 10px 0 30px 0

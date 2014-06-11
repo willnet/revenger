@@ -1,0 +1,27 @@
+- title 'ユーザ情報 - revenger'
+.well
+  = form_for(resource, :as => resource_name, :url => user_path, :html => { :method => :put, class: 'form-horizontal' }) do |f|
+    %legend
+      ユーザ情報
+    = render 'errors', model: resource
+    .control-group
+      = f.label :email, class: 'control-label'
+      .controls
+        = f.email_field :email
+    .control-group
+      = f.label :current_password, class: 'control-label'
+      .controls
+        = f.password_field :current_password
+        %span.help-inline (必須入力)
+    .control-group
+      = f.label :password, class: 'control-label'
+      .controls
+        = f.password_field :password
+        %span.help-inline (パスワードを変更しない場合は空白のままにしてください)
+    .control-group
+      = f.label :password_confirmation, class: 'control-label'
+      .controls
+        = f.password_field :password_confirmation
+        %span.help-inline (パスワードを変更しない場合は空白のままにしてください)
+    .control-group.form-actions
+      = f.submit "更新", class: 'btn btn-success'

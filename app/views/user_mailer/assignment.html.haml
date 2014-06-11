@@ -1,0 +1,16 @@
+%html
+  %head
+  %boby
+    %p 現在のノルマは #{@user.reviewable_posts.count} 件です。今日も張り切って復習しましょう！
+    = link_to '復習する', review_url
+
+    このメールを受信したくない場合、<a href="https://revenger.in/user/reminder/edit">このリンク</a>から送信設定を変更できます。
+
+    - post = @user.reviewable_posts.sample
+    %p
+      ノルマから一件抜粋
+    %hr
+    .post
+      .view
+        .body= markdown(@user.reviewable_posts.sample.body)
+

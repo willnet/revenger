@@ -1,0 +1,12 @@
+- title '退会 - revenger'
+.well
+  = form_tag user_path, method: :delete, class: 'form-horizontal'  do
+    %legend
+      退会
+    %p 退会した場合、ユーザに関するデータが全て削除されます。
+    .control-group
+      = label_tag 'password', 'パスワード', class: 'control-label'
+      .controls
+        = password_field_tag
+    .control-group.form-actions
+      = submit_tag '退会する', :confirm => '本当に退会しますか？', class: 'btn btn-danger'

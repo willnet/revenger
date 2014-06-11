@@ -1,0 +1,16 @@
+- title 'デフォルト復習間隔 - revenger'
+.well
+  = form_for(@user, url: duration_path, method: :put, html: { class: 'form-horizontal' } ) do |f|
+    %legend
+      デフォルト復習間隔
+    %p
+      新しいメモを作ったときに設定される復習の間隔を設定できます。
+    = render 'errors', model: @user
+    .control-group
+      .control-label
+        デフォルト復習間隔
+      .controls
+        = f.select(:default_duration, [1,7,14,30,90,180,365].map {|i| [i, i] }, {}, class: 'span1')
+        日
+    .control-group.form-actions
+      = f.submit '更新' , class: 'btn btn-success'

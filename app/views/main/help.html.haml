@@ -1,0 +1,94 @@
+- title 'ヘルプ - revenger'
+.row
+  .span4
+    %div.well{ 'data-spy' => 'affix' }
+      %ul.nav.nav-list
+        %li
+          %a{ href: '#revenger'}
+            revenger とは
+        %li
+          %a{ href: '#how-to-use' }
+            revenger の使い方
+        %li
+          %a{ href: '#memo' }
+            復習メモとは
+        %li
+          %a{ href: '#review-page' }
+            レビューページとは
+        %li
+          %a{ href: '#how-to-write' }
+            復習メモの書き方
+        %li
+          %a{ href: '#norma' }
+            復習ノルマとは
+        %li
+          %a{ href: '#duration' }
+            復習間隔とは
+        %li
+          %a{ href: '#remind-mail' }
+            リマインドメール
+        %li
+          %a{ href: '#hatena-bookmark' }
+            はてなブックマーク連携
+        %li
+          %a{ href: '#env' }
+            推奨環境
+  .span8
+    %section#revenger
+      %h2
+        revenger とは
+      %p
+        revenger は、一言でまとめると<strong>書いたメモを定期的に読み返して知識を定着させるためのwebサービス</strong>です。一度書いたものを読み返して復習すること、および復習の習慣づけをすることを目的としています。
+    %section#how-to-use
+      %h2 
+        revenger の使い方
+        <iframe width="560" height="315" src="http://www.youtube.com/embed/qLhspKMX8HQ" frameborder="0" allowfullscreen></iframe>
+    %section#memo
+      %h2 
+        復習メモとは
+      %p
+        あなたが、あとで復習するために書くメモのことです。
+    %section#review-page
+      %h2 
+        レビューページとは
+      %p
+        過去に書いた復習メモが復習ノルマとして表示されるページです。復習ノルマを読んで「read it!」ボタンを押すことで復習が完了し、次の復習ノルマが表示されるような仕組みになっています。
+    %section#how-to-write
+      %h2
+        復習メモの書き方
+      %p
+        復習メモの装飾に、markdown 記法が使用できます。markdown 記法の詳細については、下記のリンクを参考にしてください。
+        %ul
+          %li
+            %a{href: "http://blog.2310.net/archives/6"}
+              http://blog.2310.net/archives/6
+          %li
+            %a{href: "http://daringfireball.net/projects/markdown/syntax.php"}
+              http://daringfireball.net/projects/markdown/syntax.php
+      %p
+        また、ソースコードの記述に関する記法は <a href="https://help.github.com/articles/github-flavored-markdown">GitHub Flavored Markdown</a> に準拠しています。
+    %section#norma
+      %h2 復習ノルマとは
+      %p
+        復習ノルマとは、過去に作成した復習メモのうち、前回復習した日時を起点としてメモに設定された復習間隔が経過したものです。復習ノルマはレビューページに表示され、復習の対象となります。
+    %section#duration
+      %h2 復習間隔とは
+      %p
+        個別の復習メモに設定されている値です。前回復習した日時から復習間隔で設定された日数が過ぎると、復習メモは復習ノルマになります。復習間隔は、復習メモ毎に変更することができます。
+      %p 復習間隔の初期値は1日です。デフォルト復習間隔のページで変更できます。
+    %section#remind-mail
+      %h2
+        リマインドメール
+      %p
+        毎日一回、復習の習慣化を助けるためにリマインドメールを送信しています。内容は、その時の復習ノルマの件数と、復習ノルマの内容をランダムでお送りします。もし、リマインドメールが必要ない場合は、設定ページから送信を解除することができます。
+    %section#hatena-bookmark
+      %h2
+        はてなブックマーク連携
+      %p
+        <a href="http://b.hatena.ne.jp/">はてなブックマーク</a>でブックマークをした内容を、自動で revenger の復習メモとして反映させることができます。連携させるためには、<a href="#{hatena_path}">はてなブックマーク連携用のページ</a>から URL と キーを入手し、はてなブックマークの設定ページ上で設定を行う必要があります。
+    %section#env
+      %h2
+        推奨環境
+      %p
+        各ブラウザの最新版をご利用ください。特に Internet Explorer は古いバージョンを利用されていると、正しく表示されない、もしくは正しく挙動しない場合がありますのでご注意ください。
+

@@ -1,0 +1,13 @@
+%h2 パスワードの更新
+%p 新しいパスワードを入力してください
+
+= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f|
+  = render 'errors', model: resource
+  = f.hidden_field :reset_password_token
+  = f.label(:password, '新しいパスワード')
+  = f.password_field :password
+  = f.label(:password_confirmation, '新しいパスワードの確認')
+  = f.password_field :password_confirmation
+  %br
+  = f.submit 'パスワードの更新', class: 'btn'
+

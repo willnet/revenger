@@ -1,0 +1,27 @@
+- title "#{t :sign_up, scope: ["misc"]} - revenger"
+
+= form_for(resource, :as => resource_name, :url => user_path, html: { class: 'form-horizontal'}) do |f|
+  %fieldset
+    %legend= t :sign_up, scope: ["misc"]
+    = render 'errors', model: resource
+    .control-group
+      = f.label :email, class: 'control-label'
+      .controls
+        = f.email_field :email
+    .control-group      
+      = f.label :password, class: 'control-label'
+      .controls
+        = f.password_field :password
+    .control-group
+      = f.label :password_confirmation, class: 'control-label'
+      .controls
+        = f.password_field :password_confirmation
+    .control-group
+      .controls
+        %label
+          = f.check_box :agree
+          = link_to '利用規約', terms_path
+          に同意する
+
+    .control-group.form-actions
+      = f.submit 'ユーザ登録', class: 'btn btn-success'

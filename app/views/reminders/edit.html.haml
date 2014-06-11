@@ -1,0 +1,19 @@
+- title 'リマインダメール設定 - revenger'
+.well
+  = form_for(@user, url: reminder_path, method: :put, html: { class: 'form-horizontal' } ) do |f|
+    %legend
+      リマインダメール設定
+    %p
+      毎日送られてくるリマインダメールの送信／非送信を設定することができます
+    = render 'errors', model: @user
+    .control-group
+      .controls
+        %label.radio
+          = f.radio_button :receive_reminder, true
+          送信する
+        %label.radio
+          = f.radio_button :receive_reminder, false
+          送信しない
+    .control-group.form-actions
+      = f.submit '更新' , class: 'btn btn-success'
+
