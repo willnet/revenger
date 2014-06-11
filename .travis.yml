@@ -5,7 +5,7 @@ rvm:
 
 before_script:
   - "mysql -e 'create database revenger_test;'"
-  - "cp ./.travis.database.yml ./config/database.yml"
+  - "cp ./database.travis.yml ./config/database.yml"
 
 notifications:
   webhooks:
