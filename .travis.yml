@@ -1,0 +1,6 @@
+language: ruby
+rvm:
+  - 2.0.0
+notifications:
+  webhooks:
+    - https://idobata.io/hook/d557febb-1213-4945-8d74-bd16fac43cf6
