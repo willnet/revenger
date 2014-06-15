@@ -20,7 +20,7 @@ gem 'haml-rails'
 gem 'capistrano', require: false
 gem 'capistrano-unicorn', require: false
 gem 'whenever', :require => false
-gem 'sunspot_rails', github: 'sunspot/sunspot'
+gem 'sunspot_rails', '2.1.0'
 gem 'jquery-rails'
 gem 'dotenv-rails'
 gem 'dotenv-deployment'
@@ -47,7 +47,7 @@ group :development, :test do
   gem 'pry-remote'
   gem 'pry-nav'
   gem 'pry-doc'
-  gem 'sunspot_solr', github: 'sunspot/sunspot'
+  gem 'sunspot_solr'
   gem 'guard-rspec'
   gem 'guard-bundler'
   gem 'guard-pow'
