@@ -3,6 +3,9 @@ language: ruby
 rvm:
   - 2.0.0
 
+env:
+  - DEVISE_SECRET_KEY=cb84832b18430b60cc0ee693452d2fb6b5a9f30df8d40f79b774512e5e35f17cfd7ec33bd088fdfe31a55768c7a5bc69b4565ca5c05870ce485e512103144aaf
+
 before_script:
   - "mysql -e 'create database revenger_test;'"
   - "cp ./config/database.travis.yml ./config/database.yml"
