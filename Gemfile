@@ -67,7 +67,7 @@ group :test do
   gem 'database_cleaner'
   gem 'timecop'
   gem 'capybara'
-  gem 'poltergeist'
+  gem 'capybara-webkit'
   gem 'capybara-email'
   gem 'headless'
   gem 'fabrication'

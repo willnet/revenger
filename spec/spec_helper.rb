@@ -13,11 +13,10 @@ require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/rspec'
 require 'capybara/email/rspec'
-require 'capybara/poltergeist'
 
 require 'accept_values_for'
 
-Capybara.javascript_driver = :poltergeist
+Capybara.javascript_driver = :webkit
 
 $original_sunspot_session = Sunspot.session
 
