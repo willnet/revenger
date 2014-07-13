@@ -16,3 +16,5 @@ solr/pids/*
 public/assets
 coverage
 vendor/assets/components
+config/database.yml
+.env
