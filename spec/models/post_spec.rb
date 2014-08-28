@@ -139,7 +139,7 @@ describe Post do
     end
 
     it 'アルファベットの検索がどうなるか' do
-      pending
+      skip
     end
   end
 end
