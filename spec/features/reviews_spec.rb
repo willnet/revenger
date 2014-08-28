@@ -35,8 +35,9 @@ describe "自分の書いた投稿を復習するために、レビュータブ�
     end
 
     it '削除リンクを押し、ダイアログでOKボタンを押すと次の復習内容が表示されること', solr: true do
-      page.driver.accept_js_confirms!
-      find('[data-behavior=destroy]').click
+      accept_confirm do
+        find('[data-behavior=destroy]').click
+      end
       expect(page).to have_content '疲れた'
     end
 

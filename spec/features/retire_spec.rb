@@ -16,9 +16,10 @@ describe 'ユーザが退会する' do
 
     context "かつパスワード欄に正しいパスワードを入れて'退会する'ボタンを押し、ダイアログでOKを押したとき", js: true do
       before do
-        page.driver.accept_js_confirms!
-        fill_in 'パスワード', with: user.password
-        click_button '退会する'
+        accept_confirm do
+          fill_in 'パスワード', with: user.password
+          click_button '退会する'
+        end
       end
 
       it '"退会しました"と表示されていること' do
@@ -28,9 +29,10 @@ describe 'ユーザが退会する' do
 
     context "かつパスワード欄に不正なパスワードを入れて'退会する'ボタンを押し、ダイアログでOKを押したとき", js: true do
       before do
-        page.driver.accept_js_confirms!
-        fill_in 'パスワード', with: 'hoge'
-        click_button '退会する'
+        accept_confirm do
+          fill_in 'パスワード', with: 'hoge'
+          click_button '退会する'
+        end
       end
 
       it '"パスワードが間違っています"と表示されていること' do
@@ -39,4 +41,3 @@ describe 'ユーザが退会する' do
     end
   end
 end
-
