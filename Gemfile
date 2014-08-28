@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.18'
+gem 'rails', '4.0.9'
 gem 'mysql2'
 gem 'unicorn'
 gem 'rabl'
@@ -9,7 +9,6 @@ gem 'i18n-js'
 gem 'roadie'
 gem 'kaminari'
 gem 'sunspot_with_kaminari'
-gem 'strong_parameters'
 gem 'redcarpet'
 gem 'pygments.rb', require: 'pygments'
 gem 'airbrake'
@@ -27,15 +26,14 @@ gem 'dotenv-deployment'
 
 group :assets do
   gem 'coffee-script-source', '1.6.2'
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
+  gem 'sass-rails'
+  gem 'coffee-rails'
+  gem 'uglifier'
   gem 'haml_coffee_assets'
   gem 'execjs'
   gem 'bootstrap-sass', github: 'willnet/bootstrap-sass'
   gem 'compass-rails'
   gem 'zurui-sass-rails'
-  gem 'font-awesome-sass-rails'
 end
 
 group :development, :test do
