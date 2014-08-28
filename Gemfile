@@ -37,7 +37,6 @@ group :assets do
 end
 
 group :development, :test do
-  gem 'sextant'
   gem 'annotate'
   gem 'i18n_generators'
   gem 'rspec-rails'

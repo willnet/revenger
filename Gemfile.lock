@@ -292,8 +292,6 @@ GEM
       sass (~> 3.2.0)
       sprockets (~> 2.8, <= 2.11.0)
       sprockets-rails (~> 2.0)
-    sextant (0.2.4)
-      rails (>= 3.2)
     simplecov (0.9.0)
       docile (~> 1.1.0)
       multi_json
@@ -416,7 +414,6 @@ DEPENDENCIES
   rspec-its
   rspec-rails
   sass-rails
-  sextant
   simplecov
   simplecov-rcov
   sunspot-rails-tester
