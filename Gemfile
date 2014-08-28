@@ -73,6 +73,7 @@ group :test do
   gem 'launchy'
   gem 'simplecov', require: false
   gem 'simplecov-rcov', require: false
+  gem 'rspec-its'
 end
 
 group :darwin do
