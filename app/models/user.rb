@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :confirmable, :recoverable, :registerable, :rememberable, :trackable, :validatable
   has_many :posts, :dependent => :destroy
   has_many :reviewable_posts, -> {
-    ['review_at < ?', Time.zone.now]
+    where('review_at < ?', Time.zone.now)
   }, class_name: 'Post'
 
   validates :agree, :acceptance => true, :on => :create
