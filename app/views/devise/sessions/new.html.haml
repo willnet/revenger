@@ -19,7 +19,6 @@
             = t 'helpers.label.user.remember_me'
     .control-group
       .controls
-        = link_to '※パスワードを忘れた場合', new_password_path('user')
+        = link_to '※パスワードを忘れた場合', new_user_password_path
     .control-group.form-actions
       = f.submit 'ログイン', class: 'btn btn-success'
-
