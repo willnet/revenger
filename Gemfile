@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 source 'http://rubygems.org'
 
-gem 'rails', '4.0.9'
+gem 'rails', '4.1.5'
 gem 'mysql2'
 gem 'unicorn'
 gem 'rabl'
@@ -26,8 +26,8 @@ gem 'dotenv-deployment'
 
 group :assets do
   gem 'coffee-script-source', '1.6.2'
-  gem 'sass-rails'
-  gem 'coffee-rails'
+  gem 'sass-rails', '~> 4.0.3'
+  gem 'coffee-rails', '~> 4.0.0'
   gem 'uglifier'
   gem 'haml_coffee_assets'
   gem 'execjs'
