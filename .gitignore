@@ -1,6 +1,5 @@
 .bundle
 .rbenv-version
-bin
 log/*
 tmp/
 vendor/bundle
