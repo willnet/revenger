@@ -24,17 +24,15 @@ gem 'jquery-rails'
 gem 'dotenv-rails'
 gem 'dotenv-deployment'
 
-group :assets do
-  gem 'coffee-script-source', '1.6.2'
-  gem 'sass-rails', '~> 4.0.3'
-  gem 'coffee-rails', '~> 4.0.0'
-  gem 'uglifier'
-  gem 'haml_coffee_assets', github: 'netzpirat/haml_coffee_assets'
-  gem 'execjs'
-  gem 'bootstrap-sass', github: 'willnet/bootstrap-sass'
-  gem 'compass-rails'
-  gem 'zurui-sass-rails'
-end
+gem 'coffee-script-source', '1.6.2'
+gem 'sass-rails', '~> 4.0.3'
+gem 'coffee-rails', '~> 4.0.0'
+gem 'uglifier'
+gem 'haml_coffee_assets', github: 'netzpirat/haml_coffee_assets'
+gem 'execjs'
+gem 'bootstrap-sass', github: 'willnet/bootstrap-sass'
+gem 'compass-rails'
+gem 'zurui-sass-rails'
 
 group :development, :test do
   gem 'annotate'
