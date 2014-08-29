@@ -1,4 +1,4 @@
-Revenger::Application.routes.draw do
+Rails.application.routes.draw do
   root to: 'main#index'
   get 'help' => 'main#help'
   get 'privacy' => 'main#privacy'
