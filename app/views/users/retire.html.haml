@@ -9,4 +9,4 @@
       .controls
         = password_field_tag
     .control-group.form-actions
-      = submit_tag '退会する', :confirm => '本当に退会しますか？', class: 'btn btn-danger'
+      = submit_tag '退会する', data: { confirm: '本当に退会しますか？' }, class: 'btn btn-danger'
