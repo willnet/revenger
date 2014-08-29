@@ -48,12 +48,15 @@ describe "自分の書いた投稿を復習するために、レビュータブ�
       expect(page).to have_content '晴れると良いな'
     end
 
-    it '編集リンクを押して、編集内容を制限文字以上入力し編集ボタンを押すとjsのalertが表示されること', solr: true do
+    it '編集リンクを押して、編集内容を制限文字以上入力し編集ボタンを押しても保存されていないこと', solr: true do
+      long_text = 'あ' * (Post::MAX_BODY_LENGTH + 1)
       find('[data-behavior=edit]').click
-      find('[data-behavior=body]').set 'あ' * (Post::MAX_BODY_LENGTH + 1)
-      find('[data-behavior=update]').click
-      sleep 1
-      expect(page.driver.alert_messages).to be_present
+      find('[data-behavior=body]').set long_text
+      accept_alert do
+        find('[data-behavior=update]').click
+      end
+      visit current_path
+      expect(page).to have_no_content long_text
     end
   end
 end
