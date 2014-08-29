@@ -7,7 +7,7 @@ describe 'mail:assignment' do
   its(:prerequisites) { should include("environment") }
 
   it "SendAssignmentMailContext.call を呼び出していること" do
-    SendAssignmentMailContext.should_receive(:call)
+    expect(SendAssignmentMailContext).to receive(:call)
     subject.invoke
   end
 end

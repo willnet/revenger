@@ -6,11 +6,11 @@ RSpec::Matchers.define :have_bodies do |bodies|
     end
   end
 
-  failure_message_for_should do |page|
+  failure_message do |page|
     "expected page have bodies #{bodies} but #{page.all('.post .body').map { |body| body.text.gsub(/\s/, "") }.inspect}"
   end
 
-  failure_message_for_should_not do |employee|
+  failure_message_when_negated do |employee|
     "expected the team run by #{boss} to exclude #{employee}"
   end
 end

@@ -5,7 +5,7 @@ describe HatenaApi do
       let(:api) { HatenaApi.new(status: 'add') }
 
       it 'true を返すこと' do
-        expect(api.add_status?).to be_true
+        expect(api.add_status?).to eq true
       end
     end
 
@@ -13,7 +13,7 @@ describe HatenaApi do
       let(:api) { HatenaApi.new(status: 'delete') }
 
       it 'false を返すこと' do
-        expect(api.add_status?).to be_false
+        expect(api.add_status?).to eq false
       end
     end
 
@@ -21,7 +21,7 @@ describe HatenaApi do
       let(:api) { HatenaApi.new(status: nil) }
 
       it 'false を返すこと' do
-        expect(api.add_status?).to be_false
+        expect(api.add_status?).to eq false
       end
     end
   end
@@ -38,13 +38,13 @@ describe HatenaApi do
         end
 
         it 'true を返すこと' do
-          expect(api.valid_key?).to be_true
+          expect(api.valid_key?).to eq true
         end
       end
 
       context 'かつ #hatena_key が "hoge" の User が存在しないとき' do
         it 'false を返すこと' do
-          expect(api.valid_key?).to be_false
+          expect(api.valid_key?).to eq false
         end
       end
     end

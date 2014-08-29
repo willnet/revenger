@@ -1,10 +1,9 @@
 require 'spec_helper'
-Fabrication::Support.find_definitions
+Fabrication.manager.load_definitions
 describe 'Fabricate', solr: true do
-  Fabrication.schematics.schematics.keys.each do |name|
+  Fabrication.manager.schematics.keys.each do |name|
     describe "(:#{name})" do
-      it { Fabricate(name).should be_valid }
+      it { expect(Fabricate(name)).to be_valid }
     end
   end
 end
-

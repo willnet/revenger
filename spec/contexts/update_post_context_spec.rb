@@ -8,7 +8,7 @@ describe UpdatePostContext do
       let(:params) { ActionController::Parameters.new(post: { body: 'メモ本文', duration: 7 }) }
 
       it 'true が返ること' do
-        expect(UpdatePostContext.call(post, params)).to be_true
+        expect(UpdatePostContext.call(post, params)).to eq true
       end
 
       it '引数として渡した post に正しい属性のPostオブジェクトがセットされていること' do

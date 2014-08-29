@@ -1,15 +1,14 @@
 # -*- coding: utf-8 -*-
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.18'
+gem 'rails', '4.1.5'
 gem 'mysql2'
 gem 'unicorn'
 gem 'rabl'
 gem 'i18n-js'
-gem 'roadie'
+gem 'roadie', '~> 2.4'
 gem 'kaminari'
 gem 'sunspot_with_kaminari'
-gem 'strong_parameters'
 gem 'redcarpet'
 gem 'pygments.rb', require: 'pygments'
 gem 'airbrake'
@@ -25,21 +24,17 @@ gem 'jquery-rails'
 gem 'dotenv-rails'
 gem 'dotenv-deployment'
 
-group :assets do
-  gem 'coffee-script-source', '1.6.2'
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
-  gem 'haml_coffee_assets'
-  gem 'execjs'
-  gem 'bootstrap-sass', github: 'willnet/bootstrap-sass'
-  gem 'compass-rails'
-  gem 'zurui-sass-rails'
-  gem 'font-awesome-sass-rails'
-end
+gem 'coffee-script-source', '1.6.2'
+gem 'sass-rails', '~> 4.0.3'
+gem 'coffee-rails', '~> 4.0.0'
+gem 'uglifier'
+gem 'haml_coffee_assets', github: 'netzpirat/haml_coffee_assets'
+gem 'execjs'
+gem 'bootstrap-sass', github: 'willnet/bootstrap-sass'
+gem 'compass-rails'
+gem 'zurui-sass-rails'
 
 group :development, :test do
-  gem 'sextant'
   gem 'annotate'
   gem 'i18n_generators'
   gem 'rspec-rails'
@@ -75,6 +70,7 @@ group :test do
   gem 'launchy'
   gem 'simplecov', require: false
   gem 'simplecov-rcov', require: false
+  gem 'rspec-its'
 end
 
 group :darwin do
