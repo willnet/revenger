@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 source 'http://rubygems.org'
 
-gem 'rails', '4.1.5'
+gem 'rails', '4.1.8'
 gem 'mysql2'
 gem 'unicorn'
 gem 'rabl'
