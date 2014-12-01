@@ -85,7 +85,11 @@ class Post < ActiveRecord::Base
   end
 
   def refresh_review_at
-    self.review_at = duration.try(:days).try(:from_now)
+    self.review_at = if duration
+                       duration.days.from_now
+                     else
+                       nil
+                     end
     self
   end
 end

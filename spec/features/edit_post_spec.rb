@@ -16,9 +16,10 @@ describe 'ユーザが自分の投稿を閲覧する', solr: true, js: true do
     end
 
     it '削除リンクを押して、ダイアログでOKボタンを押すと該当する投稿が消えること' do
-      page.driver.accept_js_confirms!
-      within 'div.post:nth-child(1)' do
-        find('[data-behavior=destroy]').click
+      accept_confirm do
+        within 'div.post:nth-child(1)' do
+          find('[data-behavior=destroy]').click
+        end
       end
       expect(page).to have_no_content('晴れた')
     end
@@ -53,12 +54,15 @@ describe 'ユーザが自分の投稿を閲覧する', solr: true, js: true do
         end
       end
 
-      it 'かつ編集内容を制限文字以上入力し編集ボタンを押すとjsのalertが表示されること' do
+      it 'かつ編集内容を制限文字以上入力し編集ボタンを押しても、編集内容が保存されていないこと' do
+        long_text = 'あ' * (Post::MAX_BODY_LENGTH + 1)
         within 'div.post:nth-child(1)' do
-          find('[data-behavior=body]').set 'あ' * (Post::MAX_BODY_LENGTH + 1)
-          find('[data-behavior=update]').click
-          sleep 1
-          expect(page.driver.alert_messages).to be_present
+          find('[data-behavior=body]').set long_text
+          accept_alert do
+            find('[data-behavior=update]').click
+          end
+          visit current_path
+          expect(page).to have_no_content long_text
         end
       end
     end

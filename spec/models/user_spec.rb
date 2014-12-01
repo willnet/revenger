@@ -40,7 +40,7 @@ describe User do
     context "新しく User が作成されたとき" do
       it '#posts に二件データが作成されていること' do
         user = User.create(email: 'netwillnet@gmail.com', password: 'password')
-        expect(user.posts).to have(2).items
+        expect(user.posts.length).to eq 2
       end
     end
   end

@@ -1,4 +1,4 @@
-Revenger::Application.routes.draw do
+Rails.application.routes.draw do
   root to: 'main#index'
   get 'help' => 'main#help'
   get 'privacy' => 'main#privacy'
@@ -34,6 +34,5 @@ Revenger::Application.routes.draw do
   post 'api/hatena' => 'hatena_api#create'
   get 'api/dashboard' => 'dashboard_api#show'
 
-  mount_sextant if Rails.env.development?
-  match '*path' => 'application#error404'
+  match '*path' => 'application#error404', via: :all
 end
