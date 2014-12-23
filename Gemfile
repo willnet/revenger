@@ -33,6 +33,7 @@ gem 'execjs'
 gem 'bootstrap-sass', github: 'willnet/bootstrap-sass'
 gem 'compass-rails'
 gem 'zurui-sass-rails'
+gem 'coveralls', require: false
 
 group :development, :test do
   gem 'annotate'
@@ -68,8 +69,6 @@ group :test do
   gem 'fabrication'
   gem 'accept_values_for'
   gem 'launchy'
-  gem 'simplecov', require: false
-  gem 'simplecov-rcov', require: false
   gem 'rspec-its'
 end
 

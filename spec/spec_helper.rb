@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
-require 'simplecov'
-require 'simplecov-rcov'
-
-SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
-SimpleCov.start 'rails'
+require 'coveralls'
+Coveralls.wear!
 
 ENV["RAILS_ENV"] ||= 'test'
 
