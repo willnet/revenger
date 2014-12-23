@@ -55,6 +55,8 @@ group :development do
   gem "binding_of_caller"
   gem 'meta_request'
   gem 'letter_opener'
+  gem 'spring'
+  gem 'spring-commands-rspec'
 end
 
 group :test do
