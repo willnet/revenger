@@ -19,7 +19,7 @@ gem 'haml-rails'
 gem 'capistrano', require: false
 gem 'capistrano-unicorn', require: false
 gem 'whenever', :require => false
-gem 'sunspot_rails', '2.1.0'
+gem 'sunspot_rails', '2.1.1'
 gem 'jquery-rails'
 gem 'dotenv-rails'
 gem 'dotenv-deployment'
