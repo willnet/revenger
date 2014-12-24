@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 source 'http://rubygems.org'
 
-gem 'rails', '4.1.8'
+gem 'rails', '4.2.0'
 gem 'mysql2'
 gem 'unicorn'
 gem 'rabl'
@@ -19,7 +19,7 @@ gem 'haml-rails'
 gem 'capistrano', require: false
 gem 'capistrano-unicorn', require: false
 gem 'whenever', :require => false
-gem 'sunspot_rails', '2.1.0'
+gem 'sunspot_rails', '2.1.1'
 gem 'jquery-rails'
 gem 'dotenv-rails'
 gem 'dotenv-deployment'
