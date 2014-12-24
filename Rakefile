@@ -4,12 +4,6 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-ENV['CI_REPORTS'] = Dir.pwd + '/reports'
-begin
-  require 'ci/reporter/rake/rspec'
-rescue LoadError
-end
-
 Revenger::Application.load_tasks
 
 if defined? Rspec

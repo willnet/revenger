@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 source 'http://rubygems.org'
 
-gem 'rails', '4.1.8'
+gem 'rails', '4.2.0'
 gem 'mysql2'
 gem 'unicorn'
 gem 'rabl'
@@ -19,7 +19,7 @@ gem 'haml-rails'
 gem 'capistrano', require: false
 gem 'capistrano-unicorn', require: false
 gem 'whenever', :require => false
-gem 'sunspot_rails', '2.1.0'
+gem 'sunspot_rails', '2.1.1'
 gem 'jquery-rails'
 gem 'dotenv-rails'
 gem 'dotenv-deployment'
@@ -33,6 +33,7 @@ gem 'execjs'
 gem 'bootstrap-sass', github: 'willnet/bootstrap-sass'
 gem 'compass-rails'
 gem 'zurui-sass-rails'
+gem 'coveralls', require: false
 
 group :development, :test do
   gem 'annotate'
@@ -54,6 +55,8 @@ group :development do
   gem "binding_of_caller"
   gem 'meta_request'
   gem 'letter_opener'
+  gem 'spring'
+  gem 'spring-commands-rspec'
 end
 
 group :test do
@@ -68,8 +71,6 @@ group :test do
   gem 'fabrication'
   gem 'accept_values_for'
   gem 'launchy'
-  gem 'simplecov', require: false
-  gem 'simplecov-rcov', require: false
   gem 'rspec-its'
 end
 
