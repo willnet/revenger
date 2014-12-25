@@ -17,6 +17,6 @@ end
 
 RSpec::Matchers.define :be_the_same_time_as do |other|
   match do |time|
-    time.to_i == other.to_i
+    time.to_i - 1 <= other.to_i && other.to_i <= time.to_i + 1
   end
 end
