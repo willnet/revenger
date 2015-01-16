@@ -34,5 +34,10 @@ Rails.application.routes.draw do
   post 'api/hatena' => 'hatena_api#create'
   get 'api/dashboard' => 'dashboard_api#show'
 
+  namespace :api do
+    resources :sessions, only: [:create]
+  end
+
+
   match '*path' => 'application#error404', via: :all
 end
