@@ -8,6 +8,7 @@ test:
     - "mysql -e 'create database revenger_test;'"
     - "cp ./config/database.travis.yml ./config/database.yml"
     - "RAILS_ENV=test bundle exec rake db:migrate"
+    - "git checkout config/sunspot.yml"
 
 notify:
   webhooks:
