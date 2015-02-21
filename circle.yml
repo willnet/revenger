@@ -1,0 +1,14 @@
+machine:
+  ruby:
+    version: 2.1.5
+test:
+  pre:
+    - "npm install -g bower"
+    - "bower install"
+    - "mysql -e 'create database revenger_test;'"
+    - "cp ./config/database.travis.yml ./config/database.yml"
+    - "RAILS_ENV=test bundle exec rake db:migrate"
+
+notify:
+  webhooks:
+    - url: https://idobata.io/hook/circle_ci/debc5621-f694-47bf-8f52-01aafec16b1d
