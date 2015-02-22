@@ -10,6 +10,15 @@ test:
     - "RAILS_ENV=test bundle exec rake db:migrate"
     - "git checkout config/sunspot.yml"
 
+deployment:
+  production:
+    branch: master
+    commands:
+      - bundle exec cap production deploy
+  staging:
+    branch: develop
+    commands:
+      - bundle exec cap staging-remote deploy
 notify:
   webhooks:
     - url: https://idobata.io/hook/circle_ci/debc5621-f694-47bf-8f52-01aafec16b1d
