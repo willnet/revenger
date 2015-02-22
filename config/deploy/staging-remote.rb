@@ -1,5 +1,5 @@
 set :user, 'jenkins'
-set :domain, 'jenkinsjenkins'
+set :domain, 'dev.revenger.in'
 set :rails_env, 'staging'
 set :bundle_without, [:production, :development, :test, :darwin]
 set :branch, 'develop'
