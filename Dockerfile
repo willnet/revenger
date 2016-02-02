@@ -1,4 +1,4 @@
-FROM ruby:2.2
+FROM ruby:2.2.3
 MAINTAINER netwillnet@gmail.com
 
 # Install apt based dependencies required to run Rails as
