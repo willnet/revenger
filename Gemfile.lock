@@ -396,7 +396,7 @@ GEM
       nokogiri
       rails (>= 3)
       sunspot (= 2.1.1)
-    sunspot_solr (2.2.4)
+    sunspot_solr (2.1.1)
     sunspot_with_kaminari (0.2.0)
       kaminari (>= 0.14.0)
       sunspot
@@ -495,7 +495,7 @@ DEPENDENCIES
   spring-commands-rspec
   sunspot-rails-tester
   sunspot_rails (= 2.1.1)
-  sunspot_solr
+  sunspot_solr (= 2.1.1)
   sunspot_with_kaminari
   therubyracer
   timecop

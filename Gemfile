@@ -42,7 +42,7 @@ group :development, :test do
   gem 'pry-remote'
   gem 'pry-nav'
   gem 'pry-doc'
-  gem 'sunspot_solr'
+  gem 'sunspot_solr', '2.1.1'
   gem 'guard-rspec'
   gem 'guard-bundler'
   gem 'guard-pow'
