@@ -386,16 +386,16 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
-    sunspot (2.2.4)
+    sunspot (2.1.1)
       pr_geohash (~> 1.0)
       rsolr (~> 1.0.7)
     sunspot-rails-tester (1.0.0)
       sunspot_rails (>= 1.2)
       sunspot_solr (>= 1.2)
-    sunspot_rails (2.2.4)
+    sunspot_rails (2.1.1)
       nokogiri
       rails (>= 3)
-      sunspot (= 2.2.4)
+      sunspot (= 2.1.1)
     sunspot_solr (2.2.4)
     sunspot_with_kaminari (0.2.0)
       kaminari (>= 0.14.0)
@@ -494,7 +494,7 @@ DEPENDENCIES
   spring
   spring-commands-rspec
   sunspot-rails-tester
-  sunspot_rails
+  sunspot_rails (= 2.1.1)
   sunspot_solr
   sunspot_with_kaminari
   therubyracer
