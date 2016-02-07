@@ -1,11 +1,11 @@
 GIT
-  remote: git://github.com/netzpirat/haml_coffee_assets.git
-  revision: a3c2951eca005d4fcce4837b9a97a139fc022c66
+  remote: git://github.com/emilioforrer/haml_coffee_assets.git
+  revision: 6d4f87ad590c89f319df94b8274ddfee0f46e49e
   specs:
-    haml_coffee_assets (1.16.0)
-      coffee-script (~> 2.0)
-      sprockets (~> 2.0)
-      tilt (~> 1.1)
+    haml_coffee_assets (1.16.1)
+      coffee-script (>= 2)
+      sprockets (>= 2)
+      tilt (>= 1)
 
 GIT
   remote: git://github.com/willnet/bootstrap-sass.git
@@ -331,7 +331,7 @@ GEM
       css_parser (~> 1.3.4)
       nokogiri (> 1.5.0)
       sprockets
-    rsolr (1.0.13)
+    rsolr (1.0.10)
       builder (>= 2.1.2)
     rspec (3.4.0)
       rspec-core (~> 3.4.0)
