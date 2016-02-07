@@ -61,9 +61,3 @@ RSpec.configure do |config|
   config.run_all_when_everything_filtered = true
   config.infer_spec_type_from_file_location!
 end
-
-module Airbrake
-  def self.notify(thing)
-    # do nothing.
-  end
-end
