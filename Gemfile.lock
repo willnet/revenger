@@ -1,13 +1,4 @@
 GIT
-  remote: git://github.com/emilioforrer/haml_coffee_assets.git
-  revision: 6d4f87ad590c89f319df94b8274ddfee0f46e49e
-  specs:
-    haml_coffee_assets (1.16.1)
-      coffee-script (>= 2)
-      sprockets (>= 2)
-      tilt (>= 1)
-
-GIT
   remote: git://github.com/willnet/bootstrap-sass.git
   revision: 03885f057d336748cbdc21bce7ca7b4fabdc1674
   specs:
@@ -185,6 +176,10 @@ GEM
       haml (>= 4.0.6, < 5.0)
       html2haml (>= 1.0.1)
       railties (>= 4.0.1)
+    haml_coffee_assets (1.16.1)
+      coffee-script (>= 2)
+      sprockets (>= 2)
+      tilt (>= 1)
     headless (2.2.0)
     highline (1.7.8)
     hike (1.2.3)
@@ -316,7 +311,7 @@ GEM
     rake (10.5.0)
     rake_shared_context (0.2.1)
     rb-fsevent (0.9.7)
-    rb-inotify (0.9.6)
+    rb-inotify (0.9.7)
       ffi (>= 0.5.0)
     redcarpet (3.3.4)
     ref (2.0.0)
@@ -466,7 +461,7 @@ DEPENDENCIES
   guard-pow
   guard-rspec
   haml-rails
-  haml_coffee_assets!
+  haml_coffee_assets
   headless
   i18n-js
   i18n_generators
