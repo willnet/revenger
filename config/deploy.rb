@@ -52,4 +52,3 @@ after 'deploy:update', 'deploy:cleanup'
 after 'deploy:restart', 'unicorn:restart'
 
 require './config/boot'
-require 'airbrake/capistrano'
