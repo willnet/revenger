@@ -14,11 +14,13 @@ deployment:
   production:
     branch: master
     commands:
-      - bundle exec cap production deploy
+      - bundle exec cap production deploy:
+          timeout: 1500
   staging:
     branch: develop
     commands:
-      - bundle exec cap staging-remote deploy
+      - bundle exec cap staging-remote deploy:
+          timeout: 1500
 notify:
   webhooks:
     - url: https://idobata.io/hook/circle_ci/debc5621-f694-47bf-8f52-01aafec16b1d
