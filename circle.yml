@@ -14,12 +14,12 @@ deployment:
   production:
     branch: master
     commands:
-      - "bundle exec cap production deploy":
+      - bundle exec cap production deploy:
         timeout: 1500
   staging:
     branch: develop
     commands:
-      - "bundle exec cap staging-remote deploy":
+      - bundle exec cap staging-remote deploy:
         timeout: 1500
 notify:
   webhooks:
