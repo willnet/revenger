@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 source 'http://rubygems.org'
 
-gem 'rails', '4.2.0'
+gem 'rails'
 gem 'mysql2'
 gem 'unicorn'
 gem 'rabl'
@@ -18,17 +18,16 @@ gem 'therubyracer'
 gem 'haml-rails'
 gem 'capistrano', require: false
 gem 'capistrano-unicorn', require: false
-gem 'whenever', :require => false
+gem 'whenever', require: false
 gem 'sunspot_rails', '2.1.1'
 gem 'jquery-rails'
 gem 'dotenv-rails'
 gem 'dotenv-deployment'
-
-gem 'coffee-script-source', '1.6.2'
-gem 'sass-rails', '~> 4.0.3'
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-script-source'
+gem 'sass-rails'
+gem 'coffee-rails'
 gem 'uglifier'
-gem 'haml_coffee_assets', github: 'netzpirat/haml_coffee_assets'
+gem 'haml_coffee_assets'
 gem 'execjs'
 gem 'bootstrap-sass', github: 'willnet/bootstrap-sass'
 gem 'compass-rails'
@@ -43,7 +42,7 @@ group :development, :test do
   gem 'pry-remote'
   gem 'pry-nav'
   gem 'pry-doc'
-  gem 'sunspot_solr'
+  gem 'sunspot_solr', '2.1.1'
   gem 'guard-rspec'
   gem 'guard-bundler'
   gem 'guard-pow'
@@ -52,7 +51,7 @@ end
 
 group :development do
   gem 'better_errors'
-  gem "binding_of_caller"
+  gem 'binding_of_caller'
   gem 'meta_request'
   gem 'letter_opener'
   gem 'spring'
