@@ -1,0 +1,39 @@
+FROM ruby:2.3.3
+
+RUN apt-get update && \
+    apt-get install -y mysql-client nodejs npm vim --no-install-recommends && \
+    rm -rf /var/lib/apt/lists/*
+
+# install latest nodejs and phantomjs
+RUN npm install n -g && \
+  n stable && \
+  ln -sf /usr/local/bin/node /usr/bin/node &&\
+  apt-get purge -y nodejs npm && \
+  curl -0 -L https://npmjs.org/install.sh | sh && \
+  /usr/local/bin/npm install -g phantomjs-prebuilt
+
+ENV ENTRYKIT_VERSION 0.4.0
+
+RUN wget https://github.com/progrium/entrykit/releases/download/v${ENTRYKIT_VERSION}/entrykit_${ENTRYKIT_VERSION}_Linux_x86_64.tgz \
+  && tar -xvzf entrykit_${ENTRYKIT_VERSION}_Linux_x86_64.tgz \
+  && rm entrykit_${ENTRYKIT_VERSION}_Linux_x86_64.tgz \
+  && mv entrykit /bin/entrykit \
+  && chmod +x /bin/entrykit \
+  && entrykit --symlink
+
+RUN mkdir -p /app
+WORKDIR /app
+
+RUN bundle config build.nokogiri --use-system-libraries
+
+ENTRYPOINT [ \
+  "prehook", "ruby -v", "--", \
+  "prehook", "rm -f tmp/pids/server.pid", "--", \
+  "prehook", "bundle install -j3 --quiet --path vendor/bundle", "--", \
+  "switch", \
+    "shell=/bin/bash", \
+    "console=bundle exec rails console", \
+    "bundle=bundle install" \
+  ]
+
+CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
