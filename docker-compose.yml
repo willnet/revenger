@@ -1,0 +1,55 @@
+version: '2'
+services:
+  datastore:
+    image: busybox
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - solr-data:/opt/solr/mydata
+      - bundle_install:/app/vendor/bundle
+      - bower_install:/app/vendor/assets/components
+      - bundle:/app/.bundle
+  mysql:
+    build:
+      context: .
+      dockerfile: Dockerfile.mysql
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    volumes_from:
+      - datastore
+  solr:
+    build:
+      context: .
+      dockerfile: Dockerfile.solr
+    volumes_from:
+      - datastore
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    command: /bin/sh -lc "./bin/setup"
+    volumes:
+      - .:${PWD}
+    ports:
+      - 3000:3000
+    depends_on:
+      - mysql
+      - solr
+    volumes:
+      - .:/app
+    volumes_from:
+      - datastore
+    environment:
+      AWS_ACCESS_KEY_ID:
+      AWS_SECRET_ACCESS_KEY:
+
+volumes:
+  mysql-data:
+    driver: local
+  solr-data:
+    driver: local
+  bundle_install:
+    driver: local
+  bower_install:
+    driver: local
+  bundle:
+    driver: local

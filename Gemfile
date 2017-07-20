@@ -14,7 +14,6 @@ gem 'pygments.rb', require: 'pygments'
 gem 'airbrake'
 gem 'newrelic_rpm'
 gem 'devise'
-gem 'therubyracer'
 gem 'haml-rails'
 gem 'capistrano', require: false
 gem 'capistrano-unicorn', require: false
@@ -65,7 +64,7 @@ group :test do
   gem 'database_cleaner'
   gem 'timecop'
   gem 'capybara'
-  gem 'capybara-webkit'
+  gem 'poltergeist'
   gem 'capybara-email'
   gem 'headless'
   gem 'fabrication'

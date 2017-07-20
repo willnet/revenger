@@ -30,10 +30,11 @@ ENTRYPOINT [ \
   "prehook", "ruby -v", "--", \
   "prehook", "rm -f tmp/pids/server.pid", "--", \
   "prehook", "bundle install -j3 --quiet --path vendor/bundle", "--", \
+  "prehook", "npm install -g bower", "--", \
+  "prehook", "bower install --allow-root", "--", \
   "switch", \
     "shell=/bin/bash", \
     "console=bundle exec rails console", \
-    "bundle=bundle install" \
+    "dbcreate=bundle exec rake db:create", \
+    "bu=bundle update", "--" \
   ]
-
-CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
