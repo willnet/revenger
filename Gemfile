@@ -29,7 +29,6 @@ gem 'execjs'
 gem 'bootstrap-sass', github: 'willnet/bootstrap-sass'
 gem 'compass-rails'
 gem 'zurui-sass-rails'
-gem 'coveralls', require: false
 gem 'sentry-raven'
 gem 'sprockets-rails', '< 3.0'
 
