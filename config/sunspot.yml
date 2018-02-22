@@ -28,4 +28,6 @@ test:
     hostname: localhost
     port: 8981
     path: '/solr/test'
+    read_timeout: 20
+    open_timeout: 1
     log_level: WARNING
