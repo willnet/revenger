@@ -358,6 +358,8 @@ GEM
       rspec-mocks (~> 3.4.0)
       rspec-support (~> 3.4.0)
     rspec-support (3.4.1)
+    rspec_junit_formatter (0.3.0)
+      rspec-core (>= 2, < 4, != 2.12.0)
     ruby_parser (3.7.3)
       sexp_processor (~> 4.1)
     rubyzip (1.2.1)
@@ -493,6 +495,7 @@ DEPENDENCIES
   roadie (~> 2.4)
   rspec-its
   rspec-rails
+  rspec_junit_formatter
   sass-rails
   selenium-webdriver
   sentry-raven

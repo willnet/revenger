@@ -1,26 +1,31 @@
-machine:
-  ruby:
-    version: 2.3.6
-test:
-  pre:
-    - "npm install -g bower"
-    - "bower install"
-    - "mysql -e 'create database revenger_test;'"
-    - "cp ./config/database.travis.yml ./config/database.yml"
-    - "RAILS_ENV=test bundle exec rake db:migrate"
-    - "git checkout config/sunspot.yml"
+version: 2
+jobs:
+  build:
+    working_directory: ~/revenger
+    docker:
+      - image: circleci/ruby:2.3.6-node-browsers
+      - image: circleci/mysql:5.6
 
-deployment:
-  production:
-    branch: master
-    commands:
-      - bundle exec cap production deploy:
-          timeout: 1500
-  staging:
-    branch: develop
-    commands:
-      - bundle exec cap staging-remote deploy:
-          timeout: 1500
-notify:
-  webhooks:
-    - url: https://idobata.io/hook/circle_ci/debc5621-f694-47bf-8f52-01aafec16b1d
+    steps:
+      - checkout
+
+      - type: cache-restore
+        key: revenger-gem-{{ checksum "Gemfile.lock" }}
+
+      - run: bundle install --path vendor/bundle
+      - run: sudo npm install -g bower
+      - run: bower install
+
+      - type: cache-save
+        key: revenger-gem-{{ checksum "Gemfile.lock" }}
+        paths:
+          - vendor/bundle
+      - run: cp config/database.ci.yml config/database.yml
+      - run: bundle exec rake db:create
+      - run: bundle exec rake db:schema:load
+      - run: |
+          bundle exec rspec --profile 10 \
+                            --format RspecJunitFormatter \
+                            --out /tmp/test-results/rspec.xml \
+                            --format progress \
+                            $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)

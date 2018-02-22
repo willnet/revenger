@@ -70,6 +70,7 @@ group :test do
   gem 'launchy'
   gem 'selenium-webdriver'
   gem 'rspec-its'
+  gem 'rspec_junit_formatter'
 end
 
 group :darwin do
