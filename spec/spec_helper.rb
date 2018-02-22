@@ -9,9 +9,14 @@ require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/rspec'
 require 'capybara/email/rspec'
+require 'capybara-screenshot/rspec'
 require 'accept_values_for'
 Capybara.javascript_driver = :selenium_chrome_headless
 
+Capybara::Screenshot
+  .register_driver(:selenium_chrome_headless) do |driver, path|
+  driver.browser.save_screenshot(path)
+end
 
 $original_sunspot_session = Sunspot.session
 
