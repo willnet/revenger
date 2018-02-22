@@ -43,7 +43,6 @@ group :development, :test do
   gem 'sunspot_solr', '2.1.1'
   gem 'guard-rspec'
   gem 'guard-bundler'
-  gem 'guard-pow'
   gem 'ci_reporter'
 end
 
@@ -54,6 +53,7 @@ group :development do
   gem 'letter_opener'
   gem 'spring'
   gem 'spring-commands-rspec'
+  gem 'quiet_assets'
 end
 
 group :test do
@@ -64,8 +64,8 @@ group :test do
   gem 'timecop'
   gem 'capybara'
   gem 'capybara-email'
-  gem 'headless'
-  gem 'fabrication'
+  gem 'capybara-screenshot'
+  gem 'fabrication', group: :development
   gem 'accept_values_for'
   gem 'launchy'
   gem 'selenium-webdriver'
@@ -75,5 +75,4 @@ end
 
 group :darwin do
   gem 'rb-fsevent', require: false
-  gem 'growl'
 end

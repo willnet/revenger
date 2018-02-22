@@ -81,6 +81,9 @@ GEM
     capybara-email (2.4.0)
       capybara (~> 2.4)
       mail
+    capybara-screenshot (1.0.18)
+      capybara (>= 1.0, < 3)
+      launchy
     childprocess (0.8.0)
       ffi (~> 1.0, >= 1.0.11)
     chromedriver-helper (1.1.0)
@@ -151,7 +154,6 @@ GEM
     git-version-bump (0.15.1)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
-    growl (1.0.3)
     guard (2.13.0)
       formatador (>= 0.2.4)
       listen (>= 2.7, <= 4.0)
@@ -166,8 +168,6 @@ GEM
       guard (~> 2.2)
       guard-compat (~> 1.1)
     guard-compat (1.2.1)
-    guard-pow (2.0.0)
-      guard (~> 2.0)
     guard-rspec (4.6.4)
       guard (~> 2.1)
       guard-compat (~> 1.1)
@@ -184,7 +184,6 @@ GEM
       coffee-script (>= 2)
       sprockets (>= 2)
       tilt (>= 1)
-    headless (2.2.0)
     highline (1.7.8)
     hike (1.2.3)
     html2haml (2.0.0)
@@ -282,6 +281,8 @@ GEM
     pygments.rb (0.6.3)
       posix-spawn (~> 0.3.6)
       yajl-ruby (~> 1.2.0)
+    quiet_assets (1.1.0)
+      railties (>= 3.1, < 5.0)
     rabl (0.11.8)
       activesupport (>= 2.3.14)
     rack (1.6.8)
@@ -454,6 +455,7 @@ DEPENDENCIES
   capistrano-unicorn
   capybara
   capybara-email
+  capybara-screenshot
   chromedriver-helper
   ci_reporter
   coffee-rails
@@ -466,13 +468,10 @@ DEPENDENCIES
   dotenv-rails
   execjs
   fabrication
-  growl
   guard-bundler
-  guard-pow
   guard-rspec
   haml-rails
   haml_coffee_assets
-  headless
   i18n-js
   i18n_generators
   jquery-rails
@@ -487,6 +486,7 @@ DEPENDENCIES
   pry-rails
   pry-remote
   pygments.rb
+  quiet_assets
   rabl
   rails
   rake_shared_context
