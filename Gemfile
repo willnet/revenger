@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 source 'http://rubygems.org'
 
 gem 'rails'
@@ -11,10 +10,8 @@ gem 'kaminari'
 gem 'sunspot_with_kaminari'
 gem 'redcarpet'
 gem 'pygments.rb', require: 'pygments'
-gem 'airbrake'
 gem 'newrelic_rpm'
 gem 'devise'
-gem 'therubyracer'
 gem 'haml-rails'
 gem 'capistrano', require: false
 gem 'capistrano-unicorn', require: false
@@ -33,6 +30,7 @@ gem 'bootstrap-sass', github: 'willnet/bootstrap-sass'
 gem 'compass-rails'
 gem 'zurui-sass-rails'
 gem 'coveralls', require: false
+gem 'sentry-raven'
 
 group :development, :test do
   gem 'annotate'
@@ -59,17 +57,18 @@ group :development do
 end
 
 group :test do
+  gem 'chromedriver-helper', group: :development
   gem 'sunspot-rails-tester'
   gem 'rake_shared_context'
   gem 'database_cleaner'
   gem 'timecop'
   gem 'capybara'
-  gem 'capybara-webkit'
   gem 'capybara-email'
   gem 'headless'
   gem 'fabrication'
   gem 'accept_values_for'
   gem 'launchy'
+  gem 'selenium-webdriver'
   gem 'rspec-its'
 end
 

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 require 'coveralls'
 Coveralls.wear!
 
@@ -10,10 +9,9 @@ require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/rspec'
 require 'capybara/email/rspec'
-
 require 'accept_values_for'
+Capybara.javascript_driver = :selenium_chrome_headless
 
-Capybara.javascript_driver = :webkit
 
 $original_sunspot_session = Sunspot.session
 
