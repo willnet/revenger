@@ -1,7 +1,3 @@
-# -*- coding: utf-8 -*-
-require 'coveralls'
-Coveralls.wear!
-
 ENV["RAILS_ENV"] ||= 'test'
 
 require File.expand_path("../../config/environment", __FILE__)
@@ -10,10 +6,14 @@ require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/rspec'
 require 'capybara/email/rspec'
-
+require 'capybara-screenshot/rspec'
 require 'accept_values_for'
+Capybara.javascript_driver = :selenium_chrome_headless
 
-Capybara.javascript_driver = :webkit
+Capybara::Screenshot
+  .register_driver(:selenium_chrome_headless) do |driver, path|
+  driver.browser.save_screenshot(path)
+end
 
 $original_sunspot_session = Sunspot.session
 

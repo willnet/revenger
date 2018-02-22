@@ -29,5 +29,5 @@ Fabricator(:user) do
   password { "password" }
   # posts(:count => 100) { |user, i| Fabricate(:post, :title => "タイトル#{i}", :body => "本文#{i}", :local_id => i, :user => user)}
   before_create { |user| User.skip_callback(:create, :before, :build_initial_posts) }
-  after_create { |user| user.confirm!; User.set_callback(:create, :before, :build_initial_posts) }
+  after_create { |user| user.confirm; User.set_callback(:create, :before, :build_initial_posts) }
 end

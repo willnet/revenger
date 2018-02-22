@@ -6,7 +6,7 @@ class SendAssignmentMailContext
   def call
     User.confirmed.where(receive_reminder: true).includes(:reviewable_posts).find_each do |user|
       if user.reviewable_posts.exists?
-        UserMailer.assignment(user).deliver
+        UserMailer.assignment(user).deliver_now
       end
     end
   end

@@ -1,7 +1,6 @@
-# -*- coding: utf-8 -*-
 source 'http://rubygems.org'
 
-gem 'rails'
+gem 'rails', '4.2.10'
 gem 'mysql2'
 gem 'unicorn'
 gem 'rabl'
@@ -11,10 +10,8 @@ gem 'kaminari'
 gem 'sunspot_with_kaminari'
 gem 'redcarpet'
 gem 'pygments.rb', require: 'pygments'
-gem 'airbrake'
 gem 'newrelic_rpm'
 gem 'devise'
-gem 'therubyracer'
 gem 'haml-rails'
 gem 'capistrano', require: false
 gem 'capistrano-unicorn', require: false
@@ -32,7 +29,8 @@ gem 'execjs'
 gem 'bootstrap-sass', github: 'willnet/bootstrap-sass'
 gem 'compass-rails'
 gem 'zurui-sass-rails'
-gem 'coveralls', require: false
+gem 'sentry-raven'
+gem 'sprockets-rails', '< 3.0'
 
 group :development, :test do
   gem 'annotate'
@@ -45,7 +43,6 @@ group :development, :test do
   gem 'sunspot_solr', '2.1.1'
   gem 'guard-rspec'
   gem 'guard-bundler'
-  gem 'guard-pow'
   gem 'ci_reporter'
 end
 
@@ -56,24 +53,26 @@ group :development do
   gem 'letter_opener'
   gem 'spring'
   gem 'spring-commands-rspec'
+  gem 'quiet_assets'
 end
 
 group :test do
+  gem 'chromedriver-helper', group: :development
   gem 'sunspot-rails-tester'
   gem 'rake_shared_context'
   gem 'database_cleaner'
   gem 'timecop'
   gem 'capybara'
-  gem 'capybara-webkit'
   gem 'capybara-email'
-  gem 'headless'
-  gem 'fabrication'
+  gem 'capybara-screenshot'
+  gem 'fabrication', group: :development
   gem 'accept_values_for'
   gem 'launchy'
+  gem 'selenium-webdriver'
   gem 'rspec-its'
+  gem 'rspec_junit_formatter'
 end
 
 group :darwin do
   gem 'rb-fsevent', require: false
-  gem 'growl'
 end

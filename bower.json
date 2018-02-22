@@ -5,7 +5,6 @@
     "jquery-placeholder": "2.0.7",
     "underscore": "1.5.1",
     "backbone": "1.0.0",
-    "backbone_rails_sync": "https://github.com/tnakamura/backbone_rails_sync.git",
     "font-awesome": "3.0.2"
   }
 }
