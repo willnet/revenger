@@ -31,6 +31,7 @@ gem 'compass-rails'
 gem 'zurui-sass-rails'
 gem 'coveralls', require: false
 gem 'sentry-raven'
+gem 'sprockets-rails', '< 3.0'
 
 group :development, :test do
   gem 'annotate'
