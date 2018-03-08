@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
 
+system 'bundle exec rake db:create'
 system 'bundle exec rake db:migrate'
 system 'bundle exec rails s -p 3000 -b 0.0.0.0'

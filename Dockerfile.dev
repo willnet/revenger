@@ -4,13 +4,28 @@ RUN apt-get update && \
     apt-get install -y mysql-client nodejs npm vim --no-install-recommends && \
     rm -rf /var/lib/apt/lists/*
 
-# install latest nodejs and phantomjs
+# install latest nodejs
 RUN npm install n -g && \
   n stable && \
   ln -sf /usr/local/bin/node /usr/bin/node &&\
   apt-get purge -y nodejs npm && \
-  curl -0 -L https://npmjs.org/install.sh | sh && \
-  /usr/local/bin/npm install -g phantomjs-prebuilt
+  curl -0 -L https://npmjs.org/install.sh | sh
+
+
+RUN apt-get update && \
+    apt-get install -y vim build-essential patch libnss3 gconf2 libappindicator1 libasound2 libxss1 xdg-utils libgtk-3-0 libx11-xcb1 libxtst6 fonts-liberation lsb-release unzip --no-install-recommends && \
+    rm -rf /var/lib/apt/lists/* && \
+    curl -O https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
+    dpkg -i google-chrome-stable_current_amd64.deb && \
+    curl -O https://chromedriver.storage.googleapis.com/2.36/chromedriver_linux64.zip && \
+    unzip chromedriver_linux64.zip && \
+    mv chromedriver /usr/local/bin/chromedriver && \
+    chmod +x /usr/local/bin/chromedriver && \
+    curl -O "https://noto-website-2.storage.googleapis.com/pkgs/NotoSansCJKjp-hinted.zip" && \
+    unzip NotoSansCJKjp-hinted.zip && \
+    mkdir -p /usr/share/fonts/noto && \
+    cp -p *.otf /usr/share/fonts/noto/ && \
+    fc-cache -fv
 
 ENV ENTRYKIT_VERSION 0.4.0
 
