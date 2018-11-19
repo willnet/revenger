@@ -3,7 +3,7 @@ production:
     hostname: solr
     port: 8983
     log_level: WARNING
-    path: '/solr/production'
+    path: '/solr/mycore'
     # read_timeout: 2
     # open_timeout: 0.5
 
@@ -12,7 +12,7 @@ staging:
     hostname: solr
     port: 8983
     log_level: WARNING
-    path: '/solr/staging'
+    path: '/solr/mycore'
     # read_timeout: 2
     # open_timeout: 0.5
 
@@ -20,12 +20,12 @@ development:
   solr:
     hostname: solr
     port: 8983
-    path: '/solr/development'
+    path: '/solr/mycore'
     log_level: INFO
 
 test:
   solr:
     hostname: solr
     port: 8983
-    path: '/solr/test'
+    path: '/solr/mycore'
     log_level: WARNING
