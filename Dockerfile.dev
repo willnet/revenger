@@ -1,7 +1,10 @@
 FROM ruby:2.3.8
 
+# for npm install
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
+
 RUN apt-get update && \
-    apt-get install -y mysql-client nodejs npm vim --no-install-recommends && \
+    apt-get install -y mysql-client nodejs vim --no-install-recommends && \
     rm -rf /var/lib/apt/lists/*
 
 # install latest nodejs
@@ -13,7 +16,7 @@ RUN npm install n -g && \
 
 
 RUN apt-get update && \
-    apt-get install -y vim build-essential patch libnss3 gconf2 libappindicator1 libasound2 libxss1 xdg-utils libgtk-3-0 libx11-xcb1 libxtst6 fonts-liberation lsb-release unzip --no-install-recommends && \
+    apt-get install -y vim build-essential patch libnss3 gconf2 libappindicator1 libasound2 libxss1 xdg-utils libgtk-3-0 libx11-xcb1 libxtst6 fonts-liberation lsb-release unzip libappindicator3-1 --no-install-recommends && \
     rm -rf /var/lib/apt/lists/* && \
     curl -O https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
     dpkg -i google-chrome-stable_current_amd64.deb && \
