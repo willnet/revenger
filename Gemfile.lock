@@ -278,7 +278,7 @@ GEM
       railties (>= 3.1, < 5.0)
     rabl (0.11.8)
       activesupport (>= 2.3.14)
-    rack (1.6.8)
+    rack (1.6.11)
     rack-contrib (1.4.0)
       git-version-bump (~> 0.15)
       rack (~> 1.4)
