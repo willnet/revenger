@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '4.2.10'
+gem 'rails', '4.2.11'
 gem 'mysql2'
 gem 'unicorn'
 gem 'rabl'
