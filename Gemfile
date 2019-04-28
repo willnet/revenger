@@ -76,3 +76,6 @@ end
 group :darwin do
   gem 'rb-fsevent', require: false
 end
+gem 'nokogiri', '>= 1.8.1'
+gem 'yajl-ruby', '>= 1.3.1'
+gem 'yard', '>= 0.9.11'
