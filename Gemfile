@@ -57,7 +57,7 @@ group :development do
 end
 
 group :test do
-  gem 'chromedriver-helper', group: :development
+  gem 'webdrivers'
   gem 'sunspot-rails-tester'
   gem 'rake_shared_context'
   gem 'database_cleaner'
