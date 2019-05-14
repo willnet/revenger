@@ -15,7 +15,34 @@ Capybara::Screenshot
   driver.browser.save_screenshot(path)
 end
 
-$original_sunspot_session = Sunspot.session
+require 'sunspot/rails/spec_helper'
+require 'net/http'
+
+try_server = proc do |uri|
+  begin
+    response = Net::HTTP.get_response uri
+    response.code != "503"
+  rescue Errno::ECONNREFUSED
+  end
+end
+
+start_server = proc do |timeout|
+  server = Sunspot::Rails::Server.new
+  uri = URI.parse("http://0.0.0.0:#{server.port}/solr/default/update?wt=json")
+
+  try_server[uri] or begin
+    server.start
+    at_exit { server.stop }
+
+    timeout.times.any? do
+      sleep 1
+      try_server[uri]
+    end
+  end
+end
+
+original_session = nil
+sunspot_server = nil
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -47,14 +74,23 @@ RSpec.configure do |config|
     Timecop.return
   end
 
-  config.before do
-    Sunspot.session = Sunspot::Rails::StubSessionProxy.new($original_sunspot_session)
+  config.before(:each) do |example|
+    if example.metadata[:solr]
+      sunspot_server ||= start_server[60] || raise("SOLR connection timeout")
+    else
+      original_session = Sunspot.session
+      Sunspot.session = Sunspot::Rails::StubSessionProxy.new(original_session)
+    end
   end
 
-  config.before(solr: true) do
-    Sunspot::Rails::Tester.start_original_sunspot_session
-    Sunspot.session = $original_sunspot_session
-    Sunspot.remove_all!
+  config.after(:each) do |example|
+    if example.metadata[:solr]
+      Sunspot.remove_all!
+    else
+      Sunspot.session = original_session
+    end
+
+    original_session = nil
   end
 
   config.filter_run(focus: true)
