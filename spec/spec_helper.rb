@@ -9,7 +9,7 @@ require 'capybara/email/rspec'
 require 'capybara-screenshot/rspec'
 require 'accept_values_for'
 Capybara.javascript_driver = :selenium_chrome_headless
-
+Capybara.server = :webrick
 Capybara::Screenshot
   .register_driver(:selenium_chrome_headless) do |driver, path|
   driver.browser.save_screenshot(path)
