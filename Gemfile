@@ -63,6 +63,7 @@ group :test do
   gem 'accept_values_for'
   gem 'launchy'
   gem 'selenium-webdriver'
+  gem 'rails-controller-testing'
   gem 'rspec-its'
   gem 'rspec_junit_formatter'
 end
