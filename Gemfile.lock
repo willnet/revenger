@@ -216,7 +216,7 @@ GEM
     minitest (5.11.3)
     multi_json (1.13.1)
     multipart-post (2.0.0)
-    mysql2 (0.4.2)
+    mysql2 (0.5.2)
     net-http-digest_auth (1.4)
     net-http-persistent (2.9.4)
     net-scp (1.2.1)
