@@ -37,12 +37,9 @@ group :development, :test do
   gem 'i18n_generators'
   gem 'rspec-rails'
   gem 'pry-rails'
-  gem 'pry-remote'
   gem 'pry-nav'
   gem 'pry-doc'
   gem 'sunspot_solr', '2.1.1'
-  gem 'guard-rspec'
-  gem 'guard-bundler'
   gem 'ci_reporter'
 end
 
@@ -58,7 +55,6 @@ end
 
 group :test do
   gem 'webdrivers'
-  gem 'sunspot-rails-tester'
   gem 'rake_shared_context'
   gem 'database_cleaner'
   gem 'timecop'
@@ -71,8 +67,4 @@ group :test do
   gem 'selenium-webdriver'
   gem 'rspec-its'
   gem 'rspec_junit_formatter'
-end
-
-group :darwin do
-  gem 'rb-fsevent', require: false
 end
