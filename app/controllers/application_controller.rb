@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     rescue_from ActiveRecord::RecordNotFound, with: :error404
   end
 
-  before_filter :force_ssl
+  before_action :force_ssl
   layout 'common'
 
   def after_sign_in_path_for(user)
