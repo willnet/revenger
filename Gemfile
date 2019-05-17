@@ -56,7 +56,7 @@ end
 group :test do
   gem 'webdrivers'
   gem 'rake_shared_context'
-  gem 'database_cleaner'
+  gem 'database_rewinder'
   gem 'timecop'
   gem 'capybara'
   gem 'capybara-email'
