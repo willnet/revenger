@@ -6,11 +6,13 @@ describe 'POST /api/hatena' do
   context "パラメータが正しいとき" do
     before do
       post('/api/hatena',
-        status: 'add',
-        key: user.hatena_key,
-        comment: 'ほげ',
-        title: 'willnet.in',
-        url: 'http://willnet.in'
+        params: {
+          status: 'add',
+          key: user.hatena_key,
+          comment: 'ほげ',
+          title: 'willnet.in',
+          url: 'http://willnet.in'
+        }
       )
     end
     subject { response }
@@ -21,11 +23,13 @@ describe 'POST /api/hatena' do
   context "status が 'update' のとき" do
     before do
       post('/api/hatena',
-        status: 'update',
-        key: user.hatena_key,
-        comment: 'ほげ',
-        title: 'willnet.in',
-        url: 'http://willnet.in'
+        params: {
+          status: 'update',
+          key: user.hatena_key,
+          comment: 'ほげ',
+          title: 'willnet.in',
+          url: 'http://willnet.in'
+        }
       )
     end
     subject { response }
@@ -36,11 +40,13 @@ describe 'POST /api/hatena' do
   context "key が 'xxx' のとき" do
     before do
       post('/api/hatena',
-        status: 'add',
-        key: 'xxx',
-        comment: 'ほげ',
-        title: 'willnet.in',
-        url: 'http://willnet.in'
+        params: {
+          status: 'add',
+          key: 'xxx',
+          comment: 'ほげ',
+          title: 'willnet.in',
+          url: 'http://willnet.in'
+        }
       )
     end
     subject { response }
