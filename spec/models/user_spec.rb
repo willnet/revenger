@@ -22,6 +22,7 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  receive_reminder       :boolean          default(TRUE)
+#  unconfirmed_email      :string(255)
 #
 
 require 'spec_helper'

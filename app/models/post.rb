@@ -5,7 +5,7 @@
 #
 #  id          :integer          not null, primary key
 #  user_id     :integer          not null
-#  body        :text
+#  body        :text(65535)
 #  duration    :integer          default(1)
 #  review_at   :datetime
 #  modified_at :datetime         not null
