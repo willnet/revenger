@@ -1,11 +1,11 @@
 source 'http://rubygems.org'
 
-gem 'rails', '4.2.11.1'
+gem 'rails', '5.0.7.2'
 gem 'mysql2'
 gem 'unicorn'
 gem 'rabl'
 gem 'i18n-js'
-gem 'roadie', '~> 2.4'
+gem 'roadie'
 gem 'kaminari'
 gem 'sunspot_with_kaminari'
 gem 'redcarpet'
@@ -30,7 +30,7 @@ gem 'bootstrap-sass', github: 'willnet/bootstrap-sass'
 gem 'compass-rails'
 gem 'zurui-sass-rails'
 gem 'sentry-raven'
-gem 'sprockets-rails', '< 3.0'
+gem 'sprockets-rails'
 
 group :development, :test do
   gem 'annotate'
@@ -46,11 +46,9 @@ end
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'meta_request'
   gem 'letter_opener'
   gem 'spring'
   gem 'spring-commands-rspec'
-  gem 'quiet_assets'
 end
 
 group :test do
