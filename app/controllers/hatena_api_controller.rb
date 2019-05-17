@@ -5,14 +5,14 @@ class HatenaApiController < ApplicationController
   def create
     api = HatenaApi.new(params)
     unless api.add_status?
-      render text: "status isn't add"
+      render plain: "status isn't add"
       return
     end
     unless api.valid_key?
-      render text: 'invalid key'
+      render plain: 'invalid key'
       return
     end
     CreatePostByApiContext.call(api)
-    render text: 'ok'
+    render plain: 'ok'
   end
 end
