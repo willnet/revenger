@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 require 'spec_helper'
 
-describe "ユーザ情報を編集する" do
+describe "ユーザ情報を編集する", js: true  do
   context "ログインしてユーザ情報編集ページに遷移したとき" do
     let(:user) { Fabricate(:user) }
 
@@ -31,7 +31,6 @@ describe "ユーザ情報を編集する" do
 
       context 'かつ送信されたメールアドレスのURLをクリックしたとき' do
         before do
-          user.reload
           open_email('hoge@fuga.com')
           current_email.click_link user_confirmation_path
         end

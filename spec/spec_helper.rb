@@ -10,6 +10,7 @@ require 'capybara-screenshot/rspec'
 require 'accept_values_for'
 Capybara.javascript_driver = :selenium_chrome_headless
 Capybara.server = :webrick
+Capybara.server_port = 3001
 Capybara::Screenshot
   .register_driver(:selenium_chrome_headless) do |driver, path|
   driver.browser.save_screenshot(path)
