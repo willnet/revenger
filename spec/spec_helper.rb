@@ -21,7 +21,7 @@ require 'net/http'
 
 try_server = proc do |uri|
   begin
-    response = Net::HTTP.get_response uri
+    response = Net::HTTP.get_response(uri)
     response.code != "503"
   rescue Errno::ECONNREFUSED
   end
@@ -29,7 +29,7 @@ end
 
 start_server = proc do |timeout|
   server = Sunspot::Rails::Server.new
-  uri = URI.parse("http://0.0.0.0:#{server.port}/solr/default/update?wt=json")
+  uri = URI.parse("http://127.0.0.1:#{server.port}/solr/test/update?wt=json")
 
   try_server[uri] or begin
     server.start
@@ -42,7 +42,7 @@ start_server = proc do |timeout|
   end
 end
 
-original_session = nil
+original_session = Sunspot.session
 sunspot_server = nil
 
 # Requires supporting ruby files with custom matchers and macros, etc,
@@ -68,21 +68,15 @@ RSpec.configure do |config|
 
   config.before(:each) do |example|
     if example.metadata[:solr]
+      Sunspot.session = original_session
       sunspot_server ||= start_server[60] || raise("SOLR connection timeout")
     else
-      original_session = Sunspot.session
       Sunspot.session = Sunspot::Rails::StubSessionProxy.new(original_session)
     end
   end
 
   config.after(:each) do |example|
-    if example.metadata[:solr]
-      Sunspot.remove_all!
-    else
-      Sunspot.session = original_session
-    end
-
-    original_session = nil
+    Sunspot.remove_all! if example.metadata[:solr]
   end
 
   config.filter_run(focus: true)
