@@ -6,11 +6,11 @@ vendor/bundle
 TAGS
 .sass-cache
 db/sphinx
-solr/data/*
-solr/default/*
-solr/development/*
-solr/test/*
-solr/pids/*
+solr/data
+solr/test/data
+solr/development/data
+solr/default/data
+solr/pids
 *.pid
 public/assets
 coverage
