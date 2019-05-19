@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 class DurationsController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   def edit
     @user = current_user

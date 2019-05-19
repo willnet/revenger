@@ -5,19 +5,19 @@
 #search_and_sort
   - if params[:created_at].present?
     - if params[:created_at] == "asc"
-      = link_to "作成日時▲", params.merge(created_at: "desc", modified_at: nil), class: 'btn'
+      = link_to "作成日時▲", params.permit(:search).merge(created_at: "desc", modified_at: nil), class: 'btn'
     - else
-      = link_to "作成日時▼", params.merge(created_at: "asc", modified_at: nil), class: 'btn'
-    = link_to "更新日時", params.merge(created_at: nil, modified_at: "asc"), class: 'btn'
+      = link_to "作成日時▼", params.permit(:search).merge(created_at: "asc", modified_at: nil), class: 'btn'
+    = link_to "更新日時", params.permit(:search).merge(created_at: nil, modified_at: "asc"), class: 'btn'
   - elsif params[:modified_at].present?
-    = link_to "作成日時", params.merge(created_at: "asc", modified_at: nil), class: 'btn'
+    = link_to "作成日時", params.permit(:search).merge(created_at: "asc", modified_at: nil), class: 'btn'
     - if params[:modified_at] == "asc"
-      = link_to "更新日時▲", params.merge(created_at: nil, modified_at: "desc"), class: 'btn'
+      = link_to "更新日時▲", params.permit(:search).merge(created_at: nil, modified_at: "desc"), class: 'btn'
     - else
-      = link_to "更新日時▼", params.merge(created_at: nil, modified_at: "asc"), class: 'btn'
+      = link_to "更新日時▼", params.permit(:search).merge(created_at: nil, modified_at: "asc"), class: 'btn'
   - else
-    = link_to "作成日時▼", params.merge(created_at: "asc", modified_at: nil), class: 'btn'
-    = link_to "更新日時", params.merge(created_at: nil, modified_at: "asc"), class: 'btn'
+    = link_to "作成日時▼", params.permit(:search).merge(created_at: "asc", modified_at: nil), class: 'btn'
+    = link_to "更新日時", params.permit(:search).merge(created_at: nil, modified_at: "asc"), class: 'btn'
 
   = form_tag posts_path, method: :get, class: 'form-search' do
     .input-append
@@ -32,5 +32,3 @@
 #posts
 
 = paginate @posts
-
-      

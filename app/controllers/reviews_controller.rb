@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   def show
     @post = current_user.posts.will_be_reviewed.first
