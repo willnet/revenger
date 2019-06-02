@@ -13,7 +13,7 @@ gem 'pygments.rb', require: 'pygments'
 gem 'newrelic_rpm'
 gem 'devise'
 gem 'haml-rails'
-gem 'capistrano', require: false
+gem 'capistrano',  '< 3.0', require: false
 gem 'capistrano-unicorn', require: false
 gem 'whenever', require: false
 gem 'sunspot_rails'
