@@ -1,10 +1,3 @@
-GIT
-  remote: git://github.com/willnet/bootstrap-sass.git
-  revision: 03885f057d336748cbdc21bce7ca7b4fabdc1674
-  specs:
-    bootstrap-sass (2.3.1.0)
-      sass (~> 3.2)
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -65,6 +58,8 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
+    bootstrap-sass (2.3.2.2)
+      sass (~> 3.2)
     builder (3.2.3)
     capistrano (2.15.9)
       highline
@@ -382,7 +377,7 @@ DEPENDENCIES
   annotate
   better_errors
   binding_of_caller
-  bootstrap-sass!
+  bootstrap-sass (< 3.0)
   capistrano (< 3.0)
   capistrano-unicorn
   capybara

@@ -1,4 +1,4 @@
-//= require jquery/jquery
+//= require jquery/dist/jquery
 //= require jquery_ujs
 //= require underscore/underscore
 //= require bootstrap

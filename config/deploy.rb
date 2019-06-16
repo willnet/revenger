@@ -35,9 +35,9 @@ namespace :deploy do
   after "deploy:setup", "deploy:setup_config"
 end
 
-namespace :bower do
+namespace :yarn do
   task :install, roles: :app do
-    run "cd #{latest_release} && bower install"
+    run "cd #{latest_release} && yarn install"
   end
 end
 
@@ -46,7 +46,7 @@ after "deploy:create_symlink" do
 end
 
 before 'deploy:assets:precompile', 'deploy:link_database_setting'
-before 'deploy:assets:precompile', 'bower:install'
+before 'deploy:assets:precompile', 'yarn:install'
 
 after 'deploy:update', 'deploy:cleanup'
 after 'deploy:restart', 'unicorn:restart'
