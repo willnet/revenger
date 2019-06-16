@@ -12,4 +12,4 @@ Revenger is for reviewing your notes frequently.
 * make your config/database.yml
 * `cp .env.sample to .env`
 * `rake sunspot:solr:start`
-* `bower install`
+* `yarn install`

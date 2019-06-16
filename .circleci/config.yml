@@ -16,8 +16,7 @@ jobs:
         key: revenger-gem-{{ checksum "Gemfile.lock" }}
 
       - run: bundle install --path vendor/bundle
-      - run: sudo npm install -g bower
-      - run: bower install
+      - run: yarn install
 
       - type: cache-save
         key: revenger-gem-{{ checksum "Gemfile.lock" }}

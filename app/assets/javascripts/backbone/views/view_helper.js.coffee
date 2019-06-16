@@ -6,4 +6,4 @@ Revenger.Views.Helper =
     icon = button.find('i')
     icon.
       removeClass(icon.attr('class')).
-      addClass('icon-refresh icon-spin')
+      addClass('fas fa-sync-alt fa-spin')
