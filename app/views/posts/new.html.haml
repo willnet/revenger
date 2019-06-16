@@ -8,9 +8,6 @@
       が利用できます
   = render 'errors', model: @post
   = f.text_area :body, id: 'post_body'
-  %button.btn.btn-success{ type: 'submit', 'data-disable-with' => '<i class="icon-refresh icon-spin"></i> create!' }
-    %i.icon-ok
+  %button.btn.btn-success{ type: 'submit', 'data-disable-with' => '<i class="fas fa-sync-alt fa-spin"></i> create!' }
+    %i.fas.fa-check-circle
     create!
-
-
-

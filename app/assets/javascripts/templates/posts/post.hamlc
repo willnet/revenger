@@ -1,10 +1,10 @@
 .view{ 'data-behavior' => 'view-element' }
   %span.manage.pull-right
     %a.btn.btn-small.btn-success{ 'data-behavior' => 'edit' }
-      %i.icon-edit
+      %i.fas.fa-edit
       edit
     %a.btn.btn-small.btn-danger{ 'data-behavior' => 'destroy' }
-      %i.icon-trash
+      %i.fas.fa-trash
       delete
   .body!= @post.get('markdown')
   .info= "作成: #{@post.get('created_at')} 更新: #{@post.get('updated_at')}"
@@ -20,9 +20,8 @@
     != @duration_button(@post, 365, '1 year')
   %span.manage.pull-right
     %a.btn.btn-small{ 'data-behavior' => 'cancel' }
-      %i.icon-remove
+      %i.fas.fa-ban
       cancel
     != JST['posts/update_button']()
   %textarea.body{ 'data-behavior' => 'body' }
     = @post.get('body')
-    

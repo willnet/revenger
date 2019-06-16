@@ -1,7 +1,7 @@
 .post
   %span.common
     %a#read.btn.btn-primary{ 'data-behavior' => 'read' }
-      %i.icon-check
+      %i.fas.fa-check
       read it!
     .duration.btn-group{ 'data-toggle' => 'buttons-radio', 'data-behavior' => 'duration' }
       != @duration_button(@post, null, 'no more')
@@ -15,10 +15,10 @@
   %span.view{ 'data-behavior' => 'view-element' }
     %span.manage.pull-right
       %a.btn.btn-small.btn-success{ 'data-behavior' => 'edit' }
-        %i.icon-edit
+        %i.fas.fa-edit
         edit
       %a.btn.btn-small.btn-danger{ 'data-behavior' => 'destroy' }
-        %i.icon-trash
+        %i.fas.fa-trash
         delete
 
     .body!= @post.get('markdown')
@@ -27,7 +27,7 @@
   %span.edit{ 'data-behavior' => 'edit-element' }
     %span.manage.pull-right
       %a.btn.btn-small{ 'data-behavior' => 'cancel' }
-        %i.icon-remove
+        %i.fas.fa-ban
         cancel
       != JST['posts/update_button']()
     .input-body
