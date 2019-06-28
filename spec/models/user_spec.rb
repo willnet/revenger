@@ -28,15 +28,6 @@
 require 'spec_helper'
 
 describe User do
-  describe 'before_create :set_hatena_key' do
-    context "新しく User が作成されたとき" do
-      it '#hatena_key に文字列が設定されていること' do
-        user = User.create(email: 'netwillnet@gmail.com', password: 'password')
-        expect(user.hatena_key).not_to be_empty
-      end
-    end
-  end
-
   describe 'before_create :build_initial_posts' do
     context "新しく User が作成されたとき" do
       it '#posts に二件データが作成されていること' do

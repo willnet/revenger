@@ -34,14 +34,9 @@ class User < ActiveRecord::Base
 
   validates :agree, :acceptance => true, :on => :create
 
-  before_create :set_hatena_key
   before_create :build_initial_posts
 
   scope :confirmed, -> { where('confirmed_at IS NOT NULL') }
-
-  def set_hatena_key
-    generate_token(:hatena_key)
-  end
 
   def build_initial_posts
     first_post_body =<<-"EOS"

@@ -28,10 +28,8 @@ Rails.application.routes.draw do
   scope 'user' do
     resource :duration, only: [:edit, :update]
     resource :reminder, only: [:edit, :update]
-    resource :hatena, only: :show
   end
 
-  post 'api/hatena' => 'hatena_api#create'
   get 'api/dashboard' => 'dashboard_api#show'
 
   match '*path' => 'application#error404', via: :all
