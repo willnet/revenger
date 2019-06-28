@@ -10,13 +10,11 @@ class ApplicationController < ActionController::Base
   before_action :force_ssl
   layout 'common'
 
-  def after_sign_in_path_for(user)
-    review_path
-  end
-
   def error404
     render 'error404', status: 404, formats: [:html]
   end
+
+  private
 
   def error500(ex)
     Raven.capture_exception(ex)
@@ -24,8 +22,6 @@ class ApplicationController < ActionController::Base
     logger.error ex.backtrace
     render 'error500', status: 500, formats: [:html]
   end
-
-  protected
 
   def force_ssl
     if !request.ssl? && (Rails.env.staging? || Rails.env.production?)
@@ -35,7 +31,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  private
+  def after_sign_in_path_for(user)
+    review_path
+  end
 
   def set_locale
     if request.subdomain == "ja" || request.subdomain == "en"
