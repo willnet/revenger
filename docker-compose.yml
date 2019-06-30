@@ -1,0 +1,44 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:5.6
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    volumes:
+      - mysql-data:/var/lib/mysql
+  solr:
+    image: solr:5
+    volumes:
+      - solr-data:/opt/solr/server/solr/
+    entrypoint:
+      - docker-entrypoint.sh
+      - solr-precreate
+      - development
+    ports:
+      - 8983:8983
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: /bin/sh -lc "./bin/setup"
+    environment:
+      DATABASE_URL: mysql2://root:@mysql:3306
+    volumes:
+      - .:/app
+      - bundle_install:/app/vendor/bundle
+      - yarn_install:/app/node_modules
+    ports:
+      - 3000:3000
+    depends_on:
+      - mysql
+      - solr
+
+volumes:
+  mysql-data:
+    driver: local
+  solr-data:
+    driver: local
+  bundle_install:
+    driver: local
+  yarn_install:
+    driver: local
