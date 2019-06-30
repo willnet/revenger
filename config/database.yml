@@ -1,0 +1,11 @@
+test:
+  adapter: mysql2
+  database: revenger_test
+  reconnect: true
+  url:  <%= ENV["DATABASE_URL"] %>
+
+development:
+  adapter: mysql2
+  database: revenger_development
+  reconnect: true
+  url:  <%= ENV["DATABASE_URL"] %>

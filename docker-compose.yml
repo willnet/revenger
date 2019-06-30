@@ -21,12 +21,12 @@ services:
       context: .
       dockerfile: Dockerfile
     command: /bin/sh -lc "./bin/setup"
+    environment:
+      DATABASE_URL: mysql2://root:@mysql:3306
     volumes:
-      - .:${PWD}
       - .:/app
       - bundle_install:/app/vendor/bundle
-      - bower_install:/app/vendor/assets/components
-      - bundle:/app/.bundle
+      - yarn_install:/app/node_modules
     ports:
       - 3000:3000
     depends_on:
@@ -40,7 +40,5 @@ volumes:
     driver: local
   bundle_install:
     driver: local
-  bower_install:
-    driver: local
-  bundle:
+  yarn_install:
     driver: local
