@@ -20,6 +20,11 @@ jobs:
           keys:
             - revenger-yarn-{{ checksum "yarn.lock" }}
             - revenger-yarn-
+      - run:
+          name: default mysql client install
+          command: |
+            sudo apt update
+            sudo apt-get install default-mysql-client
       - run: bundle install --path vendor/bundle
       - run: yarn install
       - save_cache:
