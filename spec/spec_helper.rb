@@ -19,32 +19,6 @@ end
 require 'sunspot/rails/spec_helper'
 require 'net/http'
 
-try_server = proc do |uri|
-  begin
-    response = Net::HTTP.get_response(uri)
-    response.code.to_i < 500
-  rescue Errno::ECONNREFUSED
-  end
-end
-
-start_server = proc do |timeout|
-  server = Sunspot::Rails::Server.new
-  uri = URI.parse("http://127.0.0.1:#{server.port}/solr/test/update?wt=json")
-
-  try_server[uri] or begin
-    server.start
-    at_exit { server.stop }
-
-    timeout.times.any? do
-      sleep 1
-      try_server[uri]
-    end
-  end
-end
-
-original_session = Sunspot.session
-sunspot_server = nil
-
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 RSpec.configure do |config|
@@ -64,17 +38,8 @@ RSpec.configure do |config|
     Timecop.return
   end
 
-  config.before(:each) do |example|
-    if example.metadata[:solr]
-      Sunspot.session = original_session
-      sunspot_server ||= start_server[60] || raise("SOLR connection timeout")
-    else
-      Sunspot.session = Sunspot::Rails::StubSessionProxy.new(original_session)
-    end
-  end
-
   config.after(:each) do |example|
-    Sunspot.remove_all! if example.metadata[:solr]
+    Sunspot.remove_all!
   end
 
   config.filter_run(focus: true)

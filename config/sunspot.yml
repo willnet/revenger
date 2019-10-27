@@ -9,16 +9,16 @@ production:
 
 development:
   solr:
-    hostname: localhost
+    hostname: solr
     port: 8983
     path: '/solr/development'
     log_level: INFO
 
 test:
   solr:
-    hostname: localhost
+    hostname: solr
     port: 8983
-    path: '/solr/test'
+    path: '/solr/development'
     read_timeout: 20
     open_timeout: 1
     log_level: WARNING
