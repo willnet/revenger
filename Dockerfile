@@ -2,12 +2,12 @@ FROM ruby:2.6.3
 
 
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
-    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
 RUN apt update && \
     apt remove cmdtest && \
-    apt install -y nodejs mysql-client build-essential patch libnss3 gconf2 libappindicator1 libasound2 libxss1 xdg-utils libgtk-3-0 libx11-xcb1 libxtst6 fonts-liberation lsb-release unzip libappindicator3-1 --no-install-recommends && \
+    apt install -y nodejs mysql-client build-essential patch libnss3 gconf2 libappindicator1 libasound2 libxss1 xdg-utils libgtk-3-0 libx11-xcb1 libxtst6 fonts-liberation lsb-release unzip libappindicator3-1 yarn --no-install-recommends && \
     rm -rf /var/lib/apt/lists/* && \
     curl -O https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
     dpkg -i google-chrome-stable_current_amd64.deb && \
