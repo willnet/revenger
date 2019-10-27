@@ -14,12 +14,13 @@ jobs:
             wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - && sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' && sudo apt-get update && sudo apt-get --only-upgrade install google-chrome-stable
       - restore_cache:
           keys:
-            - revenger-gem-{{ checksum "Gemfile.lock" }}
-            - revenger-gem-
-      - restore_cache:
-          keys:
             - revenger-yarn-{{ checksum "yarn.lock" }}
             - revenger-yarn-
+      - run:
+          name: default mysql client install
+          command: |
+            sudo apt update
+            sudo apt-get install default-mysql-client
       - run: bundle install --path vendor/bundle
       - run: yarn install
       - save_cache:
