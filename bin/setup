@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
 system 'bin/rails db:environment:set RAILS_ENV=development'
+system 'bundle install'
+system 'yarn install'
 system 'bundle exec rake db:setup'
 system 'bundle exec rails s -p 3000 -b 0.0.0.0'
