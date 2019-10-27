@@ -22,7 +22,7 @@ require 'net/http'
 try_server = proc do |uri|
   begin
     response = Net::HTTP.get_response(uri)
-    response.code != "503"
+    response.code.to_i < 500
   rescue Errno::ECONNREFUSED
   end
 end
@@ -45,8 +45,6 @@ end
 original_session = Sunspot.session
 sunspot_server = nil
 
-# Requires supporting ruby files with custom matchers and macros, etc,
-# in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 RSpec.configure do |config|
