@@ -1,44 +1,30 @@
-FROM ruby:2.6.5
+ARG RUBY_VERSION
+FROM ruby:$RUBY_VERSION
+ARG BUNDLER_VERSION
+ARG NODE_MAJOR
+ARG YARN_VERSION
+ENV LANG C.UTF-8
 
-
-RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_$NODE_MAJOR.x | bash
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
-    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+    && echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list
+RUN curl -sSL https://dl.google.com/linux/linux_signing_key.pub | apt-key add - \
+    && echo "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list
 
-RUN apt update && \
-    apt remove cmdtest && \
-    apt install -y nodejs mysql-client build-essential patch libnss3 gconf2 libappindicator1 libasound2 libxss1 xdg-utils libgtk-3-0 libx11-xcb1 libxtst6 fonts-liberation lsb-release unzip libappindicator3-1 --no-install-recommends && \
-    rm -rf /var/lib/apt/lists/* && \
-    curl -O https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
-    dpkg -i google-chrome-stable_current_amd64.deb && \
-    curl -O "https://noto-website-2.storage.googleapis.com/pkgs/NotoSansCJKjp-hinted.zip" && \
-    unzip NotoSansCJKjp-hinted.zip && \
-    mkdir -p /usr/share/fonts/noto && \
-    cp -p *.otf /usr/share/fonts/noto/ && \
-    fc-cache -fv
+RUN apt-get update -qq && DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends nodejs xvfb ca-certificates unzip build-essential default-mysql-client libappindicator1 fonts-liberation yarn=$YARN_VERSION-1 google-chrome-stable vim\
+    && curl -o /tmp/noto.zip https://noto-website-2.storage.googleapis.com/pkgs/NotoSansCJKjp-hinted.zip \
+    && mkdir /usr/share/fonts/noto \
+    && unzip /tmp/noto.zip -d /usr/share/fonts/noto/ \
+    && fc-cache -v \
+    && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && truncate -s 0 /var/log/*log
 
-ENV ENTRYKIT_VERSION 0.4.0
 
-RUN wget https://github.com/progrium/entrykit/releases/download/v${ENTRYKIT_VERSION}/entrykit_${ENTRYKIT_VERSION}_Linux_x86_64.tgz \
-  && tar -xvzf entrykit_${ENTRYKIT_VERSION}_Linux_x86_64.tgz \
-  && rm entrykit_${ENTRYKIT_VERSION}_Linux_x86_64.tgz \
-  && mv entrykit /bin/entrykit \
-  && chmod +x /bin/entrykit \
-  && entrykit --symlink
-
-RUN mkdir -p /app
-WORKDIR /app
-
-RUN bundle config build.nokogiri --use-system-libraries
-RUN gem i bundler -v 1.17.3
-
-ENTRYPOINT [ \
-  "prehook", "ruby -v", "--", \
-  "prehook", "rm -f tmp/pids/server.pid", "--", \
-  "prehook", "bundle install -j3 --quiet --path vendor/bundle", "--", \
-  "switch", \
-    "shell=/bin/bash", \
-    "console=bundle exec rails console", \
-    "dbcreate=bundle exec rake db:create", \
-    "bu=bundle update", "--" \
-  ]
+WORKDIR /build
+RUN gem update --system &&\
+    gem install -v $BUNDLER_VERSION bundler
+WORKDIR /revenger
+COPY . /revenger
+RUN mkdir -p tmp/sockets
+ENV DISPLAY :99
+RUN printf '#!/bin/sh\nXvfb :99 -screen 0 1280x1024x24 &\nexec "$@"\n' > /docker-entrypoint.sh && chmod +x /docker-entrypoint.sh
+ENTRYPOINT ["/docker-entrypoint.sh"]

@@ -11,39 +11,28 @@ require 'accept_values_for'
 Capybara.javascript_driver = :selenium_chrome_headless
 Capybara.server = :webrick
 Capybara.server_port = 3001
+
+Capybara.register_driver :selenium_chrome_headless do |app|
+  browser_options = Selenium::WebDriver::Chrome::Options.new
+  browser_options.args << '--headless'
+  browser_options.args << '--disable-gpu'
+  browser_options.args << '--no-sandbox'
+  browser_options.args << '--disable-dev-shm-usage'
+  browser_options.args << '--ignore-certificate-errors'
+
+  Capybara::Selenium::Driver.new(
+    app, browser: :chrome, options: browser_options, timeout: 600
+  ).tap do |driver|
+    driver.browser.manage.window.size = Selenium::WebDriver::Dimension.new(
+      1920, 1080
+    )
+  end
+end
+
 Capybara::Screenshot
   .register_driver(:selenium_chrome_headless) do |driver, path|
   driver.browser.save_screenshot(path)
 end
-
-require 'sunspot/rails/spec_helper'
-require 'net/http'
-
-try_server = proc do |uri|
-  begin
-    response = Net::HTTP.get_response(uri)
-    response.code != "503"
-  rescue Errno::ECONNREFUSED
-  end
-end
-
-start_server = proc do |timeout|
-  server = Sunspot::Rails::Server.new
-  uri = URI.parse("http://127.0.0.1:#{server.port}/solr/test/update?wt=json")
-
-  try_server[uri] or begin
-    server.start
-    at_exit { server.stop }
-
-    timeout.times.any? do
-      sleep 1
-      try_server[uri]
-    end
-  end
-end
-
-original_session = Sunspot.session
-sunspot_server = nil
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -66,17 +55,8 @@ RSpec.configure do |config|
     Timecop.return
   end
 
-  config.before(:each) do |example|
-    if example.metadata[:solr]
-      Sunspot.session = original_session
-      sunspot_server ||= start_server[60] || raise("SOLR connection timeout")
-    else
-      Sunspot.session = Sunspot::Rails::StubSessionProxy.new(original_session)
-    end
-  end
-
   config.after(:each) do |example|
-    Sunspot.remove_all! if example.metadata[:solr]
+    Post.solr_remove_all_from_index! if example.metadata[:solr]
   end
 
   config.filter_run(focus: true)

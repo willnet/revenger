@@ -5,6 +5,7 @@ jobs:
     docker:
       - image: circleci/ruby:2.6.5-node-browsers
       - image: circleci/mysql:5.6
+      - image: willnet/revenger-solr:1.0.0
     parallelism: 5
     steps:
       - checkout
