@@ -116,7 +116,7 @@ GEM
     crass (1.0.6)
     css_parser (1.7.0)
       addressable
-    database_rewinder (0.9.1)
+    database_rewinder (0.9.2)
     debug_inspector (0.0.3)
     devise (4.7.1)
       bcrypt (~> 3.0)
