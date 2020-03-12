@@ -114,7 +114,7 @@ GEM
       sprockets (< 4.0)
     concurrent-ruby (1.1.6)
     crass (1.0.6)
-    css_parser (1.7.0)
+    css_parser (1.7.1)
       addressable
     database_rewinder (0.9.2)
     debug_inspector (0.0.3)
@@ -270,7 +270,7 @@ GEM
     responders (3.0.0)
       actionpack (>= 5.0)
       railties (>= 5.0)
-    roadie (3.5.0)
+    roadie (4.0.0)
       css_parser (~> 1.4)
       nokogiri (~> 1.8)
     rsolr (2.3.0)
