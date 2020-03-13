@@ -1,9 +1,7 @@
 # Revenger
 
-[![Build Status](https://travis-ci.org/willnet/revenger.svg?branch=travis)](https://travis-ci.org/willnet/revenger)
-[![Code Climate](https://codeclimate.com/github/willnet/revenger/badges/gpa.svg)](https://codeclimate.com/github/willnet/revenger)
-[![Stories in Ready](https://badge.waffle.io/willnet/revenger.png?label=ready&title=Ready)](https://waffle.io/willnet/revenger)
-[![Coverage Status](https://coveralls.io/repos/willnet/revenger/badge.png)](https://coveralls.io/r/willnet/revenger)
+[![CircleCI](https://circleci.com/gh/willnet/revenger.svg?style=svg)](https://circleci.com/gh/willnet/revenger)
+[![Coverage Status](https://coveralls.io/repos/github/willnet/revenger/badge.svg?branch=master)](https://coveralls.io/github/willnet/revenger?branch=master)
 
 Revenger is for reviewing your notes frequently.
 
@@ -11,5 +9,4 @@ Revenger is for reviewing your notes frequently.
 
 * make your config/database.yml
 * `cp .env.sample to .env`
-* `rake sunspot:solr:start`
-* `yarn install`
+* docker-compose up
