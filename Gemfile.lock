@@ -234,7 +234,7 @@ GEM
     public_suffix (4.0.4)
     pygments.rb (1.2.1)
       multi_json (>= 1.0.0)
-    rabl (0.14.2)
+    rabl (0.14.3)
       activesupport (>= 2.3.14)
     rack (2.2.2)
     rack-test (1.1.0)
@@ -362,7 +362,7 @@ GEM
     timecop (0.9.1)
     tins (1.24.1)
       sync
-    tzinfo (1.2.6)
+    tzinfo (1.2.7)
       thread_safe (~> 0.1)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
