@@ -42,3 +42,5 @@ jobs:
                             --out /tmp/test-results/rspec.xml \
                             --format progress \
                             $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+      - run: COVERALLS_REPO_TOKEN=fw5vG7AE3wKOhNBYWFAW6Ms8nC92yYH0o bundle exec rake coveralls:push
+
