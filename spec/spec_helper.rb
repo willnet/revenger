@@ -1,5 +1,5 @@
 require 'coveralls'
-Coveralls.wear!('rails')
+Coveralls.wear_merged!('rails')
 
 ENV["RAILS_ENV"] ||= 'test'
 
