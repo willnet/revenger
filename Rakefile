@@ -13,3 +13,6 @@ if defined? Rspec
   end
   task spec: :fabrications_specs
 end
+
+require 'coveralls/rake/task'
+Coveralls::RakeTask.new
