@@ -193,6 +193,10 @@ GEM
       addressable (~> 2.7)
     letter_opener (1.7.0)
       launchy (~> 2.2)
+    letter_opener_web (1.4.0)
+      actionmailer (>= 3.2)
+      letter_opener (~> 1.0)
+      railties (>= 3.2)
     loofah (2.6.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -418,7 +422,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   launchy
-  letter_opener
+  letter_opener_web
   mysql2 (= 0.5.2)
   newrelic_rpm
   pry-doc

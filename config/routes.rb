@@ -32,5 +32,7 @@ Rails.application.routes.draw do
 
   get 'api/dashboard' => 'dashboard_api#show'
 
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+
   match '*path' => 'application#error404', via: :all
 end

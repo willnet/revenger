@@ -47,7 +47,7 @@ end
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'letter_opener'
+  gem 'letter_opener_web'
   gem 'spring'
   gem 'spring-commands-rspec'
 end
