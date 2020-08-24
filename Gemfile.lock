@@ -211,7 +211,7 @@ GEM
     minitest (5.14.1)
     multi_json (1.14.1)
     multipart-post (2.1.1)
-    mysql2 (0.5.2)
+    mysql2 (0.5.3)
     net-scp (2.0.0)
       net-ssh (>= 2.6.5, < 6.0.0)
     net-sftp (2.1.2)
@@ -423,7 +423,7 @@ DEPENDENCIES
   kaminari
   launchy
   letter_opener_web
-  mysql2 (= 0.5.2)
+  mysql2 (= 0.5.3)
   newrelic_rpm
   pry-doc
   pry-nav
