@@ -4,7 +4,7 @@ jobs:
     working_directory: ~/revenger
     docker:
       - image: circleci/ruby:2.6.6-node-browsers
-      - image: circleci/mysql:5.6
+      - image: circleci/mysql:5.7
       - image: willnet/revenger-solr:1.0.0
     parallelism: 4
     steps:
