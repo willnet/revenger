@@ -314,6 +314,7 @@ GEM
     rspec-support (3.9.3)
     rspec_junit_formatter (0.4.1)
       rspec-core (>= 2, < 4, != 2.12.0)
+    ruby_http_client (3.5.1)
     ruby_parser (3.13.1)
       sexp_processor (~> 4.9)
     rubyzip (2.3.0)
@@ -327,6 +328,11 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
+    sendgrid-actionmailer (3.1.0)
+      mail (~> 2.7)
+      sendgrid-ruby (~> 6.0)
+    sendgrid-ruby (6.3.4)
+      ruby_http_client (~> 3.4)
     sentry-raven (3.0.4)
       faraday (>= 1.0)
     sexp_processor (4.12.0)
@@ -440,6 +446,8 @@ DEPENDENCIES
   rspec_junit_formatter
   sass-rails
   selenium-webdriver
+  sendgrid-actionmailer
+  sendgrid-ruby
   sentry-raven
   spring
   spring-commands-rspec
