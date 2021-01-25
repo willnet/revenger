@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_action :set_raven_context
+  before_action :set_sentry_context
 
   unless Rails.env.development?
     rescue_from Exception, with: :error500
@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   private
 
   def error500(ex)
-    Raven.capture_exception(ex)
+    Sentry.capture_exception(ex)
     logger.error ex.inspect
     logger.error ex.backtrace
     render 'error500', status: 500, formats: [:html]
@@ -51,8 +51,8 @@ class ApplicationController < ActionController::Base
     accept_language && accept_language.scan(/^[a-z]{2}/).first
   end
 
-  def set_raven_context
-    Raven.user_context(id: current_user && current_user.id)
-    Raven.extra_context(params: params.to_unsafe_h, url: request.url)
+  def set_sentry_context
+    Sentry.set_user(id: session[:user_id])
+    Sentry.set_extras(params: params.to_unsafe_h, url: request.url)
   end
 end
