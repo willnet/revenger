@@ -31,7 +31,8 @@ gem 'compass-rails'
 gem 'zurui-sass-rails'
 gem 'sendgrid-actionmailer'
 gem 'sendgrid-ruby'
-gem 'sentry-raven'
+gem 'sentry-rails'
+gem 'sentry-ruby'
 gem 'sprockets-rails'
 gem 'coveralls', require: false
 
