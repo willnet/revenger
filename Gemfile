@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '5.2.4.1'
+gem 'rails', '6.1.2'
 gem 'mysql2', '0.5.3' # 0.5.3だとデプロイに失敗する
 gem 'unicorn'
 gem 'rabl'
