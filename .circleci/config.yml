@@ -4,7 +4,6 @@ jobs:
     working_directory: ~/revenger
     docker:
       - image: circleci/ruby:2.6.6-node-browsers
-      - image: circleci/mysql:5.7
       - image: willnet/revenger-solr:1.0.0
     parallelism: 4
     steps:
@@ -17,11 +16,6 @@ jobs:
           keys:
             - revenger-yarn-{{ checksum "yarn.lock" }}
             - revenger-yarn-
-      - run:
-          name: default mysql client install
-          command: |
-            sudo apt update
-            sudo apt-get install default-mysql-client
       - run: gem install bundler -v 2.1.4
       - run: bundle install --path vendor/bundle
       - run: yarn install
@@ -43,4 +37,3 @@ jobs:
                             --format progress \
                             $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
       - run: COVERALLS_REPO_TOKEN=fw5vG7AE3wKOhNBYWFAW6Ms8nC92yYH0o bundle exec rake coveralls:push
-

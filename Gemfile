@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '5.2.4.1'
-gem 'mysql2', '0.5.3' # 0.5.3だとデプロイに失敗する
+gem 'sqlite3', '~> 1.4'
 gem 'unicorn'
 gem 'rabl'
 gem 'i18n-js'

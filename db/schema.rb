@@ -12,20 +12,20 @@
 
 ActiveRecord::Schema.define(version: 2019_06_28_084422) do
 
-  create_table "posts", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
+  create_table "posts", force: :cascade do |t|
     t.integer "user_id", null: false
     t.text "body"
     t.integer "duration", default: 1
     t.datetime "review_at"
     t.datetime "modified_at", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.index ["user_id", "created_at"], name: "index_posts_on_user_id_and_created_at"
     t.index ["user_id", "modified_at"], name: "index_posts_on_user_id_and_modified_at"
     t.index ["user_id", "review_at"], name: "index_posts_on_user_id_and_review_at"
   end
 
-  create_table "users", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.integer "default_duration", default: 1
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -40,8 +40,8 @@ ActiveRecord::Schema.define(version: 2019_06_28_084422) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.boolean "receive_reminder", default: true
     t.string "unconfirmed_email"
   end
