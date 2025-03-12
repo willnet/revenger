@@ -18,15 +18,6 @@ services:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     volumes:
       - mysql-data:/var/lib/mysql
-  solr:
-    build:
-      context: .
-      dockerfile: ./Dockerfile.solr
-    image: revenger-solr:1.0.0
-    ports:
-      - 8983:8983
-    volumes:
-      - solr-data:/opt/solr/server/solr/
   app:
     <<: *backend-base
     command: bundle exec rails s -p 3000 -b 0.0.0.0
@@ -40,12 +31,9 @@ services:
       - 3000:3000
     depends_on:
       - mysql
-      - solr
 
 volumes:
   mysql-data:
-    driver: local
-  solr-data:
     driver: local
   bundle_install:
     driver: local
