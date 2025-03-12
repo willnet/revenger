@@ -35,6 +35,7 @@ gem 'sentry-rails'
 gem 'sentry-ruby'
 gem 'sprockets-rails'
 gem 'coveralls', require: false
+gem 'mimemagic', '0.3.10'
 
 group :development, :test do
   gem 'annotate'
