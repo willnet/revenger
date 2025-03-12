@@ -18,7 +18,7 @@ class PostsController < ApplicationController
   respond_to :html, :json
 
   def index
-    @posts = Post.search_by_solr(current_user, params)
+    @posts = Post.search_by_like(current_user, params)
   end
 
   def new

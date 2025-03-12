@@ -31,38 +31,27 @@ class Post < ActiveRecord::Base
   scope :older_by_review_at, -> { order('review_at')}
   scope :will_be_reviewed, -> { reviewable.older_by_review_at }
 
-  searchable do
-    text    :body
-    integer :user_id
-    time    :modified_at
-    time    :created_at
-  end
-
-  def self.search_by_solr(user, params)
+  def self.search_by_like(user, params)
     per = 10
     posts = user.posts
     if params[:search].present?
-      order = [:created_at, :desc]
+      posts = posts.where('body LIKE ?', "%#{params[:search]}%")
+
       if params[:created_at]
         if params[:created_at] == 'asc'
-          order = [:created_at, :asc]
+          posts = posts.order('created_at asc')
         elsif params[:created_at] == 'desc'
-          order = [:created_at, :desc]
+          posts = posts.order('created_at desc')
         end
       elsif params[:modified_at]
         if params[:modified_at] == 'asc'
-          order = [:modified_at, :asc]
+          posts = posts.order('modified_at asc')
         elsif params[:modified_at] == 'desc'
-          order = [:modified_at, :desc]
+          posts = posts.order('modified_at desc')
         end
+      else
+        posts = posts.order('created_at desc')
       end
-      posts = posts.search {
-        with(:user_id, user.id)
-        fulltext params[:search]
-        paginate page: params[:page], per_page: per
-        order_by *order
-      }
-      posts = posts.results
     else
       if params[:created_at]
         if params[:created_at] == 'asc'
@@ -79,9 +68,8 @@ class Post < ActiveRecord::Base
       else
         posts = posts.order('created_at desc')
       end
-      posts = posts.page(params[:page]).per(per)
     end
-    posts
+    posts.page(params[:page]).per(per)
   end
 
   def refresh_review_at

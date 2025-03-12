@@ -26,7 +26,7 @@ describe Post do
     end
   end
 
-  context ".search_by_solr", solr: true do
+  context ".search_by_like" do
     before do
       @user = Fabricate(:user)
       [
@@ -37,102 +37,101 @@ describe Post do
       ].each do |(body, created_at, modified_at)|
         Fabricate(:post, user: @user, body: body, created_at: created_at, modified_at: modified_at)
       end
-      Post.index
     end
 
     context "user, {}" do
-      subject { Post.search_by_solr(@user, {}).map(&:body) }
+      subject { Post.search_by_like(@user, {}).map(&:body) }
       it '作成日降順でオブジェクトの配列が返ること' do
         is_expected.to eq ['ほげ3-2', 'ふが4-3', 'ふが5-1', 'ふが24-24']
       end
     end
 
     context "user, {created_at: 'asc'}" do
-      subject { Post.search_by_solr(@user, {created_at: 'asc'}).map(&:body) }
+      subject { Post.search_by_like(@user, {created_at: 'asc'}).map(&:body) }
       it '作成日昇順でオブジェクトの配列が返ること' do
         is_expected.to eq ['ふが24-24', 'ふが5-1', 'ふが4-3', 'ほげ3-2']
       end
     end
 
     context "user, {search: '', created_at: 'asc'}" do
-      subject { Post.search_by_solr(@user, {search: '', created_at: 'asc'}).map(&:body) }
+      subject { Post.search_by_like(@user, {search: '', created_at: 'asc'}).map(&:body) }
       it '作成日昇順でオブジェクトの配列が返ること' do
         is_expected.to eq ['ふが24-24', 'ふが5-1', 'ふが4-3', 'ほげ3-2']
       end
     end
 
     context "user, {search: '', created_at: 'desc'}" do
-      subject { Post.search_by_solr(@user, {search: '', created_at: 'desc'}).map(&:body) }
+      subject { Post.search_by_like(@user, {search: '', created_at: 'desc'}).map(&:body) }
       it '作成日降順でオブジェクトの配列が返ること' do
         is_expected.to eq ['ほげ3-2', 'ふが4-3', 'ふが5-1', 'ふが24-24']
       end
     end
 
     context "user, {search: '', created_at: 'asc'}" do
-      subject { Post.search_by_solr(@user, {search: '', created_at: 'desc'}).map(&:body) }
+      subject { Post.search_by_like(@user, {search: '', created_at: 'desc'}).map(&:body) }
       it '作成日降順でオブジェクトの配列が返ること' do
         is_expected.to eq ['ほげ3-2', 'ふが4-3', 'ふが5-1', 'ふが24-24']
       end
     end
 
     context "user, {modified_at: 'asc'}" do
-      subject { Post.search_by_solr(@user, {modified_at: 'asc'}).map(&:body) }
+      subject { Post.search_by_like(@user, {modified_at: 'asc'}).map(&:body) }
       it '更新日昇順でオブジェクトの配列が返ること' do
         is_expected.to eq ['ふが24-24', 'ふが4-3', 'ほげ3-2', 'ふが5-1']
       end
     end
 
     context "user, {search: '', modified_at: 'asc'}" do
-      subject { Post.search_by_solr(@user, {search: '', modified_at: 'asc'}).map(&:body) }
+      subject { Post.search_by_like(@user, {search: '', modified_at: 'asc'}).map(&:body) }
       it '更新日昇順でオブジェクトの配列が返ること' do
         is_expected.to eq ['ふが24-24', 'ふが4-3', 'ほげ3-2', 'ふが5-1']
       end
     end
 
     context "user, {modified_at: 'desc'}" do
-      subject { Post.search_by_solr(@user, {modified_at: 'desc'}).map(&:body) }
+      subject { Post.search_by_like(@user, {modified_at: 'desc'}).map(&:body) }
       it '更新日降順でオブジェクトの配列が返ること' do
         is_expected.to eq ['ふが5-1', 'ほげ3-2', 'ふが4-3', 'ふが24-24']
       end
     end
 
     context "user, {search: '', modified_at: 'desc'}" do
-      subject { Post.search_by_solr(@user, {search: '', modified_at: 'desc'}).map(&:body) }
+      subject { Post.search_by_like(@user, {search: '', modified_at: 'desc'}).map(&:body) }
       it '更新日昇順でオブジェクトの配列が返ること' do
         is_expected.to eq ['ふが5-1', 'ほげ3-2', 'ふが4-3', 'ふが24-24']
       end
     end
 
     context "{search: 'ふが'}" do
-      subject { Post.search_by_solr(@user, {search: 'ふが'}).map(&:body) }
+      subject { Post.search_by_like(@user, {search: 'ふが'}).map(&:body) }
       it '"ふが"を含むオブジェクトの配列が作成日降順で返ること' do
         is_expected.to eq ['ふが4-3', 'ふが5-1', 'ふが24-24']
       end
     end
 
     context "{search: 'ふが', created_at: 'asc'}" do
-      subject { Post.search_by_solr(@user, {search: 'ふが', created_at: 'asc'}).map(&:body) }
+      subject { Post.search_by_like(@user, {search: 'ふが', created_at: 'asc'}).map(&:body) }
       it '"ふが"を含むオブジェクトの配列が作成日昇順で返ること' do
         is_expected.to eq ['ふが24-24', 'ふが5-1', 'ふが4-3']
       end
     end
 
     context "{search: 'ふが', created_at: 'desc'}" do
-      subject { Post.search_by_solr(@user, {search: 'ふが', created_at: 'desc'}).map(&:body) }
+      subject { Post.search_by_like(@user, {search: 'ふが', created_at: 'desc'}).map(&:body) }
       it '"ふが"を含むオブジェクトの配列が作成日降順で返ること' do
         is_expected.to eq ['ふが4-3', 'ふが5-1', 'ふが24-24']
       end
     end
 
     context "{search: 'ふが', modified_at: 'asc'}" do
-      subject { Post.search_by_solr(@user, {search: 'ふが', modified_at: 'asc'}).map(&:body) }
+      subject { Post.search_by_like(@user, {search: 'ふが', modified_at: 'asc'}).map(&:body) }
       it '"ふが"を含むオブジェクトの配列が更新日昇順で返ること' do
         is_expected.to eq ['ふが24-24', 'ふが4-3', 'ふが5-1']
       end
     end
 
     context "{search: 'ふが', modified_at: 'desc'}" do
-      subject { Post.search_by_solr(@user, {search: 'ふが', modified_at: 'desc'}).map(&:body) }
+      subject { Post.search_by_like(@user, {search: 'ふが', modified_at: 'desc'}).map(&:body) }
       it '"ふが"を含むオブジェクトの配列が更新日降順で返ること' do
         is_expected.to eq ['ふが5-1', 'ふが4-3', 'ふが24-24']
       end

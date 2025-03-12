@@ -16,7 +16,7 @@ describe 'ノーマルビューを表示している' do
     visit posts_path
   end
 
-  context '検索したとき', solr: true do
+  context '検索したとき' do
     before do
       fill_in 'search', with: 'ふが'
       find('[data-behavior=search]').click

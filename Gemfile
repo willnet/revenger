@@ -7,7 +7,6 @@ gem 'rabl'
 gem 'i18n-js'
 gem 'roadie'
 gem 'kaminari'
-gem 'sunspot_with_kaminari'
 gem 'redcarpet'
 gem 'pygments.rb', require: 'pygments'
 gem 'newrelic_rpm'
@@ -16,7 +15,6 @@ gem 'haml-rails'
 gem 'capistrano',  '< 3.0', require: false
 gem 'capistrano-unicorn', require: false
 gem 'whenever', require: false
-gem 'sunspot_rails'
 gem 'jquery-rails'
 gem 'dotenv-rails'
 gem 'dotenv-deployment'
@@ -44,7 +42,6 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-nav'
   gem 'pry-doc'
-  gem 'sunspot_solr'
   gem 'ci_reporter'
 end
 
