@@ -1,0 +1,29 @@
+# Cline Rules for Revenger Project
+
+## Docker環境
+- このプロジェクトはDockerコンテナ化されています
+- テストを実行する場合は、`docker compose run --rm app bash`でコンテナに入り、`RAILS_ENV=test bundle exec rspec`を実行します
+- `docker-compose`ではなく`docker compose`コマンドを使用します
+
+## テスト環境
+- テストはRSpecを使用しています
+- JavaScriptテストは`js: true`タグを付けて実行します
+- Capybaraと`selenium_chrome_headless`ドライバーを使用しています
+- ChromeDriverは`/usr/bin/chromedriver`にインストールされています
+- Chromiumは`/usr/bin/chromium`にインストールされています
+
+## パス設定
+- ChromeDriverのパスは`/usr/bin/chromedriver`です
+- Chromiumのパスは`/usr/bin/chromium`です
+- これらのパスはDockerコンテナ内のパスです
+
+## テスト実行のベストプラクティス
+- テスト実行時は`RAILS_ENV=test`を明示的に設定します
+- 特定のテストファイルを実行する場合：`RAILS_ENV=test bundle exec rspec spec/features/edit_post_spec.rb`
+- すべてのフィーチャーテストを実行する場合：`RAILS_ENV=test bundle exec rspec spec/features/`
+- 詳細な出力を得るには`--format documentation`オプションを追加します
+
+## 既知の問題と解決策
+- ChromeDriverのパス設定が間違っていると、Chromeを使用したテストが失敗します
+- 解決策：パス設定を`/usr/local/bin/chromedriver`から`/usr/bin/chromedriver`に変更します
+- `spec_helper.rb`と`config/initializers/webdrivers.rb`の両方を修正する必要があります
