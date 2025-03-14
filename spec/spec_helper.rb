@@ -21,9 +21,16 @@ Capybara.register_driver :selenium_chrome_headless do |app|
   browser_options.args << '--no-sandbox'
   browser_options.args << '--disable-dev-shm-usage'
   browser_options.args << '--ignore-certificate-errors'
+  browser_options.binary = '/usr/bin/chromium'
+
+  service = Selenium::WebDriver::Service.chrome(path: '/usr/bin/chromedriver')
 
   Capybara::Selenium::Driver.new(
-    app, browser: :chrome, options: browser_options, timeout: 600
+    app,
+    browser: :chrome,
+    options: browser_options,
+    service: service,
+    timeout: 600
   ).tap do |driver|
     driver.browser.manage.window.size = Selenium::WebDriver::Dimension.new(
       1920, 1080
