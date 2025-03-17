@@ -16,6 +16,7 @@ Revengerは、ブログ記事やメモを管理・共有するためのWebアプ
 - Ruby on Rails 5.2.4.1
 - SQLite
 - Docker/Docker Compose
+- VSCode devcontainer
 - RSpec（テスト）
 - Capybara（ブラウザテスト）
 - Selenium WebDriver（JavaScriptテスト）
@@ -23,4 +24,6 @@ Revengerは、ブログ記事やメモを管理・共有するためのWebアプ
 
 ## 開発環境
 - Dockerコンテナ化された開発環境
+- VSCode devcontainerを使用した統一された開発環境
 - テスト環境もコンテナ内で実行
+- 開発者間での環境の一貫性を確保
