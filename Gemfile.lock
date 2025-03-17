@@ -218,16 +218,6 @@ GEM
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
     orm_adapter (0.5.0)
-    pry (0.12.2)
-      coderay (~> 1.1.0)
-      method_source (~> 0.9.0)
-    pry-doc (1.1.0)
-      pry (~> 0.11)
-      yard (~> 0.9.11)
-    pry-nav (0.3.0)
-      pry (>= 0.9.10, < 0.13.0)
-    pry-rails (0.3.9)
-      pry (>= 0.10.4)
     public_suffix (4.0.6)
     pygments.rb (1.2.1)
       multi_json (>= 1.0.0)
@@ -367,7 +357,6 @@ GEM
       chronic (>= 0.6.3)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    yard (0.9.24)
     zurui-sass-rails (0.1.0)
       railties (>= 3.1)
 
@@ -405,9 +394,6 @@ DEPENDENCIES
   letter_opener_web
   mimemagic (= 0.3.10)
   newrelic_rpm
-  pry-doc
-  pry-nav
-  pry-rails
   pygments.rb
   rabl
   rails (= 5.2.4.1)

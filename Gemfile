@@ -38,9 +38,6 @@ group :development, :test do
   gem 'annotate'
   gem 'i18n_generators'
   gem 'rspec-rails'
-  gem 'pry-rails'
-  gem 'pry-nav'
-  gem 'pry-doc'
   gem 'ci_reporter'
 end
 
