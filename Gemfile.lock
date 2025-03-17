@@ -148,9 +148,6 @@ GEM
       haml (>= 4.0.6, < 6.0)
       html2haml (>= 1.0.1)
       railties (>= 5.1)
-    haml_coffee_assets (1.18.0)
-      coffee-script (>= 2)
-      sprockets (>= 2)
     highline (2.0.2)
     html2haml (2.2.0)
       erubis (~> 2.7.0)
@@ -373,7 +370,6 @@ DEPENDENCIES
   capybara-screenshot
   ci_reporter
   coffee-rails
-  coffee-script-source
   compass-rails
   database_rewinder
   devise
@@ -382,7 +378,6 @@ DEPENDENCIES
   execjs
   fabrication
   haml-rails
-  haml_coffee_assets
   i18n-js
   i18n_generators
   jquery-rails

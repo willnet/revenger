@@ -1,3 +1,0 @@
-jQuery ->
-  $('input, textarea').placeholder()
-
