@@ -1,0 +1,12 @@
+{
+  "name": "Revenger Rails Development",
+  "dockerComposeFile": [
+    "../docker-compose.yml",
+    "docker-compose.yml"
+  ],
+  "service": "app",
+  "workspaceFolder": "/revenger",
+  "forwardPorts": [3000],
+  "postCreateCommand": "bundle install && yarn install",
+  "remoteUser": "root"
+}
