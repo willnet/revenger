@@ -31,9 +31,8 @@ jobs:
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
       - run: |
-          COVERALLS_REPO_TOKEN=fw5vG7AE3wKOhNBYWFAW6Ms8nC92yYH0o bundle exec rspec --profile 10 \
+          bundle exec rspec --profile 10 \
                             --format RspecJunitFormatter \
                             --out /tmp/test-results/rspec.xml \
                             --format progress \
                             $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
-      - run: COVERALLS_REPO_TOKEN=fw5vG7AE3wKOhNBYWFAW6Ms8nC92yYH0o bundle exec rake coveralls:push
