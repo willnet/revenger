@@ -1,8 +1,8 @@
 # 技術コンテキスト
 
 ## 開発環境
-- Ruby 2.6.6
-- Rails 5.2.4.1
+- Ruby 2.6.10
+- Rails 6.0
 - Docker/Docker Compose
 - VSCode devcontainer（開発環境の一貫性とセットアップの簡易化）
 - SQLite（開発・テスト環境）
@@ -13,7 +13,6 @@
 - Bootstrap（CSSフレームワーク）
 - jQuery（JavaScript）
 - JavaScript（CoffeeScriptから移行中）
-- HAMLCoffee（`.hamlc`テンプレート、移行予定）
 
 ## バックエンド
 - Ruby on Rails

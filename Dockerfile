@@ -1,4 +1,4 @@
-FROM ruby:2.6.6
+FROM ruby:2.6.10
 ARG BUNDLER_VERSION
 ENV LANG C.UTF-8
 
@@ -21,7 +21,7 @@ RUN curl -o /tmp/noto.zip https://noto-website-2.storage.googleapis.com/pkgs/Not
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && truncate -s 0 /var/log/*log
 
 WORKDIR /build
-# Use a specific version of RubyGems compatible with Ruby 2.6.6
+# Use a specific version of RubyGems compatible with Ruby 2.6.10
 RUN gem update --system 3.0.9 &&\
     gem install -v $BUNDLER_VERSION bundler
 WORKDIR /revenger

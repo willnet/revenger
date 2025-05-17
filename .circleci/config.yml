@@ -3,8 +3,7 @@ jobs:
   build:
     working_directory: ~/revenger
     docker:
-      - image: circleci/ruby:2.6.6-node-browsers
-      - image: willnet/revenger-solr:1.0.0
+      - image: circleci/ruby:2.6.10-node-browsers
     parallelism: 4
     steps:
       - checkout
