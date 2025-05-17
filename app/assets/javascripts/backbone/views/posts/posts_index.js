@@ -1,6 +1,9 @@
 Revenger.Views.PostIndex = Backbone.View.extend({
   id: 'posts',
   render: function() {
+    // 既存の内容をクリア
+    this.$el.empty();
+
     if (this.collection.length === 0) {
       const view = new Revenger.Views.EmptyPost();
       this.$el.append(view.render().el);

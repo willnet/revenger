@@ -2,9 +2,9 @@
 //= require jquery_ujs
 //= require underscore/underscore
 //= require bootstrap
-//= require hamlcoffee
 //= require backbone/backbone
 //= require backbone_rails_sync
+//= require_tree ./templates
 //= require backbone/revenger
 //= require i18n
 //= require i18n/translations

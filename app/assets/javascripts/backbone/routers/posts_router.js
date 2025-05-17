@@ -8,8 +8,7 @@ Revenger.Routers.Posts = Backbone.Router.extend({
       data: Revenger.query,
       success: function() {
         const view = new Revenger.Views.PostIndex({collection: collection});
-        const html = view.render().el;
-        $('#posts').html(html);
+        view.setElement($('#posts')).render();
       }
     });
   }
