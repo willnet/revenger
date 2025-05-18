@@ -8,7 +8,6 @@ describe SendAssignmentMailContext do
       Fabricate(:post, user: @reminded_user1, review_at: 1.day.ago)
       reminded_user2 = Fabricate(:user, receive_reminder: true)
       not_reminded_user = Fabricate(:user, receive_reminder: false)
-      SendAssignmentMailContext.call
     end
 
     it 'メールが一通送信されていること' do
@@ -17,6 +16,7 @@ describe SendAssignmentMailContext do
     end
 
     it '送信されているメールの宛先が、レビュー可能な投稿を持ち、かつメール送信設定がオンのユーザであること' do
+      SendAssignmentMailContext.call
       expect(ActionMailer::Base.deliveries.last.to).to eq [@reminded_user1.email]
     end
   end
