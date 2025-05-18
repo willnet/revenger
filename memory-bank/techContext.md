@@ -1,7 +1,7 @@
 # 技術コンテキスト
 
 ## 開発環境
-- Ruby 2.6.10
+- Ruby 2.7.8
 - Rails 6.0
 - Docker/Docker Compose
 - VSCode devcontainer（開発環境の一貫性とセットアップの簡易化）

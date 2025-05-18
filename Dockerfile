@@ -1,4 +1,4 @@
-FROM ruby:2.6.10
+FROM ruby:2.7.8
 ARG BUNDLER_VERSION
 ENV LANG C.UTF-8
 
@@ -22,8 +22,7 @@ RUN curl -o /tmp/noto.zip https://noto-website-2.storage.googleapis.com/pkgs/Not
 
 WORKDIR /build
 # Use a specific version of RubyGems compatible with Ruby 2.6.10
-RUN gem update --system 3.0.9 &&\
-    gem install -v $BUNDLER_VERSION bundler
+RUN gem install bundler -v 2.4.22
 WORKDIR /revenger
 COPY . /revenger
 RUN mkdir -p tmp/sockets
