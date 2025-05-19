@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 class UserMailer < ActionMailer::Base
   default from: "noreply@revenger.in"
-  add_template_helper(ApplicationHelper)
+  helper ApplicationHelper
 
   def assignment(user)
     @user = user
