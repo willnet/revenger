@@ -30,7 +30,7 @@
 ## インフラ
 - Docker/Docker Compose（開発環境）
 - VSCode devcontainer（開発環境の標準化）
-- Unicorn（アプリケーションサーバー）
+- Puma（アプリケーションサーバー）
 - Capistrano（デプロイ）
 
 ## 重要な設定ファイル
@@ -60,4 +60,4 @@
 ```bash
 # Dockerコンテナ内でテストを実行
 docker compose run --rm app bash
-RAILS_ENV=test bundle exec rspec spec/features/
+RAILS_ENV=test bundle exec rspec spec/system/

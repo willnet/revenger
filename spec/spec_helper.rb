@@ -5,51 +5,41 @@ require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/rspec'
 require 'capybara/email/rspec'
-require 'capybara-screenshot/rspec'
 require 'accept_values_for'
-Capybara.javascript_driver = :selenium_chrome_headless
-Capybara.server = :webrick
+
 Capybara.server_port = 3001
 
-Capybara.register_driver :selenium_chrome_headless do |app|
-  browser_options = Selenium::WebDriver::Chrome::Options.new
-  browser_options.args << '--headless'
-  browser_options.args << '--disable-gpu'
-  browser_options.args << '--no-sandbox'
-  browser_options.args << '--disable-dev-shm-usage'
-  browser_options.args << '--ignore-certificate-errors'
-  browser_options.binary = '/usr/bin/chromium'
-
-  service = Selenium::WebDriver::Service.chrome(path: '/usr/bin/chromedriver')
-
-  Capybara::Selenium::Driver.new(
-    app,
-    browser: :chrome,
-    options: browser_options,
-    service: service,
-    timeout: 600
-  ).tap do |driver|
-    driver.browser.manage.window.size = Selenium::WebDriver::Dimension.new(
-      1920, 1080
-    )
-  end
+def create_options
+  remote_debug = ENV.fetch('REMOTE_DEBUG', false)
+  options = Selenium::WebDriver::Chrome::Options.new(logging_prefs: { browser: 'ALL' })
+  options.add_argument('--headless=new')
+  options.add_argument('--disable-gpu')
+  options.add_argument('--disable-dev-shm-usage')
+  options.add_argument('--no-sandbox')
+  options.add_argument('--ignore-certificate-errors')
+  options.add_argument('--remote-debugging-port=9222') if remote_debug
+  options.add_argument('--remote-debugging-address=0.0.0.0') if remote_debug
+  options
 end
 
-Capybara::Screenshot
-  .register_driver(:selenium_chrome_headless) do |driver, path|
-  driver.browser.save_screenshot(path)
+# https://github.com/teamcapybara/capybara/blob/master/lib/capybara.rb#L477-L482
+Capybara.register_driver :selenium_chrome_headless do |app|
+  Capybara::Selenium::Driver.new(
+    app, browser: :chrome, timeout: 600, options: create_options
+  )
 end
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
+ActiveRecord::Migration.maintain_test_schema!
+
 RSpec.configure do |config|
   config.mock_with :rspec
-  config.use_transactional_fixtures = false
-
-  config.before(:suite) do
-    DatabaseRewinder.clean_all
+  config.use_transactional_fixtures = true
+  config.before(:example, type: :system) do |example|
+    driven_by :selenium_chrome_headless
   end
 
   config.before(:each) do
@@ -57,7 +47,6 @@ RSpec.configure do |config|
   end
 
   config.after(:each) do
-    DatabaseRewinder.clean
     Timecop.return
   end
 

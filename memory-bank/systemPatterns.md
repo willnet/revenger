@@ -16,7 +16,7 @@
 ## テスト構造
 - モデルテスト：`spec/models/`
 - コントローラーテスト：`spec/controllers/`
-- フィーチャーテスト：`spec/features/`
+- システムテスト：`spec/system/`
 - コンテキストテスト：`spec/contexts/`
 
 ## JavaScriptテスト

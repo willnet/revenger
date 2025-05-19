@@ -44,13 +44,10 @@ group :development do
 end
 
 group :test do
-  gem 'webdrivers'
   gem 'rake_shared_context'
-  gem 'database_rewinder'
   gem 'timecop'
   gem 'capybara'
   gem 'capybara-email'
-  gem 'capybara-screenshot'
   gem 'fabrication', group: :development
   gem 'accept_values_for'
   gem 'launchy'
