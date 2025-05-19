@@ -180,7 +180,6 @@ GEM
       activerecord
       kaminari-core (= 1.2.1)
     kaminari-core (1.2.1)
-    kgio (2.11.3)
     launchy (2.5.0)
       addressable (~> 2.7)
     letter_opener (1.7.0)
@@ -223,6 +222,8 @@ GEM
       racc (~> 1.4)
     orm_adapter (0.5.0)
     public_suffix (4.0.6)
+    puma (6.6.0)
+      nio4r (~> 2.0)
     pygments.rb (1.2.1)
       multi_json (>= 1.0.0)
     rabl (0.14.3)
@@ -263,7 +264,6 @@ GEM
       method_source
       rake (>= 12.2)
       thor (~> 1.0)
-    raindrops (0.19.1)
     rake (13.2.1)
     rake_shared_context (0.3.0)
     rb-fsevent (0.10.3)
@@ -347,9 +347,6 @@ GEM
       concurrent-ruby (~> 1.0)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
-    unicorn (5.8.0)
-      kgio (~> 2.6)
-      raindrops (~> 0.7)
     warden (1.2.9)
       rack (>= 2.0.9)
     webdrivers (4.5.0)
@@ -398,6 +395,7 @@ DEPENDENCIES
   letter_opener_web
   mimemagic (= 0.3.10)
   newrelic_rpm
+  puma
   pygments.rb
   rabl
   rails (~> 6.1.0)
@@ -418,7 +416,6 @@ DEPENDENCIES
   sqlite3 (~> 1.4)
   timecop
   uglifier
-  unicorn
   webdrivers
   whenever
   zurui-sass-rails
