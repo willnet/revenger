@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 require 'spec_helper'
 
 describe 'パスワードを忘れたユーザがパスワードを再設定する' do

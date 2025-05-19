@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 require 'spec_helper'
 
 describe '登録済みユーザが、自分のメモを保存するために文章を投稿する' do

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 class RemindersController < ApplicationController
   before_action :authenticate_user!
 

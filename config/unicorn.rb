@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # ワーカーの数
 if ENV['RAILS_ENV'] == 'production'
   worker_processes 3

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 require 'spec_helper'
 
 describe 'ユーザが自分の投稿を閲覧する', solr: true, js: true do

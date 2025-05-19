@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 require 'spec_helper'
 
 describe 'ユーザが revenger の機能を使うためにログインをする' do

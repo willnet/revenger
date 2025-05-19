@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 require 'spec_helper'
 
 describe "自分の書いた投稿を復習するために、レビュータブを閲覧する", js: true do

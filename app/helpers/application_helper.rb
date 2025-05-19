@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 module ApplicationHelper
   def title(name)
     content_for :title, name
