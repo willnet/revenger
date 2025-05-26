@@ -266,6 +266,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    rbtree (0.4.6)
     redcarpet (3.5.0)
     regexp_parser (2.10.0)
     responders (3.0.1)
@@ -327,7 +328,11 @@ GEM
     sentry-ruby (4.1.4)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       faraday (>= 1.0)
+    set (1.1.2)
     sexp_processor (4.12.0)
+    sorted_set (1.0.3)
+      rbtree
+      set (~> 1.0)
     sprockets (3.7.5)
       base64
       concurrent-ruby (~> 1.0)
@@ -406,6 +411,7 @@ DEPENDENCIES
   sendgrid-ruby
   sentry-rails
   sentry-ruby
+  sorted_set
   sprockets-rails
   sqlite3 (~> 1.4)
   timecop
@@ -414,4 +420,4 @@ DEPENDENCIES
   zurui-sass-rails
 
 BUNDLED WITH
-   2.1.4
+   2.4.22
