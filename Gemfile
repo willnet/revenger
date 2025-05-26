@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~> 6.1.0'
+gem 'rails', '~> 7.0.0'
 gem 'concurrent-ruby', '< 1.3.5'
 gem 'sqlite3', '~> 1.4'
 gem 'puma'
@@ -10,7 +10,6 @@ gem 'roadie'
 gem 'kaminari'
 gem 'redcarpet'
 gem 'pygments.rb', require: 'pygments'
-gem 'newrelic_rpm'
 gem 'devise'
 gem 'haml-rails'
 gem 'whenever', require: false
