@@ -1,6 +1,6 @@
-FROM ruby:2.7.8
+FROM ruby:3.0.7-slim
 ARG BUNDLER_VERSION
-ENV LANG C.UTF-8
+ENV LANG=C.UTF-8
 
 # Install Node.js and npm
 RUN apt-get update -qq && \
@@ -8,7 +8,7 @@ RUN apt-get update -qq && \
     curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
     apt-get update -qq && \
     DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
-    nodejs xvfb ca-certificates unzip build-essential vim chromium chromium-driver sqlite3
+    nodejs xvfb ca-certificates unzip build-essential vim chromium chromium-driver sqlite3 libsqlite3-dev
 
 # Install Yarn using npm instead of apt
 RUN npm install -g yarn@1.21.1
@@ -26,6 +26,6 @@ RUN gem install bundler -v 2.4.22
 WORKDIR /revenger
 COPY . /revenger
 RUN mkdir -p tmp/sockets
-ENV DISPLAY :99
+ENV DISPLAY=99
 RUN printf '#!/bin/sh\nXvfb :99 -screen 0 1280x1024x24 &\nexec "$@"\n' > /docker-entrypoint.sh && chmod +x /docker-entrypoint.sh
 ENTRYPOINT ["/docker-entrypoint.sh"]
