@@ -5,7 +5,7 @@ ENV LANG=C.UTF-8
 # Install Node.js and npm
 RUN apt-get update -qq && \
     apt-get install -y curl gnupg && \
-    curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
+    curl -sL https://deb.nodesource.com/setup_18.x | bash - && \
     apt-get update -qq && \
     DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
     nodejs xvfb ca-certificates unzip build-essential vim chromium chromium-driver sqlite3 libsqlite3-dev

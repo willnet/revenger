@@ -7,7 +7,7 @@ services:
       args:
         RUBY_VERSION: '3.0.7'
         YARN_VERSION: '1.21.1'
-        NODE_MAJOR: '12'
+        NODE_MAJOR: '18'
     image: revenger-dev:1.0.0
     tmpfs:
       - /tmp

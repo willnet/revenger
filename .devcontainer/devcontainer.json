@@ -8,5 +8,8 @@
   "workspaceFolder": "/revenger",
   "forwardPorts": [3000],
   "postCreateCommand": "bundle install && yarn install",
-  "remoteUser": "root"
+  "remoteUser": "root",
+  "features": {
+    "ghcr.io/anthropics/devcontainer-features/claude-code:1.0": {}
+  }
 }
