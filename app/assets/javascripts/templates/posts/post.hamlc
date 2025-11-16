@@ -9,15 +9,15 @@
   .body!= @post.get('markdown')
   .info= "作成: #{@post.get('created_at')} 更新: #{@post.get('updated_at')}"
 .edit{ 'data-behavior' => 'edit-element' }
-  .%span.duration.btn-group{ 'data-toggle' => 'buttons-radio', 'data-behavior' => 'duration'}
-    != @duration_button(@post, null, 'no more')
-    != @duration_button(@post, 1, '1 day')
-    != @duration_button(@post, 7, '1 week')
-    != @duration_button(@post, 14, '2 week')
-    != @duration_button(@post, 30, '1 month')
-    != @duration_button(@post, 90, '3 months')
-    != @duration_button(@post, 180, '6 months')
-    != @duration_button(@post, 365, '1 year')
+  .span.duration.btn-group{ 'data-toggle' => 'buttons-radio', 'data-behavior' => 'duration'}
+    != Global.duration_button(@post, null, 'no more')
+    != Global.duration_button(@post, 1, '1 day')
+    != Global.duration_button(@post, 7, '1 week')
+    != Global.duration_button(@post, 14, '2 week')
+    != Global.duration_button(@post, 30, '1 month')
+    != Global.duration_button(@post, 90, '3 months')
+    != Global.duration_button(@post, 180, '6 months')
+    != Global.duration_button(@post, 365, '1 year')
   %span.manage.pull-right
     %a.btn.btn-small{ 'data-behavior' => 'cancel' }
       %i.fas.fa-ban

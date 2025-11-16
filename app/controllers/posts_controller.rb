@@ -43,6 +43,10 @@ class PostsController < ApplicationController
   def destroy
     @post = current_user.posts.find(params[:id])
     @post.destroy
-    respond_with @post
+
+    respond_to do |format|
+      format.html { redirect_to posts_path }
+      format.json { head :no_content }
+    end
   end
 end

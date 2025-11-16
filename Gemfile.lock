@@ -228,7 +228,7 @@ GEM
       nio4r (~> 2.0)
     pygments.rb (1.2.1)
       multi_json (>= 1.0.0)
-    rabl (0.14.3)
+    rabl (0.17.0)
       activesupport (>= 2.3.14)
     racc (1.8.1)
     rack (2.2.16)

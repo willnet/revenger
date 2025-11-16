@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'ユーザが自分の投稿を閲覧する', solr: true, js: true do
+describe 'ユーザが自分の投稿を閲覧する', js: true do
   context "ログインして一覧ページを表示しているとき" do
     before do
       user = Fabricate(:user)
@@ -12,6 +12,10 @@ describe 'ユーザが自分の投稿を閲覧する', solr: true, js: true do
       end
       sign_in(user.email, user.password)
       visit posts_path
+      # Wait for JavaScript to load and render posts
+      using_wait_time(15) do
+        expect(page).to have_css('#posts .post', count: 2)
+      end
     end
 
     it '削除リンクを押して、ダイアログでOKボタンを押すと該当する投稿が消えること' do

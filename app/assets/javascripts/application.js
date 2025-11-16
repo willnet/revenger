@@ -4,6 +4,7 @@
 //= require bootstrap
 //= require backbone/backbone
 //= require backbone_rails_sync
+//= require backbone/helper
 //= require_tree ./templates
 //= require backbone/revenger
 //= require i18n

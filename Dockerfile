@@ -8,7 +8,7 @@ RUN apt-get update -qq && \
     curl -sL https://deb.nodesource.com/setup_18.x | bash - && \
     apt-get update -qq && \
     DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
-    nodejs xvfb ca-certificates unzip build-essential vim chromium chromium-driver sqlite3 libsqlite3-dev
+    nodejs xvfb ca-certificates unzip build-essential vim chromium chromium-driver sqlite3 libsqlite3-dev git
 
 # Install Yarn using npm instead of apt
 RUN npm install -g yarn@1.21.1

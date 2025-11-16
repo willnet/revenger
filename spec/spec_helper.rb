@@ -7,7 +7,7 @@ require 'capybara/rspec'
 require 'capybara/email/rspec'
 require 'accept_values_for'
 
-Capybara.server_port = 3001
+Capybara.server_port = 3002
 
 def create_options
   remote_debug = ENV.fetch('REMOTE_DEBUG', false)
@@ -16,6 +16,7 @@ def create_options
   options.add_argument('--disable-gpu')
   options.add_argument('--disable-dev-shm-usage')
   options.add_argument('--no-sandbox')
+  options.add_argument("--window-size=1400,1000")
   options.add_argument('--ignore-certificate-errors')
   options.add_argument('--remote-debugging-port=9222') if remote_debug
   options.add_argument('--remote-debugging-address=0.0.0.0') if remote_debug
@@ -28,6 +29,8 @@ Capybara.register_driver :selenium_chrome_headless do |app|
     app, browser: :chrome, timeout: 600, options: create_options
   )
 end
+
+Capybara.default_max_wait_time = 5
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
