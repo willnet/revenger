@@ -21,7 +21,7 @@ describe '登録済みユーザが、自分のメモを保存するために文�
       end
 
       it '一覧ページに遷移していること' do
-        expect(page.current_path).to eq posts_path
+        expect(page).to have_current_path(posts_path)
       end
 
       it '正常に投稿できた旨が表示されていること' do

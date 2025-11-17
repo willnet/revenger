@@ -18,6 +18,7 @@ describe "ユーザ情報を編集する", js: true  do
         fill_in 'メールアドレス', with: 'hoge@fuga.com'
         fill_in '現在のパスワード', with: user.password
         click_button '更新'
+
       end
 
       it '"メールアドレス確認用のメールをお送りしました。メール中のリンクをクリックするとメールアドレスの変更が反映されます"と表示されていること' do
@@ -25,11 +26,12 @@ describe "ユーザ情報を編集する", js: true  do
       end
 
       it 'ユーザ情報編集ページにいること' do
-        expect(page.current_path).to eq edit_user_path
+        expect(page).to have_current_path(edit_user_path)
       end
 
       context 'かつ送信されたメールアドレスのURLをクリックしたとき' do
         before do
+          page.has_content? 'メールアドレス確認用のメールをお送りしました'
           open_email('hoge@fuga.com')
           current_email.click_link user_confirmation_path
         end

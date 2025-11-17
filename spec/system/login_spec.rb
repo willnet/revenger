@@ -17,7 +17,7 @@ describe 'ユーザが revenger の機能を使うためにログインをする
       end
 
       it 'レビューページに遷移していること' do
-        expect(page.current_path).to eq review_path
+        expect(page).to have_current_path(review_path)
       end
     end
 
@@ -33,7 +33,7 @@ describe 'ユーザが revenger の機能を使うためにログインをする
       end
 
       it 'ログインページにいること' do
-        expect(page.current_path).to eq login_path
+        expect(page).to have_current_path(login_path)
       end
     end
 
@@ -49,7 +49,7 @@ describe 'ユーザが revenger の機能を使うためにログインをする
       end
 
       it 'ログインページにいること' do
-        expect(page.current_path).to eq login_path
+        expect(page).to have_current_path(login_path)
       end
     end
   end

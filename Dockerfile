@@ -1,4 +1,4 @@
-FROM ruby:3.0.7-slim
+FROM ruby:3.1.7-slim
 ARG BUNDLER_VERSION
 ENV LANG=C.UTF-8
 
@@ -11,7 +11,7 @@ RUN apt-get update -qq && \
     nodejs xvfb ca-certificates unzip build-essential vim chromium chromium-driver sqlite3 libsqlite3-dev git
 
 # Install Yarn using npm instead of apt
-RUN npm install -g yarn@1.21.1
+RUN npm install -g yarn@1.22.22
 
 # Install Japanese fonts
 RUN curl -o /tmp/noto.zip https://noto-website-2.storage.googleapis.com/pkgs/NotoSansCJKjp-hinted.zip && \
@@ -20,9 +20,6 @@ RUN curl -o /tmp/noto.zip https://noto-website-2.storage.googleapis.com/pkgs/Not
     fc-cache -v && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && truncate -s 0 /var/log/*log
 
-WORKDIR /build
-# Use a specific version of RubyGems compatible with Ruby 2.6.10
-RUN gem install bundler -v 2.4.22
 WORKDIR /revenger
 COPY . /revenger
 RUN mkdir -p tmp/sockets
