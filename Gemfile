@@ -1,7 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~> 7.0.0'
-gem 'concurrent-ruby', '< 1.3.5'
+gem 'rails', '~> 7.1.0'
 gem 'sqlite3', '~> 1.4'
 gem 'puma'
 gem 'rabl'
