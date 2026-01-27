@@ -5,12 +5,12 @@ default: &default
 
 production:
   <<: *default
-  database: /rails/storage/revenger_production.sqlite3
+  database: storage/production.sqlite3
 
 development:
   <<: *default
-  database: db/revenger_development.sqlite3
+  database: storage/development.sqlite3
 
 test:
   <<: *default
-  database: db/revenger_test.sqlite3
+  database: storage/test.sqlite3
