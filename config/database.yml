@@ -3,6 +3,10 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
+production:
+  <<: *default
+  database: /rails/storage/revenger_production.sqlite3
+
 development:
   <<: *default
   database: db/revenger_development.sqlite3
