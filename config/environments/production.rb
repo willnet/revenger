@@ -71,18 +71,22 @@ Rails.application.configure do
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
 
-  # Disable automatic flushing of the log to improve performance.
-  # config.autoflush_log = false
+  # Log to STDOUT with the current request id as a default log tag.
+  config.log_tags = [ :request_id ]
+  config.logger = ActiveSupport::Logger.new(STDOUT)
+    .tap  { |logger| logger.formatter = ::Logger::Formatter.new }
+    .then { |logger| ActiveSupport::TaggedLogging.new(logger) }
 
-  # Use default logging formatter so that PID and timestamp are not suppressed.
-  config.log_formatter = ::Logger::Formatter.new
+  config.silence_healthcheck_path = "/up"
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
   config.action_mailer.default_url_options = { host: 'revenger.in', protocol: 'https://' }
-  config.action_mailer.sendgrid_actionmailer_settings = {
-    api_key: ENV['SENDGRID_API_KEY'],
-    raise_delivery_errors: true
-  }
+  if ENV['SECRET_KEY_BASE_DUMMY'].blank?
+    config.action_mailer.sendgrid_actionmailer_settings = {
+      api_key: Rails.application.credentials[:sendgrid_api_key],
+      raise_delivery_errors: true
+    }
+  end
   config.action_mailer.delivery_method = :sendgrid_actionmailer
 end
