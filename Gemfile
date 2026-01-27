@@ -1,5 +1,7 @@
 source 'http://rubygems.org'
 
+ruby file: 'mise.toml'
+
 gem 'rails', '~> 7.1.0'
 gem 'sqlite3', '~> 1.4'
 gem 'puma'
@@ -27,18 +29,15 @@ gem 'sendgrid-ruby'
 gem 'sentry-rails'
 gem 'sentry-ruby'
 gem 'sprockets-rails'
-gem 'mimemagic', '0.3.10'
+gem 'thruster'
 
 group :development, :test do
   gem 'annotate'
   gem 'i18n_generators'
   gem 'rspec-rails'
-  gem 'ci_reporter'
 end
 
 group :development do
-  gem 'better_errors'
-  gem 'binding_of_caller'
   gem 'letter_opener_web'
 end
 
@@ -49,7 +48,6 @@ group :test do
   gem 'capybara-email'
   gem 'fabrication', group: :development
   gem 'accept_values_for'
-  gem 'launchy'
   gem 'selenium-webdriver'
   gem 'rails-controller-testing'
   gem 'rspec-its'
