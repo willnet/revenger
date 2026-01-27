@@ -16,4 +16,5 @@ public/assets
 coverage
 .env
 node_modules
-db/*.sqlite3
+db/*.sqlite3*
+
