@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root to: 'main#index'
+  get 'up' => 'rails/health#show', as: :rails_health_check
+
   get 'help' => 'main#help'
   get 'privacy' => 'main#privacy'
   get 'terms' => 'main#terms'
