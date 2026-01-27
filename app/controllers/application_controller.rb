@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery
   before_action :set_sentry_context
 
   unless Rails.env.development?
@@ -7,7 +6,6 @@ class ApplicationController < ActionController::Base
     rescue_from ActiveRecord::RecordNotFound, with: :error404
   end
 
-  before_action :force_ssl
   layout 'common'
 
   def error404
@@ -21,14 +19,6 @@ class ApplicationController < ActionController::Base
     logger.error ex.inspect
     logger.error ex.backtrace
     render 'error500', status: 500, formats: [:html]
-  end
-
-  def force_ssl
-    if !request.ssl? && (Rails.env.staging? || Rails.env.production?)
-      redirect_options = {:protocol => 'https://', :status => :moved_permanently}
-      redirect_options.merge!(:params => request.query_parameters)
-      redirect_to redirect_options
-    end
   end
 
   def after_sign_in_path_for(user)
