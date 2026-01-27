@@ -10,6 +10,7 @@ end
 FileUtils.chdir APP_ROOT do
   puts "== Installing dependencies =="
   system("bundle check") || system!("bundle install")
+  system("yarn install")
 
   puts "\n== Preparing database =="
   system! "bin/rails db:prepare"
