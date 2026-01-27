@@ -1,17 +1,17 @@
 FROM ruby:3.1.7-slim
 ENV LANG=C.UTF-8
 ENV BINDING="0.0.0.0"
+ARG YARN_VERSION=4.9.2
 
 # Install Node.js and npm
 RUN apt-get update -qq && \
     apt-get install -y curl gnupg && \
-    curl -sL https://deb.nodesource.com/setup_20.x | bash - && \
+    curl -sL https://deb.nodesource.com/setup_24.x | bash - && \
     apt-get update -qq && \
     DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
-    nodejs xvfb ca-certificates unzip build-essential vim chromium chromium-driver sqlite3 libsqlite3-dev libyaml-dev git fonts-liberation fonts-noto-cjk openssh-client
+    nodejs xvfb ca-certificates unzip build-essential vim chromium chromium-driver sqlite3 libsqlite3-dev libyaml-dev git fonts-liberation fonts-noto-cjk openssh-client pkg-config less
 
-# Install Yarn using npm instead of apt
-RUN npm install -g yarn@1.22.22
+RUN corepack enable && corepack prepare yarn@${YARN_VERSION} --activate
 
 ARG USERNAME=vscode
 ARG USER_UID=1000
