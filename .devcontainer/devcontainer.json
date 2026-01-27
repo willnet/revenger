@@ -1,15 +1,19 @@
 {
-  "name": "Revenger Rails Development",
-  "dockerComposeFile": [
-    "../docker-compose.yml",
-    "docker-compose.yml"
-  ],
-  "service": "app",
-  "workspaceFolder": "/revenger",
-  "forwardPorts": [3000],
-  "postCreateCommand": "bundle install && yarn install",
-  "remoteUser": "root",
+  "name": "revenger",
+  "dockerComposeFile": "compose.yaml",
+  "service": "rails-app",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
   "features": {
-    "ghcr.io/anthropics/devcontainer-features/claude-code:1.0": {}
-  }
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "shopify.ruby-lsp"
+      ]
+    }
+  },
+  "remoteUser": "vscode",
+  "postCreateCommand": "sudo chown -R vscode:vscode /workspaces/revenger/.bundle /workspaces/revenger/node_modules && bin/setup --skip-server",
+  "postAttachCommand": "exec bash -l"
 }

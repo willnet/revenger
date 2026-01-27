@@ -1,0 +1,16 @@
+version: '3'
+services:
+  rails-app:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    command: sleep infinity
+    ports:
+      - '3000:3000'
+    volumes:
+      - ../..:/workspaces:cached
+      - bundle:/workspaces/revenger/.bundle
+      - npm:/workspaces/revenger/node_modules
+volumes:
+  bundle:
+  npm:
