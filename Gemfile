@@ -1,9 +1,11 @@
 source 'http://rubygems.org'
 
-ruby file: 'mise.toml'
+ruby '3.1.7'
 
 gem 'rails', '~> 7.1.0'
-gem 'sqlite3', '~> 1.4'
+gem 'bootsnap', require: false
+gem 'kamal'
+gem 'sqlite3', '~> 1.6.0'
 gem 'puma'
 gem 'rabl'
 gem 'i18n-js'
