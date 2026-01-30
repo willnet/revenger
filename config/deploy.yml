@@ -39,13 +39,11 @@ registry:
 # Inject ENV variables into containers (secrets come from .kamal/secrets).
 env:
   secret:
-    - DEVISE_SECRET_KEY
-    - SENDGRID_API_KEY
-    #- RAILS_MASTER_KEY
+    - RAILS_MASTER_KEY
   clear:
     # Run the Solid Queue Supervisor inside the web server's Puma process to do jobs.
     # When you start using multiple servers, you should split out job processing to a dedicated machine.
-    # SOLID_QUEUE_IN_PUMA: true
+    SOLID_QUEUE_IN_PUMA: true
 
     # Set number of processes dedicated to Solid Queue (default: 1)
     # JOB_CONCURRENCY: 3
