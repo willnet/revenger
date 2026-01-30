@@ -89,4 +89,6 @@ Rails.application.configure do
     }
   end
   config.action_mailer.delivery_method = :sendgrid_actionmailer
+  config.active_job.queue_adapter = :solid_queue
+  config.solid_queue.connects_to = { database: { writing: :queue } }
 end
