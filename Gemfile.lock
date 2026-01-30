@@ -274,6 +274,8 @@ GEM
     nio4r (2.7.4)
     nokogiri (1.18.10-aarch64-linux-gnu)
       racc (~> 1.4)
+    nokogiri (1.18.10-x86_64-linux-gnu)
+      racc (~> 1.4)
     orm_adapter (0.5.0)
     ostruct (0.6.3)
     pp (0.6.3)
@@ -429,6 +431,7 @@ GEM
       activesupport (>= 6.1)
       sprockets (>= 3.0.0)
     sqlite3 (1.6.9-aarch64-linux)
+    sqlite3 (1.6.9-x86_64-linux)
     sshkit (1.25.0)
       base64
       logger
@@ -445,6 +448,7 @@ GEM
     thor (1.4.0)
     thruster (0.1.17)
     thruster (0.1.17-aarch64-linux)
+    thruster (0.1.17-x86_64-linux)
     tilt (2.0.10)
     timecop (0.9.4)
     timeout (0.4.3)
@@ -472,6 +476,7 @@ GEM
 
 PLATFORMS
   aarch64-linux
+  x86_64-linux
 
 DEPENDENCIES
   accept_values_for
