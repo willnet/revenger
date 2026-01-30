@@ -5,6 +5,8 @@ ruby '3.1.7'
 gem 'rails', '~> 7.1.0'
 gem 'bootsnap', require: false
 gem 'kamal'
+gem 'solid_queue'
+gem 'mission_control-jobs'
 gem 'sqlite3', '~> 1.6.0'
 gem 'puma'
 gem 'rabl'
