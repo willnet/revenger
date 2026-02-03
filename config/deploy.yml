@@ -23,7 +23,7 @@ ssh:
 #
 proxy:
   ssl: true
-  host: staging.revenger.in
+  host: revenger.in
 
 # Where you keep your container images.
 registry:
