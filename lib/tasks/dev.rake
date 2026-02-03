@@ -12,4 +12,3 @@ namespace :dev do
     end
   end
 end
-= content_for?(:javascript) ? yield(:javascript).html_safe : ''
