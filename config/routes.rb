@@ -35,6 +35,5 @@ Rails.application.routes.draw do
   get 'api/dashboard' => 'dashboard_api#show'
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
-  mount MissionControl::Jobs::Engine, at: "/jobs"
   match '*path' => 'application#error404', via: :all
 end

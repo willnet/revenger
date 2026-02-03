@@ -7,7 +7,7 @@ image: revenger
 # Deploy to these servers.
 servers:
   web:
-    - 192.168.0.1
+    - 153.127.39.185
   # job:
   #   hosts:
   #     - 192.168.0.1
@@ -20,9 +20,9 @@ servers:
 #
 # Don't use this when deploying to multiple web servers (then you have to terminate SSL at your load balancer).
 #
-# proxy:
-#   ssl: true
-#   host: app.example.com
+proxy:
+  ssl: true
+  host: staging.revenger.in
 
 # Where you keep your container images.
 registry:

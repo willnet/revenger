@@ -1,12 +1,11 @@
 source 'http://rubygems.org'
 
-ruby '3.1.7'
+ruby '3.2.8'
 
-gem 'rails', '~> 7.1.0'
+gem 'rails', '~> 7.2.0'
 gem 'bootsnap', require: false
 gem 'kamal'
 gem 'solid_queue'
-gem 'mission_control-jobs'
 gem 'sqlite3', '~> 1.6.0'
 gem 'puma'
 gem 'rabl'
@@ -27,6 +26,7 @@ gem 'execjs'
 gem 'bootstrap-sass', '< 3.0'
 gem 'sorted_set'
 gem 'compass-rails'
+gem 'compass', github: 'willnet/compass', branch: 'stable'
 gem 'zurui-sass-rails'
 gem 'sendgrid-actionmailer'
 gem 'sendgrid-ruby'
