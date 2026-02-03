@@ -3,11 +3,9 @@ module ApplicationHelper
     content_for :title, name
   end
 
-  def javascript(&block)
+  def javascript(&)
     content_for :javascript do
-      javascript_tag do
-        block.call
-      end
+      javascript_tag(&)
     end
   end
 
