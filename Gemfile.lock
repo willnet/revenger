@@ -103,6 +103,7 @@ GEM
     base64 (0.3.0)
     bcrypt (3.1.20)
     bcrypt_pbkdf (1.1.2)
+    bcrypt_pbkdf (1.1.2-arm64-darwin)
     benchmark (0.5.0)
     bigdecimal (4.0.1)
     bootsnap (1.21.1)
@@ -156,7 +157,9 @@ GEM
       tzinfo
     execjs (2.10.0)
     fabrication (2.21.1)
-    ffi (1.12.2)
+    ffi (1.17.3-aarch64-linux-gnu)
+    ffi (1.17.3-arm64-darwin)
+    ffi (1.17.3-x86_64-linux-gnu)
     fugit (1.12.1)
       et-orbi (~> 1.4)
       raabro (~> 1.4)
@@ -256,6 +259,8 @@ GEM
     net-ssh (7.3.0)
     nio4r (2.7.5)
     nokogiri (1.19.0-aarch64-linux-gnu)
+      racc (~> 1.4)
+    nokogiri (1.19.0-arm64-darwin)
       racc (~> 1.4)
     nokogiri (1.19.0-x86_64-linux-gnu)
       racc (~> 1.4)
@@ -415,6 +420,7 @@ GEM
       activesupport (>= 6.1)
       sprockets (>= 3.0.0)
     sqlite3 (1.6.9-aarch64-linux)
+    sqlite3 (1.6.9-arm64-darwin)
     sqlite3 (1.6.9-x86_64-linux)
     sshkit (1.25.0)
       base64
@@ -429,6 +435,7 @@ GEM
       execjs (>= 0.3.0, < 3)
     thor (1.5.0)
     thruster (0.1.17-aarch64-linux)
+    thruster (0.1.17-arm64-darwin)
     thruster (0.1.17-x86_64-linux)
     tilt (2.0.10)
     timecop (0.9.4)
@@ -455,6 +462,7 @@ GEM
 
 PLATFORMS
   aarch64-linux
+  arm64-darwin-25
   x86_64-linux
 
 DEPENDENCIES
@@ -509,4 +517,4 @@ RUBY VERSION
   ruby 3.2.8p263
 
 BUNDLED WITH
-  4.0.5
+  4.0.3
