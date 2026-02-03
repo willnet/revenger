@@ -91,4 +91,5 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :sendgrid_actionmailer
   config.active_job.queue_adapter = :solid_queue
   config.solid_queue.connects_to = { database: { writing: :queue } }
+  config.ssl_options = { redirect: { exclude: ->(request) { request.path == "/up" } } }
 end
