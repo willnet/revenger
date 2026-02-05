@@ -437,7 +437,7 @@ GEM
     thruster (0.1.17-arm64-darwin)
     thruster (0.1.17-x86_64-linux)
     tilt (2.0.10)
-    timecop (0.9.4)
+    timecop (0.9.10)
     timeout (0.6.0)
     tsort (0.2.0)
     tzinfo (2.0.6)
