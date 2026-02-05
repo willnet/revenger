@@ -273,7 +273,7 @@ GEM
       date
       stringio
     public_suffix (7.0.2)
-    puma (6.6.0)
+    puma (7.2.0)
       nio4r (~> 2.0)
     pygments.rb (1.2.1)
       multi_json (>= 1.0.0)
