@@ -124,7 +124,6 @@ GEM
       capybara (>= 2.4, < 4.0)
       mail
     cgi (0.5.1)
-    chronic (0.10.2)
     chunky_png (1.3.11)
     compass-rails (4.0.0)
       compass (~> 1.0.0)
@@ -452,8 +451,6 @@ GEM
       base64
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    whenever (1.0.0)
-      chronic (>= 0.6.3)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.7.4)
@@ -510,7 +507,6 @@ DEPENDENCIES
   terser
   thruster
   timecop
-  whenever
   zurui-sass-rails
 
 RUBY VERSION

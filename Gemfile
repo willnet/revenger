@@ -16,7 +16,6 @@ gem 'redcarpet'
 gem 'pygments.rb', require: 'pygments'
 gem 'devise'
 gem 'haml-rails'
-gem 'whenever', require: false
 gem 'jquery-rails'
 gem 'dotenv-rails'
 gem 'dotenv-deployment'
