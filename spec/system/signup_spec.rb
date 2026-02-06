@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'ユーザがrevengerに新規登録する' do
+describe 'ユーザがrevengerに新規登録する', :js do
   describe 'サインアップページに遷移したとき' do
     before { visit signup_path }
 
@@ -13,13 +13,10 @@ describe 'ユーザがrevengerに新規登録する' do
         click_button 'ユーザ登録'
       end
 
-      it 'ユーザが作成されること' do
+      it '確認メールが送信される旨が表示され、ユーザが作成されること' do
+        expect(page).to have_content('本人確認用のメールが送られました')
         user = User.find_by(email: "new_user@example.com")
         expect(user).to be_present
-      end
-
-      it '確認メールが送信される旨が表示されること' do
-        expect(page).to have_content('確認メールを送信しました')
       end
     end
 
