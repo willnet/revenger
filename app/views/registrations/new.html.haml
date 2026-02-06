@@ -23,5 +23,9 @@
           = link_to '利用規約', terms_path
           に同意する
 
+    .control-group
+      .controls
+        = cloudflare_turnstile
+
     .control-group.form-actions
       = f.submit 'ユーザ登録', class: 'btn btn-success'

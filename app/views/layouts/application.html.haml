@@ -8,6 +8,7 @@
     = content_for?(:javascript) ? yield(:javascript) : ''
     = stylesheet_link_tag :application
     <link href='//fonts.googleapis.com/css?family=Gravitas+One' rel='stylesheet' type='text/css'>
+    = cloudflare_turnstile_script_tag
     = csrf_meta_tags
     :javascript
       I18n.defaultLocale = "#{I18n.default_locale}";
