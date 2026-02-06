@@ -1,22 +1,11 @@
 #eyecatch
   .container
     .row
-      .span8
+      .span12
         %p
           復習しないのは勉強しないのと同じ！
           %br
             revenger で復習しよう。
-      .span4
-        #sign_up
-          = form_for(:user, :url => user_path) do |f|
-            = f.email_field :email, placeholder: 'メールアドレス'
-            = f.password_field :password, placeholder: 'パスワード'
-            = f.password_field :password_confirmation, placeholder: 'パスワード(確認用)'
-            %label.checkbox
-              = f.check_box :agree
-              = link_to '利用規約', terms_path
-              に同意する
-            = f.submit 'ユーザ登録', class: 'btn btn-primary'
 .container
   .row
     .span4

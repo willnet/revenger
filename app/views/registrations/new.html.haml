@@ -8,7 +8,7 @@
       = f.label :email, class: 'control-label'
       .controls
         = f.email_field :email
-    .control-group      
+    .control-group
       = f.label :password, class: 'control-label'
       .controls
         = f.password_field :password
@@ -22,6 +22,10 @@
           = f.check_box :agree
           = link_to '利用規約', terms_path
           に同意する
+
+    .control-group
+      .controls
+        = cloudflare_turnstile
 
     .control-group.form-actions
       = f.submit 'ユーザ登録', class: 'btn btn-success'

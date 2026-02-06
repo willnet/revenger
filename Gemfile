@@ -1,4 +1,4 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
 ruby '3.2.8'
 
@@ -15,7 +15,7 @@ gem 'kaminari'
 gem 'redcarpet'
 gem 'pygments.rb', require: 'pygments'
 gem 'devise'
-gem 'haml-rails'
+gem 'haml'
 gem 'jquery-rails'
 gem 'dotenv-rails'
 gem 'dotenv-deployment'
@@ -33,6 +33,7 @@ gem 'sentry-rails'
 gem 'sentry-ruby'
 gem 'sprockets-rails'
 gem 'thruster'
+gem 'rails_cloudflare_turnstile'
 
 group :development, :test do
   gem 'annotate'
