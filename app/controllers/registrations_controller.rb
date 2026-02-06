@@ -3,7 +3,7 @@ class RegistrationsController < Devise::RegistrationsController
   
   rescue_from RailsCloudflareTurnstile::Forbidden do
     flash[:alert] = 'Turnstile検証に失敗しました。もう一度お試しください。'
-    redirect_to new_user_registration_path
+    redirect_to signup_path
   end
 
   protected
