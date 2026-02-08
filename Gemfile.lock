@@ -19,8 +19,8 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    accept_values_for (0.9.5)
-      activemodel (>= 6.1, < 8.1)
+    accept_values_for (0.9.6)
+      activemodel (>= 7.1, < 8.2)
       rspec (>= 3.10, < 4.0)
     actioncable (7.2.3)
       actionpack (= 7.2.3)
