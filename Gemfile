@@ -6,7 +6,7 @@ gem 'rails', '~> 7.2.0'
 gem 'bootsnap', require: false
 gem 'kamal'
 gem 'solid_queue'
-gem 'sqlite3', '~> 1.6.0'
+gem 'sqlite3', '~> 2.9.0'
 gem 'puma'
 gem 'rabl'
 gem 'i18n-js'
