@@ -14,6 +14,6 @@
     }
   },
   "remoteUser": "vscode",
-  "postCreateCommand": "sudo chown -R vscode:vscode /workspaces/revenger/.bundle /workspaces/revenger/node_modules && bin/setup --skip-server",
+  "postCreateCommand": "sudo chown -R vscode:vscode /usr/local/bundle /workspaces/revenger/node_modules && bin/setup --skip-server",
   "postAttachCommand": "exec bash -l"
 }
