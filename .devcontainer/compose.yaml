@@ -9,7 +9,7 @@ services:
       - '3000:3000'
     volumes:
       - ../..:/workspaces:cached
-      - bundle:/workspaces/revenger/.bundle
+      - bundle:/usr/local/bundle
       - npm:/workspaces/revenger/node_modules
 volumes:
   bundle:
