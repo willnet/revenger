@@ -30,6 +30,7 @@ describe 'ユーザがrevengerに新規登録する', :js do
       end
 
       it 'ユーザが作成されないこと' do
+        expect(page).to have_content('利用規約に同意してください。')
         user = User.find_by(email: "new_user@example.com")
         expect(user).to be_nil
       end
