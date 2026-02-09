@@ -65,7 +65,6 @@ jobs:
 
       - name: Deploy with Kamal
         env:
-          CI: true
           RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
           KAMAL_REGISTRY_PASSWORD: ${{ secrets.KAMAL_REGISTRY_PASSWORD }}
         run: bundle exec kamal deploy

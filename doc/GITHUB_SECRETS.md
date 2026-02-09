@@ -3,6 +3,8 @@
 このドキュメントでは、GitHub Actionsによる自動デプロイに必要な環境変数（Secrets）をリストアップしています。
 これらのSecretsは、GitHubリポジトリの Settings > Secrets and variables > Actions で設定する必要があります。
 
+**注意**: `.kamal/secrets` は環境変数を使用する設定になっています。ローカル開発でも環境変数を設定してください（例: `.env` ファイルや `direnv` を使用）。
+
 ## 必須のSecrets
 
 ### 1. RAILS_MASTER_KEY
