@@ -33,7 +33,7 @@ gem 'thruster'
 gem 'rails_cloudflare_turnstile'
 
 group :development, :test do
-  gem 'annotate'
+  gem 'annotaterb'
   gem 'rspec-rails'
 end
 

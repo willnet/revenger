@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2019_06_28_084422) do
+ActiveRecord::Schema[7.2].define(version: 2019_06_28_084422) do
   create_table "posts", force: :cascade do |t|
     t.integer "user_id", null: false
     t.text "body"
@@ -44,5 +44,4 @@ ActiveRecord::Schema[7.1].define(version: 2019_06_28_084422) do
     t.boolean "receive_reminder", default: true
     t.string "unconfirmed_email"
   end
-
 end
