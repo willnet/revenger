@@ -34,7 +34,6 @@ gem 'rails_cloudflare_turnstile'
 
 group :development, :test do
   gem 'annotate'
-  gem 'i18n_generators'
   gem 'rspec-rails'
 end
 
