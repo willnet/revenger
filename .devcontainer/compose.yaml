@@ -5,12 +5,12 @@ services:
       context: ..
       dockerfile: .devcontainer/Dockerfile
     command: sleep infinity
+    environment:
+      PORT: ${PORT:-3000}
     ports:
-      - '3000:3000'
+      - '${PORT:-3000}:${PORT:-3000}'
     volumes:
       - ../..:/workspaces:cached
       - bundle:/usr/local/bundle
-      - npm:/workspaces/revenger/node_modules
 volumes:
   bundle:
-  npm:
