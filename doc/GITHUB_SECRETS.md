@@ -21,13 +21,6 @@
 - **形式**: 秘密鍵ファイル全体（`-----BEGIN ... PRIVATE KEY-----` から `-----END ... PRIVATE KEY-----` まで）
 - **注意**: 秘密鍵は改行を含む複数行のテキストです。GitHubのSecretsに貼り付ける際はそのままコピーしてください。
 
-### 3. KAMAL_REGISTRY_PASSWORD (オプション)
-- **説明**: コンテナレジストリのパスワード（認証が必要な場合）
-- **取得方法**: 使用しているコンテナレジストリのアクセストークンまたはパスワード
-- **注意**: 
-  - 現在の設定では `localhost:5555` をレジストリとして使用しているため、この変数は不要かもしれません
-  - ただし、外部レジストリ（Docker Hub、GitHub Container Registry等）を使用する場合は必要です
-
 ## セットアップ手順
 
 1. GitHubリポジトリページにアクセス
@@ -48,10 +41,6 @@
    - `RAILS_MASTER_KEY` が正しく設定されているか確認
    - キーが `config/master.key` の内容と一致しているか確認
 
-3. **コンテナレジストリエラー**
-   - レジストリの設定を確認
-   - 必要に応じて `KAMAL_REGISTRY_PASSWORD` を設定
-
 ## ワークフローの動作
 
 1. `main` ブランチにプッシュされると自動的にトリガーされます
@@ -61,6 +50,7 @@
 
 ## 参考
 
-- ワークフローファイル: `.github/workflows/deploy.yml`
+- ワークフローファイル: `.github/workflows/ci.yml`
 - Kamal設定ファイル: `config/deploy.yml`
 - Kamalシークレット設定: `.kamal/secrets`
+
