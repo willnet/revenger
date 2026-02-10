@@ -6,11 +6,13 @@ This repository is intended to be developed and operated inside a Dev Container.
 - Default environment: run all development, test, and maintenance commands inside the Dev Container.
 - If an AI Agent is running outside the Dev Container, it must execute project commands via the Dev Container CLI.
 - Recommended pattern (from repository root):
-  - `devcontainer up --workspace-folder .`
-  - `devcontainer exec --workspace-folder . bin/setup`
-  - `devcontainer exec --workspace-folder . bin/rails db:prepare`
-  - `devcontainer exec --workspace-folder . bin/rspec`
+  - `PORT=3000 devcontainer up --workspace-folder .`
+  - `PORT=3000 devcontainer exec --workspace-folder . bin/setup`
+  - `PORT=3000 devcontainer exec --workspace-folder . bin/rails db:prepare`
+  - `PORT=3000 devcontainer exec --workspace-folder . bin/rspec`
 - Do not run project-specific Ruby/Rails/Yarn commands directly on the host when the agent is outside the container.
+- For parallel Git Worktree development, assign a unique `PORT` per worktree (for example `3000`, `3001`, `3002`).
+- If `PORT` is omitted, it defaults to `3000`.
 
 ## Project Structure & Module Organization
 This is a Ruby on Rails 7.2 app.
