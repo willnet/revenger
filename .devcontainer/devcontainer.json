@@ -13,6 +13,9 @@
       ]
     }
   },
+  "containerEnv": {
+    "GH_TOKEN": "${localEnv:GH_TOKEN}"
+  },
   "remoteUser": "vscode",
   "postCreateCommand": "mkdir -p node_modules && sudo chown -R vscode:vscode /usr/local/bundle node_modules && bin/setup --skip-server",
   "postAttachCommand": "exec bash -l"
