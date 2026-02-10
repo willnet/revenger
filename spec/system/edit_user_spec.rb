@@ -15,7 +15,7 @@ describe "ユーザ情報を編集する", js: true  do
 
     context 'かつメールアドレスを変更し、現在のパスワードを正しく入力して"更新"ボタンを押したとき' do
       before do
-        page.has_content? 'ユーザ情報'
+        expect(page).to have_content 'ユーザ情報'
         fill_in 'メールアドレス', with: 'hoge@fuga.com'
         fill_in '現在のパスワード', with: user.password
         click_button '更新'
@@ -31,7 +31,7 @@ describe "ユーザ情報を編集する", js: true  do
 
       context 'かつ送信されたメールアドレスのURLをクリックしたとき' do
         before do
-          page.has_content? 'メールアドレス確認用のメールをお送りしました'
+          expect(page).to have_content 'メールアドレス確認用のメールをお送りしました'
           open_email('hoge@fuga.com')
           current_email.click_link user_confirmation_path
         end
@@ -44,7 +44,7 @@ describe "ユーザ情報を編集する", js: true  do
 
     context 'かつメールアドレスを変更し、現在のパスワードに不正な文字列を入力して"更新"ボタンを押したとき' do
       before do
-        page.has_content? 'ユーザ情報'
+        expect(page).to have_content 'ユーザ情報'
         fill_in 'メールアドレス', with: 'hoge@fuga.com'
         fill_in '現在のパスワード', with: 'abcdefg'
       end
@@ -61,7 +61,7 @@ describe "ユーザ情報を編集する", js: true  do
 
     context 'かつ現在のパスワードと新しいパスワード、パスワード確認を正しく入力して"更新"ボタンを押したとき' do
       before do
-        page.has_content? 'ユーザ情報'
+        expect(page).to have_content 'ユーザ情報'
         fill_in '現在のパスワード', with: user.password
         fill_in 'user_password', with: 'hogehoge'
         fill_in 'user_password_confirmation', with: 'hogehoge'
@@ -75,7 +75,7 @@ describe "ユーザ情報を編集する", js: true  do
 
     context 'かつ現在のパスワードを正しく入力せずに新しいパスワード、パスワード確認を入力して"更新"ボタンを押したとき' do
       before do
-        page.has_content? 'ユーザ情報'
+        expect(page).to have_content 'ユーザ情報'
         fill_in '現在のパスワード', with: 'abcdefg'
         fill_in 'user_password', with: 'hogehoge'
         fill_in 'user_password_confirmation', with: 'hogehoge'
