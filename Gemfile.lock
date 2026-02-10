@@ -97,9 +97,9 @@ GEM
       tzinfo (~> 2.0, >= 2.0.5)
     addressable (2.8.8)
       public_suffix (>= 2.0.2, < 8.0)
-    annotate (3.2.0)
-      activerecord (>= 3.2, < 8.0)
-      rake (>= 10.4, < 14.0)
+    annotaterb (4.21.0)
+      activerecord (>= 6.0.0)
+      activesupport (>= 6.0.0)
     base64 (0.3.0)
     bcrypt (3.1.21)
     bcrypt_pbkdf (1.1.2)
@@ -459,7 +459,7 @@ PLATFORMS
 
 DEPENDENCIES
   accept_values_for
-  annotate
+  annotaterb
   bootsnap
   bootstrap-sass (< 3.0)
   capybara
