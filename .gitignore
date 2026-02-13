@@ -25,3 +25,7 @@ db/*.sqlite3*
 !/tmp/storage/.keep
 
 /config/master.key
+
+# Ignore key files for decrypting credentials and more.
+/config/*.key
+
