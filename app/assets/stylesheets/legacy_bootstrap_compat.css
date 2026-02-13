@@ -1,0 +1,7 @@
+.dropdown.open > .dropdown-menu {
+  display: block;
+}
+
+[data-spy="affix"].affix {
+  top: 20px;
+}
