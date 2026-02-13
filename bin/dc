@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+while IFS='=' read -r key value; do
+  export "${key}=${value}"
+done < <("${script_dir}/devcontainer-env")
+
+exec devcontainer "$@"
