@@ -1,3 +1,5 @@
+name: ${COMPOSE_PROJECT_NAME:-revenger_devcontainer}
+
 version: '3'
 services:
   rails-app:
