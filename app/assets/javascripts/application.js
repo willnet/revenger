@@ -1,7 +1,6 @@
 //= require jquery/dist/jquery
 //= require jquery_ujs
 //= require underscore/underscore
-//= require bootstrap
 //= require backbone/backbone
 //= require backbone_rails_sync
 //= require backbone/helper
