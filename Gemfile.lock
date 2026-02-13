@@ -455,7 +455,7 @@ DEPENDENCIES
   timecop
 
 RUBY VERSION
-  ruby 3.2.8p263
+  ruby 3.4.8
 
 BUNDLED WITH
   4.0.6
