@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+repo_root="$(git rev-parse --show-toplevel)"
+output_mode="plain"
+
+if [[ "${1:-}" == "--export" ]]; then
+  output_mode="export"
+fi
+
+hash_path() {
+  local input="$1"
+  if command -v shasum >/dev/null 2>&1; then
+    printf "%s" "$input" | shasum -a 256 | awk '{print $1}'
+    return
+  fi
+  if command -v sha256sum >/dev/null 2>&1; then
+    printf "%s" "$input" | sha256sum | awk '{print $1}'
+    return
+  fi
+  if command -v openssl >/dev/null 2>&1; then
+    printf "%s" "$input" | openssl dgst -sha256 | awk '{print $2}'
+    return
+  fi
+  echo "No SHA-256 command found (shasum/sha256sum/openssl)." >&2
+  exit 1
+}
+
+full_hash="$(hash_path "$repo_root")"
+worktree_id="${full_hash:0:6}"
+
+hash_prefix="${full_hash:0:8}"
+hash_value=$((16#$hash_prefix))
+port=$((3000 + (hash_value % 200)))
+
+if [[ "$output_mode" == "export" ]]; then
+  echo "export COMPOSE_PROJECT_NAME=revenger_${worktree_id}"
+  echo "export PORT=${port}"
+else
+  echo "COMPOSE_PROJECT_NAME=revenger_${worktree_id}"
+  echo "PORT=${port}"
+fi
