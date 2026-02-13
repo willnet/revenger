@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '3.2.8'
 
-gem 'rails', '~> 7.2.0'
+gem 'rails', '~> 8.1.2'
 gem 'bootsnap', require: false
 gem 'kamal'
 gem 'solid_queue'
