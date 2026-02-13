@@ -79,9 +79,3 @@ asset_path: /rails/public/assets
 
 builder:
   arch: amd64
-
-logging:
-  driver: syslog
-  options:
-    syslog-address: "udp://logs.papertrailapp.com:28873"
-    tag: "revenger"
