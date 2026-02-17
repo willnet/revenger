@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '3.4.8'
+ruby file: 'mise.toml'
 
 gem 'rails', '~> 8.1.2'
 gem 'bootsnap', require: false
