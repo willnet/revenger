@@ -1,3 +1,0 @@
-%a.btn.btn-small.btn-success{ 'data-behavior' => 'update' }
-  %i.fas.fa-cloud-upload-alt
-  update!
