@@ -1,3 +1,0 @@
-%a.btn.btn-small.btn-success.disabled{ 'data-behavior' => 'updating' }
-  %i.fas.fa-sync-alt.fa-spin
-  update!
