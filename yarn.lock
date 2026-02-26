@@ -30,10 +30,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jquery@npm:< 3":
-  version: 2.2.4
-  resolution: "jquery@npm:2.2.4"
-  checksum: 10c0/407c00b1c3ccde35f091862d4b49eab27557c2f7ed9e00fe6ead32fbe8ad6b90d8af8e3fc06b176cd5f2daaae6361a0045ecf204b360d1ac4b79ec21f9930e3c
+"jquery@npm:< 5":
+  version: 4.0.0
+  resolution: "jquery@npm:4.0.0"
+  checksum: 10c0/06d8d0f51121af5a691f8b59c74823157bb5b60eea915b30eaa920d6c0ffd91e60ba81e9b97bd8203f331f9dd8d0ec9a4b010935ea314bdd2f15453c29bc780b
   languageName: node
   linkType: hard
 
@@ -43,7 +43,7 @@ __metadata:
   dependencies:
     backbone: "npm:^1.4.0"
     font-awesome: "npm:^4.7.0"
-    jquery: "npm:< 3"
+    jquery: "npm:< 5"
     jquery-placeholder: "npm:^2.3.1"
     underscore: "npm:^1.9.1"
   languageName: unknown
