@@ -12,6 +12,9 @@ Use `bin/dc` to run Dev Container commands. It automatically derives `COMPOSE_PR
 and `PORT` from the current worktree path, so containers/volumes/ports do not conflict
 across worktrees.
 
+When `bin/dc up` is run from a non-interactive CLI (for example, by an AI agent), it
+automatically adds `--skip-post-attach` so `postAttachCommand` does not block the caller.
+
 ```sh
 # Example: create a new worktree
 git worktree add ../revenger-feature-a feature-a
@@ -69,4 +72,3 @@ Notes:
 
 - `--if-db-not-exists` skips restore when the DB file already exists.
 - If restore fails because a DB file exists, remove/rename the file and retry.
-
