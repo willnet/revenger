@@ -29,3 +29,13 @@ db/*.sqlite3*
 # Ignore key files for decrypting credentials and more.
 /config/*.key
 
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
