@@ -12,6 +12,7 @@ This repository is intended to be developed and operated inside a Dev Container.
   - `bin/dc exec --workspace-folder . bin/rspec`
 - Do not run project-specific Ruby/Rails/Yarn commands directly on the host when the agent is outside the container.
 - `bin/dc` loads `bin/devcontainer-env` and auto-sets a unique `COMPOSE_PROJECT_NAME` and `PORT` per worktree.
+- `bin/dc up` automatically adds `--skip-post-attach` for non-interactive CLI runs so `postAttachCommand` does not hang AI/automation sessions.
 - The default auto-assigned port range is `3000-3199`.
 - Cleanup for the current worktree:
   - `eval "$(bin/devcontainer-env --export)"`

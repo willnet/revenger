@@ -3,8 +3,24 @@ set -euo pipefail
 
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+args=("$@")
+
 while IFS='=' read -r key value; do
   export "${key}=${value}"
 done < <("${script_dir}/devcontainer-env")
 
-exec devcontainer "$@"
+if [[ "${1:-}" == "up" && ( ! -t 0 || ! -t 1 ) ]]; then
+  skip_post_attach_requested=false
+  for arg in "${args[@]}"; do
+    if [[ "$arg" == "--skip-post-attach" ]]; then
+      skip_post_attach_requested=true
+      break
+    fi
+  done
+
+  if [[ "$skip_post_attach_requested" == false ]]; then
+    args+=("--skip-post-attach")
+  fi
+fi
+
+exec devcontainer "${args[@]}"
