@@ -1,0 +1,45 @@
+<% title "#{t :sign_up, scope: ['misc']} - revenger" %>
+
+<%= form_for(resource, as: resource_name, url: user_path, html: { class: 'form-horizontal' }) do |f| %>
+  <fieldset>
+    <legend><%= t :sign_up, scope: ['misc'] %></legend>
+    <%= render 'errors', model: resource %>
+    <div class="control-group">
+      <%= f.label :email, class: 'control-label' %>
+      <div class="controls">
+        <%= f.email_field :email %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :password, class: 'control-label' %>
+      <div class="controls">
+        <%= f.password_field :password %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :password_confirmation, class: 'control-label' %>
+      <div class="controls">
+        <%= f.password_field :password_confirmation %>
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="controls">
+        <label>
+          <%= f.check_box :agree %>
+          <%= link_to '利用規約', terms_path %>
+          に同意する
+        </label>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <div class="controls">
+        <%= cloudflare_turnstile %>
+      </div>
+    </div>
+
+    <div class="control-group form-actions">
+      <%= f.submit 'ユーザ登録', class: 'btn btn-success' %>
+    </div>
+  </fieldset>
+<% end %>
