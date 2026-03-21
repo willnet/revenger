@@ -1,0 +1,17 @@
+<% title '新規作成 - revenger' %>
+
+<%= form_for(@post) do |f| %>
+  <legend>
+    新規作成
+    <small class="pull-right">
+      <%= link_to 'markdown 記法', help_path(anchor: 'how-to-write') %>
+      が利用できます
+    </small>
+  </legend>
+  <%= render 'errors', model: @post %>
+  <%= f.text_area :body, id: 'post_body' %>
+  <button class="btn btn-success" type="submit" data-disable-with="<i class='fas fa-sync-alt fa-spin'></i> create!">
+    <i class="fas fa-check-circle"></i>
+    create!
+  </button>
+<% end %>

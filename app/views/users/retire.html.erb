@@ -1,0 +1,19 @@
+<% title '退会 - revenger' %>
+
+<div class="well">
+  <%= form_tag user_path, method: :delete, class: 'form-horizontal' do %>
+    <legend>
+      退会
+    </legend>
+    <p>退会した場合、ユーザに関するデータが全て削除されます。</p>
+    <div class="control-group">
+      <%= label_tag 'password', 'パスワード', class: 'control-label' %>
+      <div class="controls">
+        <%= password_field_tag %>
+      </div>
+    </div>
+    <div class="control-group form-actions">
+      <%= submit_tag '退会する', data: { confirm: '本当に退会しますか？' }, class: 'btn btn-danger' %>
+    </div>
+  <% end %>
+</div>

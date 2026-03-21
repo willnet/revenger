@@ -1,0 +1,26 @@
+<% if @count > 0 %>
+  <% title "レビュー (#{@count}) - revenger" %>
+<% else %>
+  <% title 'レビュー - revenger' %>
+<% end %>
+
+<% if @post.present? %>
+  <% javascript do %>
+    <%= raw '$(function() { Revenger.initReview(); });' %>
+  <% end %>
+<% end %>
+
+<% if @post.present? %>
+  のこり
+  <span class="badge badge-important" data-behavior="count" data-count="<%= @count %>"><%= @count %></span>
+  件
+  <div id="post"></div>
+<% elsif !current_user.posts.exists? %>
+  <div class="post">
+    あなたはメモを一つも作られていないようです。<%= link_to '新規作成', new_post_path %>をクリックして、新しい復習メモを作ってみましょう！
+  </div>
+<% else %>
+  <div class="post">
+    今のところ復習ノルマはありません。<%= link_to '一覧ページ', posts_path %>を眺めたり、<%= link_to '新規作成', new_post_path %>から新しい復習メモを作ったりしてみましょう！
+  </div>
+<% end %>
