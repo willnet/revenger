@@ -1,4 +1,4 @@
-FROM ruby:4.0.1-slim
+FROM ruby:4.0.2-slim
 ENV LANG=C.UTF-8
 ENV BINDING="0.0.0.0"
 ENV COREPACK_ENABLE_DOWNLOAD_PROMPT=0
@@ -25,4 +25,3 @@ RUN groupadd --gid $USER_GID $USERNAME \
 RUN corepack enable && corepack prepare yarn@${YARN_VERSION} --activate
 
 CMD ["/bin/bash"]
-
