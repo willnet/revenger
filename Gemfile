@@ -41,6 +41,7 @@ group :test do
   gem 'timecop'
   gem 'capybara'
   gem 'capybara-email'
+  gem 'ci_logger'
   gem 'fabrication', group: :development
   gem 'accept_values_for'
   gem 'selenium-webdriver'
