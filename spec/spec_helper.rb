@@ -5,6 +5,7 @@ require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/rspec'
 require 'capybara/email/rspec'
+require 'capybara/wait_image'
 require 'accept_values_for'
 
 Capybara.server_port = 3002
