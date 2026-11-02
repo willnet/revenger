@@ -12,6 +12,8 @@ Capybara.server_port = 3002
 def create_options
   remote_debug = ENV.fetch('REMOTE_DEBUG', false)
   options = Selenium::WebDriver::Chrome::Options.new(logging_prefs: { browser: 'ALL' })
+  # Chrome's native leak warning can swallow WebDriver input without appearing in page screenshots.
+  options.add_preference('profile.password_manager_leak_detection', false)
   options.add_argument('--headless=new')
   options.add_argument('--disable-gpu')
   options.add_argument('--disable-dev-shm-usage')
