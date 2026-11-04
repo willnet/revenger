@@ -1,4 +1,10 @@
 module ApplicationHelper
+  def icon(name)
+    content_tag(:svg, class: "app-icon app-icon-#{name}", 'aria-hidden': true, focusable: false) do
+      tag.use(href: "#icon-#{name}")
+    end
+  end
+
   def title(name)
     content_for :title, name
   end

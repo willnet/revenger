@@ -3,9 +3,6 @@ Revenger.Views.Helper = {
     button
       .attr('data-behavior', '')
       .addClass('disabled');
-    const icon = button.find('i');
-    icon
-      .removeClass(icon.attr('class'))
-      .addClass('fas fa-sync-alt fa-spin');
+    button.find('.app-icon').replaceWith(Global.icon('spinner'));
   }
 };

@@ -7303,7 +7303,8 @@ h4 {
 
 /* line 73, /workspaces/revenger/app/assets/stylesheets/common.sass */
 a.brand {
-  font-family: "Gravitas One", cursive;
+  font-family: system-ui, sans-serif;
+  font-weight: bold;
 }
 
 /* line 76, /workspaces/revenger/app/assets/stylesheets/common.sass */

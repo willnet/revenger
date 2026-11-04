@@ -17,6 +17,9 @@ def create_options
   options.add_argument('--headless=new')
   options.add_argument('--disable-gpu')
   options.add_argument('--disable-dev-shm-usage')
+  # Chrome can return before navigation settles when renderer tasks are deferred after input.
+  # https://github.com/teamcapybara/capybara/issues/2800
+  options.add_argument('--disable-features=DeferRendererTasksAfterInput')
   options.add_argument('--no-sandbox')
   options.add_argument("--window-size=1400,1000")
   options.add_argument('--ignore-certificate-errors')
