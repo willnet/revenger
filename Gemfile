@@ -41,11 +41,11 @@ group :test do
   gem 'timecop'
   gem 'capybara'
   gem 'capybara-email'
-  gem 'capybara-wait_image'
+  gem 'capybara-simulated'
   gem 'ci_logger'
   gem 'fabrication', group: :development
   gem 'accept_values_for'
-  gem 'selenium-webdriver'
+  gem 'rusty_racer', '>= 0.2.1'
   gem 'rails-controller-testing'
   gem 'rspec-its'
   gem 'rspec_junit_formatter'

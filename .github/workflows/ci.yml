@@ -33,10 +33,10 @@ jobs:
       - name: Enable corepack
         run: corepack enable
 
-      - name: Install system fonts for screenshots
+      - name: Install system dependencies for system specs
         run: |
           sudo apt-get update
-          sudo apt-get install -y fonts-noto-cjk
+          sudo apt-get install -y libvips42 fontconfig fonts-noto-cjk
 
       - name: Install dependencies
         run: |

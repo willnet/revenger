@@ -42,7 +42,7 @@ This is a Ruby on Rails 7.2 app.
 - No enforced linter is currently configured in-repo; consistency with surrounding code is expected.
 
 ## Testing Guidelines
-- Use RSpec (`spec/spec_helper.rb`) with Capybara + Selenium headless for system specs.
+- Use RSpec (`spec/spec_helper.rb`) with capybara-simulated for system specs.
 - Name specs with `_spec.rb` and mirror the target path (`app/models/user.rb` -> `spec/models/user_spec.rb`).
 - Keep examples behavior-focused and deterministic; avoid external network dependencies.
 - If running from host, execute tests via `bin/dc exec --workspace-folder .`.

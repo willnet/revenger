@@ -10,7 +10,7 @@ RUN apt-get update -qq && \
     curl -sL https://deb.nodesource.com/setup_24.x | bash - && \
     apt-get update -qq && \
     DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
-    nodejs xvfb ca-certificates unzip build-essential vim chromium chromium-driver sqlite3 libsqlite3-dev libyaml-dev git fonts-liberation fonts-noto-cjk openssh-client pkg-config less
+    nodejs ca-certificates unzip build-essential vim libvips42 fontconfig sqlite3 libsqlite3-dev libyaml-dev git fonts-liberation fonts-noto-cjk openssh-client pkg-config less
 
 ARG USERNAME=vscode
 ARG USER_UID=1000
