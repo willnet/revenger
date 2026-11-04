@@ -5,35 +5,8 @@ require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/rspec'
 require 'capybara/email/rspec'
+require 'capybara/simulated'
 require 'accept_values_for'
-
-Capybara.server_port = 3002
-
-def create_options
-  remote_debug = ENV.fetch('REMOTE_DEBUG', false)
-  options = Selenium::WebDriver::Chrome::Options.new(logging_prefs: { browser: 'ALL' })
-  # Chrome's native leak warning can swallow WebDriver input without appearing in page screenshots.
-  options.add_preference('profile.password_manager_leak_detection', false)
-  options.add_argument('--headless=new')
-  options.add_argument('--disable-gpu')
-  options.add_argument('--disable-dev-shm-usage')
-  # Chrome can return before navigation settles when renderer tasks are deferred after input.
-  # https://github.com/teamcapybara/capybara/issues/2800
-  options.add_argument('--disable-features=DeferRendererTasksAfterInput')
-  options.add_argument('--no-sandbox')
-  options.add_argument("--window-size=1400,1000")
-  options.add_argument('--ignore-certificate-errors')
-  options.add_argument('--remote-debugging-port=9222') if remote_debug
-  options.add_argument('--remote-debugging-address=0.0.0.0') if remote_debug
-  options
-end
-
-# https://github.com/teamcapybara/capybara/blob/master/lib/capybara.rb#L477-L482
-Capybara.register_driver :selenium_chrome_headless do |app|
-  Capybara::Selenium::Driver.new(
-    app, browser: :chrome, timeout: 600, options: create_options
-  )
-end
 
 Capybara.default_max_wait_time = 5
 
@@ -46,8 +19,8 @@ ActiveRecord::Migration.maintain_test_schema!
 RSpec.configure do |config|
   config.mock_with :rspec
   config.use_transactional_fixtures = true
-  config.before(:example, type: :system) do |example|
-    driven_by :selenium_chrome_headless
+  config.before(:example, type: :system) do
+    driven_by :simulated
   end
 
   config.before(:each) do
