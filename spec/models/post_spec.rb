@@ -142,8 +142,20 @@ describe Post do
       end
     end
 
-    it 'アルファベットの検索がどうなるか' do
-      skip
+    context 'アルファベットで検索するとき' do
+      before do
+        %w[before-rails-after before-RAILS-after before-Rails-after before-ruby-after].each do |body|
+          Fabricate(:post, user: @user, body: body)
+        end
+      end
+
+      %w[rails RAILS Rails].each do |query|
+        it "#{query} を含む投稿が大文字・小文字を区別せず返ること" do
+          posts = Post.search_by_like(@user, {search: query})
+
+          expect(posts.map(&:body)).to match_array %w[before-rails-after before-RAILS-after before-Rails-after]
+        end
+      end
     end
   end
 end
