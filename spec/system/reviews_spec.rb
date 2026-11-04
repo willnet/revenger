@@ -21,6 +21,7 @@ describe "自分の書いた投稿を復習するために、レビュータブ�
       expect(page).to have_content '疲れた'
       expect(page).to have_css('[data-behavior=count]', text: '2')
       expect(page).to have_title 'レビュー (2) - revenger'
+      expect(page).to have_current_path review_path
     end
 
     it '編集リンクを押すと新しく編集用のフィールドが表示されること' do
@@ -45,6 +46,7 @@ describe "自分の書いた投稿を復習するために、レビュータブ�
       expect(page).to have_content '疲れた'
       expect(page).to have_css('[data-behavior=count]', text: '2')
       expect(page).to have_title 'レビュー (2) - revenger'
+      expect(page).to have_current_path review_path
     end
 
     it '編集して保存すると、同じメモを表示し、残件数を維持すること' do
@@ -129,15 +131,28 @@ describe "自分の書いた投稿を復習するために、レビュータブ�
       end
       expect(page).to have_no_css('[data-behavior=read]')
       expect(page).to have_title 'レビュー - revenger', exact: true
+      expect(page).to have_current_path review_path(completed: true)
       expect(@user.posts.reviewable).to be_empty
     end
 
-    it '最後のメモを削除した場合も完了メッセージが表示されること' do
-      3.times do |i|
+    it '最後の復習ノルマを削除した場合も完了メッセージが表示されること' do
+      Fabricate(:post, user: @user, body: 'まだ復習しないメモ', review_at: 1.day.from_now)
+      %w[曇り 疲れた 晴れた].each do |body|
         accept_confirm { find('[data-behavior=destroy]').click }
-        expect(page).to have_no_content ['曇り', '疲れた', '晴れた'][i]
+        expect(page).to have_no_content body
       end
       expect(page).to have_content '今日のレビューは終了です！お疲れ様でした'
+      expect(page).to have_title 'レビュー - revenger', exact: true
+      expect(page).to have_current_path review_path(completed: true)
+      expect(@user.posts.reviewable).to be_empty
+    end
+
+    it 'メモをすべて削除するとメモ作成の案内が表示されること' do
+      %w[曇り 疲れた 晴れた].each do |body|
+        accept_confirm { find('[data-behavior=destroy]').click }
+        expect(page).to have_no_content body
+      end
+      expect(page).to have_content 'あなたはメモを一つも作られていないようです'
       expect(page).to have_title 'レビュー - revenger', exact: true
       expect(@user.posts).to be_empty
     end

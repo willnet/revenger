@@ -3,13 +3,16 @@ class ApplicationController < ActionController::Base
 
   unless Rails.env.development?
     rescue_from Exception, with: :error500
-    rescue_from ActiveRecord::RecordNotFound, with: :error404
+    rescue_from ActiveRecord::RecordNotFound, ActionController::UnknownFormat, with: :error404
+    # UnknownFormat のサブクラスだが、テンプレートの書き忘れなのでエラーとして通知する。
+    rescue_from ActionController::MissingExactTemplate, with: :error500
   end
 
   layout -> { turbo_frame_request? ? 'turbo_rails/frame' : 'common' }
+  helper_method :reviewing?
 
   def error404
-    render 'error404', status: 404, formats: [:html]
+    render_error_page 'error404', 404
   end
 
   private
@@ -18,7 +21,24 @@ class ApplicationController < ActionController::Base
     Sentry.capture_exception(ex)
     logger.error ex.inspect
     logger.error ex.backtrace
-    render 'error500', status: 500, formats: [:html]
+    render_error_page 'error500', 500
+  end
+
+  # エラーページは対象のフレームを含まず画面全体に表示されるため、フレーム内のリクエストでもフレーム用のレイアウトを使わない。
+  def render_error_page(template, status)
+    render template, status: status, formats: [:html], layout: 'common'
+  end
+
+  def reviewing?(navigation = params)
+    navigation[:review].to_s == 'true'
+  end
+
+  def redirect_to_next_review
+    if current_user.posts.reviewable.exists?
+      redirect_to review_path, status: :see_other
+    else
+      redirect_to review_path(completed: true), status: :see_other
+    end
   end
 
   def after_sign_in_path_for(user)

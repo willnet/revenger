@@ -9,12 +9,12 @@
   <span class="badge badge-important" data-behavior="count"><%= @count %></span>
   件
   <%= render @post, navigation: { review: true } %>
-<% elsif params[:completed] == 'true' %>
-  <div class="post">今日のレビューは終了です！お疲れ様でした</div>
 <% elsif !current_user.posts.exists? %>
   <div class="post">
     あなたはメモを一つも作られていないようです。<%= link_to '新規作成', new_post_path %>をクリックして、新しい復習メモを作ってみましょう！
   </div>
+<% elsif params[:completed] == 'true' %>
+  <div class="post">今日のレビューは終了です！お疲れ様でした</div>
 <% else %>
   <div class="post">
     今のところ復習ノルマはありません。<%= link_to '一覧ページ', posts_path %>を眺めたり、<%= link_to '新規作成', new_post_path %>から新しい復習メモを作ったりしてみましょう！

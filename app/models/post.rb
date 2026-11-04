@@ -22,6 +22,15 @@ class Post < ActiveRecord::Base
   include ActiveModel::ForbiddenAttributesProtection
 
   MAX_BODY_LENGTH = 4000 # TODO
+  DURATIONS = {
+    1 => '1 day',
+    7 => '1 week',
+    14 => '2 week',
+    30 => '1 month',
+    90 => '3 months',
+    180 => '6 months',
+    365 => '1 year'
+  }.freeze
 
   belongs_to :user
 

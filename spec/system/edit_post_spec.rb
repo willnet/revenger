@@ -52,9 +52,22 @@ describe 'ユーザが自分の投稿を閲覧する', js: true do
     end
 
     it 'メモをすべて削除すると空の一覧の案内を表示すること' do
-      2.times { accept_confirm { first('[data-behavior=destroy]').click } }
+      %w[晴れた 雨みたい].each do |body|
+        accept_confirm { first('[data-behavior=destroy]').click }
+        expect(page).to have_no_content body
+      end
       expect(page).to have_content '投稿がありません'
       expect(page).to have_no_css('.post')
+    end
+
+    it '編集しようとしたメモが削除済みならエラーページを画面全体に表示すること' do
+      @user.posts.find_by!(body: '晴れた').destroy!
+      within first('turbo-frame[id^="post_"]') do
+        find('[data-behavior=edit]').click
+      end
+      expect(page).to have_content 'ご指定になったページは存在しません'
+      expect(page).to have_no_css('turbo-frame[id^="post_"]')
+      expect(page).to have_css('.navbar')
     end
 
     it '本文内のリンクから画面全体を遷移できること' do
@@ -63,6 +76,29 @@ describe 'ユーザが自分の投稿を閲覧する', js: true do
       click_link '書き方を確認'
       expect(page).to have_current_path help_path
       expect(page).to have_css('body.main_controller.help_action')
+    end
+
+    context '編集画面を画面全体で開いたとき' do
+      let(:note) { @user.posts.find_by!(body: '晴れた') }
+
+      before do
+        visit edit_post_path(note)
+      end
+
+      it '保存するとメモの画面に遷移すること' do
+        find('[data-behavior=body]').set '画面全体で編集した'
+        find('[data-behavior=update]').click
+        expect(page).to have_current_path post_path(note)
+        expect(page).to have_title 'メモ - revenger'
+        expect(page).to have_content '画面全体で編集した'
+      end
+
+      it 'キャンセルするとメモの画面に遷移すること' do
+        find('[data-behavior=cancel]').click
+        expect(page).to have_current_path post_path(note)
+        expect(page).to have_title 'メモ - revenger'
+        expect(page).to have_css('[data-behavior=view-element]')
+      end
     end
 
     context "一番上の投稿の編集リンクを押したとき" do

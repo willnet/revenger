@@ -14,7 +14,7 @@
         デフォルト復習間隔
       </div>
       <div class="controls">
-        <%= f.select(:default_duration, [1, 7, 14, 30, 90, 180, 365].map { |i| [i, i] }, {}, class: 'span1') %>
+        <%= f.select(:default_duration, Post::DURATIONS.keys, {}, class: 'span1') %>
         日
       </div>
     </div>

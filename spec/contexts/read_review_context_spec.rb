@@ -20,16 +20,27 @@ describe ReadReviewContext do
           )
         end
 
-        it '#next_review に次に復習すべき復習メモがセットされていること' do
-          context = ReadReviewContext.call(user, params)
-          expect(context.next_review).to eq @post2
-        end
-
         it 'post_id に指定されていた復習メモの #review_at が #duration 日後に設定されていること' do
           Timecop.freeze
           ReadReviewContext.call(user, params)
           post = @post3.reload
           expect(post.review_at).to be_the_same_time_as post.duration.days.from_now
+        end
+      end
+
+      context 'かつ復習間隔が送信されていないとき' do
+        let(:params) { ActionController::Parameters.new(review: { post_id: @post3.id }) }
+
+        before do
+          @post3.update!(duration: 3)
+        end
+
+        it '現在の復習間隔で次回のレビューを予約すること' do
+          Timecop.freeze
+          ReadReviewContext.call(user, params)
+          post = @post3.reload
+          expect(post.duration).to eq 3
+          expect(post.review_at).to be_the_same_time_as 3.days.from_now
         end
       end
     end

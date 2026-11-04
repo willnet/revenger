@@ -8,6 +8,6 @@ class ReviewsController < ApplicationController
 
   def create
     ReadReviewContext.call(current_user, params)
-    redirect_to review_path(completed: true), status: :see_other
+    redirect_to_next_review
   end
 end

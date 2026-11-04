@@ -1,5 +1,5 @@
 <% navigation = local_assigns.fetch(:navigation, {}) %>
-<% reviewing = navigation[:review].to_s == 'true' %>
+<% reviewing = reviewing?(navigation) %>
 <%= turbo_frame_tag post, target: '_top', data: { controller: reviewing ? 'review' : nil, post_list_target: 'post', post_id: post.id } do %>
   <div class="post">
     <% if reviewing %>
