@@ -1,4 +1,5 @@
 <% title 'ログイン - revenger' %>
+<% turbo_page_requires_reload if turbo_frame_request? %>
 
 <%= form_for(resource, as: resource_name, url: login_path, html: { class: 'form-horizontal' }) do |f| %>
   <fieldset>

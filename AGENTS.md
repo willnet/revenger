@@ -24,15 +24,15 @@ This is a Ruby on Rails 7.2 app.
 - Tests live in `spec/` (`models/`, `controllers/`, `system/`, `mailers/`, `contexts/`, `routing/`, plus `support/`).
 - DB schema, migrations, and seed data are in `db/`.
 - App/runtime config is in `config/`; custom rake tasks are in `lib/tasks/`.
-- Frontend assets are managed in `app/assets/` and `vendor/assets/` (Sprockets + Yarn dependencies).
+- Frontend assets use Sprockets and importmap-rails. JavaScript lives in `app/javascript/`; Turbo and Stimulus are provided by gems.
 
 ## Build, Test, and Development Commands
-- `bin/setup`: install gems/node packages, prepare DB, clear logs/tmp, and optionally boot server.
+- `bin/setup`: install gems, prepare DB, clear logs/tmp, and optionally boot server.
 - `bin/dev`: run the Rails server locally.
 - `bin/rails db:prepare`: create/migrate DB for local development.
 - `bundle exec rspec` or `bin/rspec`: run all tests.
 - `bundle exec rspec spec/system/login_spec.rb`: run one spec file.
-- CI baseline (from `.github/workflows/ci.yml`): `bundle install`, `yarn install`, `bundle exec rake db:create db:schema:load RAILS_ENV=test`, `bundle exec rspec`.
+- CI baseline (from `.github/workflows/ci.yml`): `bundle install`, `bundle exec rake db:create db:schema:load RAILS_ENV=test`, `bundle exec rspec`.
 - When outside Dev Container, run these via `bin/dc exec --workspace-folder . ...`.
 
 ## Coding Style & Naming Conventions

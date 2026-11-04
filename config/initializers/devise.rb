@@ -7,6 +7,8 @@ Devise.setup do |config|
     config.secret_key = 'dummy'
   end
   config.reconfirmable = true
+  config.responder.error_status = :unprocessable_content
+  config.responder.redirect_status = :see_other
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in DeviseMailer.
   config.mailer_sender = "noreply@revenger.in"

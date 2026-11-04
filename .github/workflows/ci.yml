@@ -30,9 +30,6 @@ jobs:
         with:
           node-version: '24'
 
-      - name: Enable corepack
-        run: corepack enable
-
       - name: Install system dependencies for system specs
         run: |
           sudo apt-get update
@@ -41,7 +38,6 @@ jobs:
       - name: Install dependencies
         run: |
           bundle install
-          yarn install
 
       - name: Setup database
         run: bundle exec rake db:create db:schema:load RAILS_ENV=test

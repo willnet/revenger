@@ -1,0 +1,15 @@
+<%= turbo_stream.remove @post %>
+<% if @new_posts.any? %>
+  <%= turbo_stream.append 'post-list', partial: 'posts/post', collection: @new_posts, locals: { navigation: post_navigation_params } %>
+<% end %>
+<%= turbo_stream.update 'posts_empty' do %>
+  <% if @remaining_post_ids.empty? && @posts.empty? %>
+    投稿がありません
+  <% end %>
+<% end %>
+<%= turbo_stream.update 'posts_pagination_top' do %>
+  <%= render 'pagination', posts: @posts %>
+<% end %>
+<%= turbo_stream.update 'posts_pagination_bottom' do %>
+  <%= render 'pagination', posts: @posts %>
+<% end %>

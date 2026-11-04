@@ -6,6 +6,10 @@ Revenger is for reviewing your notes frequently.
 
 - use devcontainers
 
+JavaScript is loaded with importmap-rails. Turbo and Stimulus are provided by the
+turbo-rails and stimulus-rails gems, so no npm packages are needed. Node.js is used
+by ExecJS during asset precompilation.
+
 ## Develop with Git Worktree
 
 Use `bin/dc` to run Dev Container commands. It automatically derives `COMPOSE_PROJECT_NAME`

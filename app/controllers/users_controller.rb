@@ -32,11 +32,11 @@ class UsersController < ApplicationController
   def destroy
     unless current_user.valid_password? params[:password]
       flash.now[:alert] = 'パスワードが間違っています'
-      render 'retire'
+      render 'retire', status: :unprocessable_content
       return
     end
     current_user.destroy
     sign_out
-    redirect_to root_path, notice: '退会しました'
+    redirect_to root_path, notice: '退会しました', status: :see_other
   end
 end

@@ -6,12 +6,9 @@ Rails.application.routes.draw do
   get 'privacy' => 'main#privacy'
   get 'terms' => 'main#terms'
 
-  resources :posts, except: :edit
+  resources :posts
 
-  resource :review, only: [:show, :create] do
-    get :next
-    get :count
-  end
+  resource :review, only: [:show, :create]
 
   get 'user/retire' => 'users#retire'
   delete 'user' => 'users#destroy'

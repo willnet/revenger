@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
     rescue_from ActiveRecord::RecordNotFound, with: :error404
   end
 
-  layout 'common'
+  layout -> { turbo_frame_request? ? 'turbo_rails/frame' : 'common' }
 
   def error404
     render 'error404', status: 404, formats: [:html]

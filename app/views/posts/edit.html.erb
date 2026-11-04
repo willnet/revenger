@@ -1,0 +1,19 @@
+<% title '編集 - revenger' %>
+
+<%= turbo_frame_tag @post, target: '_top', data: { controller: params[:review] == 'true' ? 'review' : nil } do %>
+  <div class="post">
+    <%= form_with model: @post, url: post_path(@post, post_navigation_params), html: { class: 'edit', data: { behavior: 'edit-element', turbo_frame: dom_id(@post) } } do |f| %>
+      <%= render 'errors', model: @post %>
+      <%= render 'duration', f: f, post: @post, reviewing: params[:review] == 'true' %>
+      <span class="manage pull-right">
+        <%= link_to post_path(@post, post_navigation_params), class: 'btn btn-small', data: { behavior: 'cancel', turbo_frame: dom_id(@post) } do %>
+          <%= icon('ban') %> cancel
+        <% end %>
+        <%= button_tag type: 'submit', class: 'btn btn-small btn-success', data: { behavior: 'update', turbo_submits_with: 'updating…' } do %>
+          <%= icon('upload') %> update!
+        <% end %>
+      </span>
+      <%= f.text_area :body, id: dom_id(@post, :body), class: 'body', aria: { label: '本文' }, data: { behavior: 'body' } %>
+    <% end %>
+  </div>
+<% end %>

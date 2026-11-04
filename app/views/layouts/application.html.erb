@@ -3,15 +3,10 @@
   <head>
     <meta charset="UTF-8">
     <title><%= content_for?(:title) ? yield(:title) : 'revenger - 復習用メモサービス' %></title>
-    <%= javascript_include_tag :application %>
-    <%= content_for?(:javascript) ? yield(:javascript) : '' %>
-    <%= stylesheet_link_tag :application %>
-    <%= cloudflare_turnstile_script_tag %>
+    <%= yield :head %>
+    <%= javascript_importmap_tags %>
+    <%= stylesheet_link_tag :application, 'data-turbo-track': 'reload' %>
     <%= csrf_meta_tags %>
-    <script>
-      I18n.defaultLocale = <%= I18n.default_locale.to_json.html_safe %>;
-      I18n.locale = <%= I18n.locale.to_json.html_safe %>;
-    </script>
   </head>
   <body class="<%= params[:controller] %>_controller <%= params[:action] %>_action">
     <%= render 'layouts/icons' %>
@@ -29,8 +24,8 @@
                   <li class="<%= current_page?(review_path) && 'active' %>"><%= link_to safe_join([icon('repeat'), ' レビュー']), review_path %></li>
                   <li class="<%= controller_name == 'posts' && (action_name == 'index' || action_name == 'show') && 'active' %>"><%= link_to safe_join([icon('book'), ' 一覧']), posts_path %></li>
                   <li class="<%= controller_name == 'posts' && (action_name == 'new' || action_name == 'create') && 'active' %>"><%= link_to safe_join([icon('pencil'), ' 新規作成']), new_post_path %></li>
-                  <li class="dropdown <%= (controller_name == 'registrations' && (action_name.in? %w[edit retire]) || controller_name == 'durations') && 'active' %>">
-                    <%= link_to safe_join([icon('settings'), ' 設定 ', content_tag(:b, '', class: 'caret')]), '#', class: 'dropdown-toggle', 'data-toggle' => 'dropdown' %>
+                  <li class="dropdown <%= (controller_name == 'registrations' && (action_name.in? %w[edit retire]) || controller_name == 'durations') && 'active' %>" data-controller="dropdown" data-action="click@window->dropdown#close keydown.esc@window->dropdown#close">
+                    <%= link_to safe_join([icon('settings'), ' 設定 ', content_tag(:b, '', class: 'caret')]), '#', class: 'dropdown-toggle', role: 'button', aria: { expanded: false }, data: { dropdown_target: 'toggle', action: 'dropdown#toggle:prevent:stop' } %>
                     <ul class="dropdown-menu">
                       <li><%= link_to 'ユーザ情報', edit_user_path %></li>
                       <li><%= link_to 'デフォルト復習間隔', edit_duration_path %></li>
@@ -42,7 +37,7 @@
                 <ul class="nav pull-right">
                   <li class="divider-vertical"></li>
                   <li class="<%= current_page?(help_path) && 'active' %>"><%= link_to safe_join([icon('help'), ' ヘルプ']), help_path %></li>
-                  <li><%= link_to safe_join([icon('log-out'), ' ログアウト']), logout_path %></li>
+                  <li><%= link_to safe_join([icon('log-out'), ' ログアウト']), logout_path, data: { turbo: false } %></li>
                 </ul>
               <% else %>
                 <ul class="nav pull-right">

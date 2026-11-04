@@ -10,7 +10,7 @@
   </legend>
   <%= render 'errors', model: @post %>
   <%= f.text_area :body, id: 'post_body' %>
-  <%= button_tag type: 'submit', class: 'btn btn-success', data: { disable_with: "#{icon('spinner')} create!" } do %>
+  <%= button_tag type: 'submit', class: 'btn btn-success', data: { turbo_submits_with: 'creating…' } do %>
     <%= icon('check-circle') %>
     create!
   <% end %>

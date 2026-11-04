@@ -9,16 +9,10 @@ module ApplicationHelper
     content_for :title, name
   end
 
-  def javascript(&)
-    content_for :javascript do
-      javascript_tag(&)
-    end
-  end
-
   def flash_messages
     rv = ''
     flash.each do |name, msg|
-      klass = case name
+      klass = case name.to_sym
               when :notice
                 'alert alert-success fade in flash'
               when :alert
@@ -26,8 +20,10 @@ module ApplicationHelper
               else
                 'alert alert-info fade in flash'
               end
-      rv << content_tag(:div, id: 'flash', class: klass) do
-        "<div class='container'><a href='#' class='close' data-dismiss='alert' data-target='.alert.flash'>&times;</a>#{msg}</div>".html_safe
+      data = { controller: 'alert', turbo_temporary: true }
+      data[:alert_dismiss_after_value] = 5000 if name.to_sym == :notice
+      rv << content_tag(:div, id: 'flash', class: klass, data: data) do
+        "<div class='container'><a href='#' class='close' aria-label='通知を閉じる' data-action='alert#close:prevent'>&times;</a>#{msg}</div>".html_safe
       end
     end
     rv.html_safe
