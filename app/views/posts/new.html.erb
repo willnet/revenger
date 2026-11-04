@@ -10,8 +10,8 @@
   </legend>
   <%= render 'errors', model: @post %>
   <%= f.text_area :body, id: 'post_body' %>
-  <button class="btn btn-success" type="submit" data-disable-with="<i class='fas fa-sync-alt fa-spin'></i> create!">
-    <i class="fas fa-check-circle"></i>
+  <%= button_tag type: 'submit', class: 'btn btn-success', data: { disable_with: "#{icon('spinner')} create!" } do %>
+    <%= icon('check-circle') %>
     create!
-  </button>
+  <% end %>
 <% end %>

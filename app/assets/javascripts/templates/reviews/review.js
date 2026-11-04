@@ -4,7 +4,7 @@ window.JST['reviews/review'] = function(context) {
   return '<div class="post">' +
          '  <span class="common">' +
          '    <a id="read" class="btn btn-primary" data-behavior="read">' +
-         '      <i class="fas fa-check"></i> ' +
+         '      ' + Global.icon('check') + ' ' +
          '      read it!' +
          '    </a>' +
          '    <div class="duration btn-group" data-toggle="buttons-radio" data-behavior="duration">' +
@@ -21,11 +21,11 @@ window.JST['reviews/review'] = function(context) {
          '  <span class="view" data-behavior="view-element">' +
          '    <span class="manage pull-right">' +
          '      <a class="btn btn-small btn-success" data-behavior="edit">' +
-         '        <i class="fas fa-edit"></i> ' +
+         '        ' + Global.icon('pencil') + ' ' +
          '        edit' +
          '      </a>' +
          '      <a class="btn btn-small btn-danger" data-behavior="destroy">' +
-         '        <i class="fas fa-trash"></i> ' +
+         '        ' + Global.icon('trash') + ' ' +
          '        delete' +
          '      </a>' +
          '    </span>' +
@@ -35,7 +35,7 @@ window.JST['reviews/review'] = function(context) {
          '  <span class="edit" data-behavior="edit-element">' +
          '    <span class="manage pull-right">' +
          '      <a class="btn btn-small" data-behavior="cancel">' +
-         '        <i class="fas fa-ban"></i> ' +
+         '        ' + Global.icon('ban') + ' ' +
          '        cancel' +
          '      </a>' +
          '      ' + JST['posts/update_button']() +
