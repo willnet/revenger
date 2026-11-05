@@ -7,8 +7,8 @@ Revenger is for reviewing your notes frequently.
 - use devcontainers
 
 JavaScript is loaded with importmap-rails. Turbo and Stimulus are provided by the
-turbo-rails and stimulus-rails gems, so no npm packages are needed. Node.js is used
-by ExecJS during asset precompilation.
+turbo-rails and stimulus-rails gems. Asset precompilation runs entirely in Ruby,
+without Node.js or npm packages.
 
 ## Develop with Git Worktree
 

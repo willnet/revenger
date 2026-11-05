@@ -132,7 +132,6 @@ GEM
     erubi (1.13.1)
     et-orbi (1.4.0)
       tzinfo
-    execjs (2.10.0)
     fabrication (3.0.0)
     faraday (2.14.0)
       faraday-net_http (>= 2.0, < 3.5)
@@ -413,8 +412,6 @@ GEM
     stimulus-rails (1.3.4)
       railties (>= 6.0.0)
     stringio (3.2.0)
-    terser (1.2.6)
-      execjs (>= 0.3.0, < 3)
     thor (1.5.0)
     thruster (0.1.18-aarch64-linux)
     thruster (0.1.18-arm64-darwin)
@@ -455,7 +452,6 @@ DEPENDENCIES
   capybara-simulated
   ci_logger
   devise
-  execjs
   fabrication
   importmap-rails
   kamal
@@ -482,7 +478,6 @@ DEPENDENCIES
   sprockets-rails
   sqlite3 (~> 2.9.0)
   stimulus-rails
-  terser
   thruster
   timecop
   turbo-rails
