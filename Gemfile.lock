@@ -231,6 +231,7 @@ GEM
     minitest (6.0.1)
       prism (~> 1.5)
     msgpack (1.8.0)
+    mutineer (1.8.1)
     net-http (0.9.1)
       uri (>= 0.11.1)
     net-imap (0.6.2)
@@ -458,6 +459,7 @@ DEPENDENCIES
   kaminari
   letter_opener_web
   litestream
+  mutineer
   puma
   pygments.rb
   rails (~> 8.1.4, >= 8.1.4.1)

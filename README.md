@@ -38,6 +38,32 @@ eval "$(bin/devcontainer-env --export)"
 docker compose -f .devcontainer/compose.yaml down -v
 ```
 
+## Mutation testing
+
+[Mutineer](https://davidteren.github.io/mutineer/) checks whether the unit tests
+detect changed comparisons, literals, and conditions. Run it inside the Dev Container:
+
+```sh
+bin/dc exec --workspace-folder . bin/mutineer run app/models app/contexts
+```
+
+Source files are paired with their corresponding specs. To focus on one model:
+
+```sh
+bin/dc exec --workspace-folder . bin/mutineer run app/models/post.rb
+```
+
+`bin/mutineer` selects the test environment and disables Bootsnap because its
+compile cache conflicts with coverage collection. Rails is booted once, and
+mutations run serially because the RSpec tests share the test database.
+Run mutation testing separately from other test runs.
+Reports and caches are ignored under `.mutineer/`; save a report with
+`--format json --output .mutineer/report.json`.
+
+Review survivors for missing behaviour before adding tests. Mutineer generates
+mutations inside methods; class-level validation limits and comparisons inside
+SQL strings need separate verification.
+
 ## SQLite backup with Litestream (S3)
 
 Production continuously replicates both SQLite databases to S3 using Litestream:
