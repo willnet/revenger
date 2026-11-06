@@ -26,6 +26,20 @@
 require 'spec_helper'
 
 describe User do
+  describe '#reviewable_posts' do
+    it '自分の投稿のうち現在時刻より前に復習予定のあるものだけを返すこと' do
+      Timecop.freeze(Time.zone.local(2026, 11, 6, 12))
+      user = Fabricate(:user)
+      overdue_post = Fabricate(:post, user: user, review_at: 1.second.ago)
+      Fabricate(:post, user: user, review_at: Time.zone.now)
+      Fabricate(:post, user: user, review_at: 1.second.from_now)
+      Fabricate(:post, user: user, review_at: nil)
+      Fabricate(:post, review_at: 1.second.ago)
+
+      expect(user.reviewable_posts).to contain_exactly(overdue_post)
+    end
+  end
+
   describe 'before_create :build_initial_posts' do
     context "新しく User が作成されたとき" do
       it '#posts に二件データが作成されていること' do

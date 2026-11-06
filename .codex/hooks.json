@@ -1,0 +1,18 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [{
+      "hooks": [{
+        "type": "command",
+        "command": "root=\"$PWD\"; while [ ! -f \"$root/scripts/check_test_boundaries.rb\" ] && [ \"$root\" != / ]; do root=\"$(dirname \"$root\")\"; done; \"$root/bin/check-test-boundaries\" --hook-start",
+        "timeout": 30
+      }]
+    }],
+    "Stop": [{
+      "hooks": [{
+        "type": "command",
+        "command": "root=\"$PWD\"; while [ ! -f \"$root/scripts/check_test_boundaries.rb\" ] && [ \"$root\" != / ]; do root=\"$(dirname \"$root\")\"; done; \"$root/bin/check-test-boundaries\" --hook-stop",
+        "timeout": 30
+      }]
+    }]
+  }
+}

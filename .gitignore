@@ -14,6 +14,8 @@ solr/pids
 *.pid
 public/assets
 coverage
+.mutineer/
+.mutineer_mutant*.rb
 .env
 node_modules
 db/*.sqlite3*
