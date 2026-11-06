@@ -4,7 +4,7 @@ ENV BINDING="0.0.0.0"
 
 RUN apt-get update -qq && \
     DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
-    curl ca-certificates unzip build-essential vim libvips42 fontconfig sqlite3 libsqlite3-dev libyaml-dev git fonts-liberation fonts-noto-cjk openssh-client pkg-config less
+    curl ca-certificates unzip build-essential vim libvips42 fontconfig sqlite3 libsqlite3-dev libyaml-dev git fonts-liberation fonts-noto-cjk openssh-client pkg-config less python3
 
 ARG USERNAME=vscode
 ARG USER_UID=1000

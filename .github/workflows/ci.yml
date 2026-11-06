@@ -40,6 +40,12 @@ jobs:
       - name: Run RSpec tests
         run: bundle exec rspec
 
+      - name: Check boundary hook behaviour
+        run: python3 -m unittest discover -s scripts/tests
+
+      - name: Check test boundaries with Mutineer
+        run: python3 scripts/check_test_boundaries.py --run --local
+
       - name: Upload test artifacts
         if: failure()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
@@ -49,6 +55,7 @@ jobs:
           path: |
             tmp/capybara
             log
+            .mutineer/boundary-report.json
 
   zizmor:
     runs-on: ubuntu-latest

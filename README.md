@@ -64,6 +64,39 @@ Review survivors for missing behaviour before adding tests. Mutineer generates
 mutations inside methods; class-level validation limits and comparisons inside
 SQL strings need separate verification.
 
+### AI completion hooks
+
+Codex (`.codex/hooks.json`) and Claude Code (`.claude/settings.json`) call the same
+Stop hook. Instructions are shared through `AGENTS.md`; no `CLAUDE.md` is needed
+with Claude Code 2.1.277 or later and its default AGENTS.md loading enabled.
+Review and trust the hooks in each client before using them. Codex exposes this
+through `/hooks` or Settings > Hooks; Claude Code exposes `/hooks`.
+
+The hook compares committed branch changes, staged/unstaged changes, and untracked
+files against the merge base with `origin/main`. Fetch that ref before starting.
+Relevant model/context, test support, configuration, and dependency changes require:
+
+```sh
+python3 scripts/check_test_boundaries.py --run
+```
+
+This host-side Python 3 command invokes the Dev Container automatically. Inside
+the container, or in a prepared CI Ruby environment, use `--run --local`.
+It scans the full models/contexts scope even for spec-only changes, validates the
+JSON verdicts, and records a fingerprint of source, specs, configuration, and
+dependencies. Further edits invalidate the record. Empty/unscored runs, ignored
+mutants, survivors, uncovered code, and execution errors do not count as success.
+Reports and records remain under `.mutineer/`.
+
+The Stop hook asks the agent to continue once. If the check remains unresolved
+on the continued turn, it emits a warning and permits stopping so the agent can
+report the blocker. It is a local reminder, not a merge gate. Constants and SQL
+comparisons still require separate review. Only the configured mutation operators
+are checked; use focused additional operators when a boundary needs them.
+CI runs the same checker in its prepared Ruby environment and retains the report
+on failure. Unlike the local reminder, a failing check prevents the CI test job
+from passing.
+
 ## SQLite backup with Litestream (S3)
 
 Production continuously replicates both SQLite databases to S3 using Litestream:
