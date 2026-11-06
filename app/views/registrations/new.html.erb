@@ -1,6 +1,11 @@
 <% title "#{t :sign_up, scope: ['misc']} - revenger" %>
+<% turbo_page_requires_reload %>
+<% content_for :head do %>
+  <%= cloudflare_turnstile_script_tag %>
+<% end %>
 
-<%= form_for(resource, as: resource_name, url: user_path, html: { class: 'form-horizontal' }) do |f| %>
+<%# Turnstile の暗黙的な初期化はページ全体の読み込みを必要とする。 %>
+<%= form_for(resource, as: resource_name, url: user_path, html: { class: 'form-horizontal', data: { turbo: false } }) do |f| %>
   <fieldset>
     <legend><%= t :sign_up, scope: ['misc'] %></legend>
     <%= render 'errors', model: resource %>

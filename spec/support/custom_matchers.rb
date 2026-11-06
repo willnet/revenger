@@ -1,7 +1,7 @@
 RSpec::Matchers.define :have_bodies do |bodies|
   match do |page|
     page_bodies = page.all('.post .body').map { |body| body.text.gsub(/\s/, "") }
-    page_bodies.each_with_index.all? do |page_body, i|
+    page_bodies.length == bodies.length && page_bodies.each_with_index.all? do |page_body, i|
       page_body =~ /#{bodies[i]}/
     end
   end

@@ -1,7 +1,7 @@
 <% title '退会 - revenger' %>
 
 <div class="well">
-  <%= form_tag user_path, method: :delete, class: 'form-horizontal' do %>
+  <%= form_tag user_path, method: :delete, class: 'form-horizontal', data: { turbo_confirm: '本当に退会しますか？' } do %>
     <legend>
       退会
     </legend>
@@ -13,7 +13,7 @@
       </div>
     </div>
     <div class="control-group form-actions">
-      <%= submit_tag '退会する', data: { confirm: '本当に退会しますか？' }, class: 'btn btn-danger' %>
+      <%= submit_tag '退会する', class: 'btn btn-danger' %>
     </div>
   <% end %>
 </div>

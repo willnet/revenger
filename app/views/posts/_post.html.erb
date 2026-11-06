@@ -1,0 +1,27 @@
+<% navigation = local_assigns.fetch(:navigation, {}) %>
+<% reviewing = reviewing?(navigation) %>
+<%= turbo_frame_tag post, target: '_top', data: { controller: reviewing ? 'review' : nil, post_list_target: 'post', post_id: post.id } do %>
+  <div class="post">
+    <% if reviewing %>
+      <%= form_with model: post, scope: :review, url: review_path, method: :post, data: { turbo_frame: '_top', turbo_action: 'replace' }, html: { class: 'review-form' } do |f| %>
+        <%= f.hidden_field :post_id, value: post.id %>
+        <%= button_tag type: 'submit', id: 'read', class: 'btn btn-primary', data: { behavior: 'read', turbo_submits_with: 'reading…' } do %>
+          <%= icon('check') %> read it!
+        <% end %>
+        <%= render 'posts/duration', f: f, post: post, reviewing: true %>
+      <% end %>
+    <% end %>
+    <div class="view" data-behavior="view-element">
+      <div class="manage pull-right">
+        <%= link_to edit_post_path(post, navigation), class: 'btn btn-small btn-success', data: { behavior: 'edit', turbo_frame: dom_id(post) } do %>
+          <%= icon('pencil') %> edit
+        <% end %>
+        <%= button_to post_path(post, navigation), method: :delete, class: 'btn btn-small btn-danger', data: { behavior: 'destroy', turbo_submits_with: 'deleting…' }, form: { data: { action: reviewing ? nil : 'submit->post-list#prepareDelete', turbo_confirm: '本当に削除して宜しいですか？', turbo_frame: '_top', turbo_action: 'replace' } } do %>
+          <%= icon('trash') %> delete
+        <% end %>
+      </div>
+      <div class="body"><%= markdown(post.body) %></div>
+      <div class="info">作成: <%= post.created_at.strftime('%Y/%m/%d %H:%M') %> 更新: <%= post.updated_at.strftime('%Y/%m/%d %H:%M') %></div>
+    </div>
+  </div>
+<% end %>

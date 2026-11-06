@@ -9,8 +9,9 @@ class RemindersController < ApplicationController
     @user = current_user
     @user.receive_reminder = params[:user][:receive_reminder]
     if @user.save
-      flash.now[:notice] = '更新しました'
+      redirect_to edit_reminder_path, notice: '更新しました', status: :see_other
+    else
+      render :edit, status: :unprocessable_content
     end
-    render action: :edit
   end
 end

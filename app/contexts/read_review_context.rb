@@ -1,6 +1,4 @@
 class ReadReviewContext
-  attr_reader :next_review
-
   def initialize(user, params)
     @user = user
     @params = params
@@ -12,10 +10,9 @@ class ReadReviewContext
 
   def call
     reviewing = @user.posts.find(@params[:review][:post_id])
-    reviewing.duration = @params[:review][:duration]
+    # 復習間隔の選択肢にない値のメモはどれも選択されずに送信されるため、未送信なら現在の間隔を維持する。
+    reviewing.duration = @params[:review][:duration] if @params[:review].key?(:duration)
     reviewing.refresh_review_at
     reviewing.save!
-    @next_review = @user.posts.will_be_reviewed.first
-    self
   end
 end

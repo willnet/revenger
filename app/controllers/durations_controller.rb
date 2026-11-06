@@ -9,8 +9,9 @@ class DurationsController < ApplicationController
     @user = current_user
     @user.default_duration = params[:user][:default_duration]
     if @user.save
-      flash.now[:notice] = '更新しました'
+      redirect_to edit_duration_path, notice: '更新しました', status: :see_other
+    else
+      render :edit, status: :unprocessable_content
     end
-    render action: :edit
   end
 end

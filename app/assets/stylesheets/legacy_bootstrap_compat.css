@@ -2,6 +2,6 @@
   display: block;
 }
 
-[data-spy="affix"].affix {
+[data-scrollspy-target="navigation"].affix {
   top: 20px;
 }

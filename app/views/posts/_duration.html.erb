@@ -1,0 +1,8 @@
+<% duration_data = local_assigns[:reviewing] ? { review_target: 'duration', action: 'change->review#selectDuration' } : {} %>
+<div class="duration btn-group" role="group" aria-label="復習間隔" data-behavior="duration">
+  <% [[nil, 'no more'], *Post::DURATIONS].each do |value, label| %>
+    <% id = "#{f.object_name}_#{post.id}_duration_#{value || 'none'}" %>
+    <%= f.radio_button :duration, value.to_s, id: id, checked: post.duration == value, data: duration_data %>
+    <%= label_tag id, label, class: 'btn btn-small' %>
+  <% end %>
+</div>

@@ -1,18 +1,18 @@
 <% title 'ヘルプ - revenger' %>
 
-<div class="row">
+<div class="row" data-controller="scrollspy" data-action="scroll@window->scrollspy#refresh resize@window->scrollspy#measure">
   <div class="span4">
-    <div class="well" data-spy="affix">
+    <div class="well" data-scrollspy-target="navigation">
       <ul class="nav nav-list">
-        <li><a href="#revenger">revenger とは</a></li>
-        <li><a href="#how-to-use">revenger の使い方</a></li>
-        <li><a href="#memo">復習メモとは</a></li>
-        <li><a href="#review-page">レビューページとは</a></li>
-        <li><a href="#how-to-write">復習メモの書き方</a></li>
-        <li><a href="#norma">復習ノルマとは</a></li>
-        <li><a href="#duration">復習間隔とは</a></li>
-        <li><a href="#remind-mail">リマインドメール</a></li>
-        <li><a href="#env">推奨環境</a></li>
+        <li><a href="#revenger" data-scrollspy-target="link">revenger とは</a></li>
+        <li><a href="#how-to-use" data-scrollspy-target="link">revenger の使い方</a></li>
+        <li><a href="#memo" data-scrollspy-target="link">復習メモとは</a></li>
+        <li><a href="#review-page" data-scrollspy-target="link">レビューページとは</a></li>
+        <li><a href="#how-to-write" data-scrollspy-target="link">復習メモの書き方</a></li>
+        <li><a href="#norma" data-scrollspy-target="link">復習ノルマとは</a></li>
+        <li><a href="#duration" data-scrollspy-target="link">復習間隔とは</a></li>
+        <li><a href="#remind-mail" data-scrollspy-target="link">リマインドメール</a></li>
+        <li><a href="#env" data-scrollspy-target="link">推奨環境</a></li>
       </ul>
     </div>
   </div>

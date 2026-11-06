@@ -25,14 +25,6 @@ jobs:
         with:
           bundler-cache: true
 
-      - name: Set up Node.js
-        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
-        with:
-          node-version: '24'
-
-      - name: Enable corepack
-        run: corepack enable
-
       - name: Install system dependencies for system specs
         run: |
           sudo apt-get update
@@ -41,7 +33,6 @@ jobs:
       - name: Install dependencies
         run: |
           bundle install
-          yarn install
 
       - name: Setup database
         run: bundle exec rake db:create db:schema:load RAILS_ENV=test
