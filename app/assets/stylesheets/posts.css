@@ -2,6 +2,10 @@ turbo-frame {
   display: block;
 }
 
+#post_body {
+  height: 300px;
+}
+
 body.posts_controller .post .edit,
 body.reviews_controller .post .edit {
   display: block;
