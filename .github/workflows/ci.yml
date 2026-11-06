@@ -19,6 +19,7 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+          fetch-depth: 0
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@7f797815d8adceb1c412e7abefdd1ab4abc47a5f # v1.335.0
@@ -40,11 +41,12 @@ jobs:
       - name: Run RSpec tests
         run: bundle exec rspec
 
-      - name: Check boundary hook behaviour
-        run: python3 -m unittest discover -s scripts/tests
-
       - name: Check test boundaries with Mutineer
-        run: python3 scripts/check_test_boundaries.py --run --local
+        if: github.event_name == 'pull_request'
+        timeout-minutes: 10
+        env:
+          BOUNDARY_BASE_REF: ${{ github.event.pull_request.base.sha }}
+        run: bin/check-test-boundaries --local --ci
 
       - name: Upload test artifacts
         if: failure()
@@ -56,6 +58,7 @@ jobs:
             tmp/capybara
             log
             .mutineer/boundary-report.json
+            .mutineer/boundary-run.log
 
   zizmor:
     runs-on: ubuntu-latest

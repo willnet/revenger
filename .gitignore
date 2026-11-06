@@ -15,7 +15,7 @@ solr/pids
 public/assets
 coverage
 .mutineer/
-__pycache__/
+.mutineer_mutant*.rb
 .env
 node_modules
 db/*.sqlite3*

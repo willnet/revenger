@@ -66,36 +66,52 @@ SQL strings need separate verification.
 
 ### AI completion hooks
 
-Codex (`.codex/hooks.json`) and Claude Code (`.claude/settings.json`) call the same
-Stop hook. Instructions are shared through `AGENTS.md`; no `CLAUDE.md` is needed
-with Claude Code 2.1.277 or later and its default AGENTS.md loading enabled.
-Review and trust the hooks in each client before using them. Codex exposes this
-through `/hooks` or Settings > Hooks; Claude Code exposes `/hooks`.
+Codex (`.codex/hooks.json`) and Claude Code (`.claude/settings.json`) share
+Ruby checks and the instructions in `AGENTS.md`; no `CLAUDE.md` is needed with
+Claude Code 2.1.277 or later and AGENTS.md loading enabled. Review the hook
+definitions in each client before trusting them.
 
-The hook compares committed branch changes, staged/unstaged changes, and untracked
-files against the merge base with `origin/main`. Fetch that ref before starting.
-Relevant model/context, test support, configuration, and dependency changes require:
+`UserPromptSubmit` records file hashes for that session. `Stop` compares the
+current files with that snapshot, so read-only questions and documentation-only
+edits do not trigger mutation testing. Local hooks do not need Git, `origin/main`,
+or a working worktree Git pointer. If the start hook did not run, Stop reports
+that it cannot determine changes; the next user input establishes a baseline.
 
 ```sh
-python3 scripts/check_test_boundaries.py --run
+bin/check-test-boundaries --run
 ```
 
-This host-side Python 3 command invokes the Dev Container automatically. Inside
-the container, or in a prepared CI Ruby environment, use `--run --local`.
-It scans the full models/contexts scope even for spec-only changes, validates the
-JSON verdicts, and records a fingerprint of source, specs, configuration, and
-dependencies. Further edits invalidate the record. Empty/unscored runs, ignored
-mutants, survivors, uncovered code, and execution errors do not count as success.
-Reports and records remain under `.mutineer/`.
+The shell entry point dispatches all Ruby processing to the Dev Container on the
+host. Docker and Podman markers and Dev Container/Codespaces environment markers
+are recognized. Use `--local --run` in another prepared Ruby environment. Start
+the container with `bin/dc up --workspace-folder .` before using the hooks.
+Transport failures are reported separately from invalid mutation reports.
 
-The Stop hook asks the agent to continue once. If the check remains unresolved
-on the continued turn, it emits a warning and permits stopping so the agent can
-report the blocker. It is a local reminder, not a merge gate. Constants and SQL
-comparisons still require separate review. Only the configured mutation operators
-are checked; use focused additional operators when a boundary needs them.
-CI runs the same checker in its prepared Ruby environment and retains the report
-on failure. Unlike the local reminder, a failing check prevents the CI test job
-from passing.
+The run scans all models and contexts, with explicit model/context specs, even
+for spec-only changes. Change detection and cache validation use the same file
+selection: application Ruby, library Ruby/rake, database Ruby/SQL, unit specs and
+their support files, runtime configuration including encrypted credentials, and
+dependencies/checker settings. System specs and deployment configuration are
+excluded. Mutineer temporary source files are ignored in snapshots and Git.
+
+The lock is acquired inside the execution environment and inherited by the
+Mutineer process and its forked workers. An interrupted host launcher cannot
+release the lock while those processes still run. Reports, logs, and success
+records live under `.mutineer/`. Run other RSpec commands separately because
+they also share the test database.
+
+Survivors, uncovered code, unscored runs, execution failures, and malformed
+reports remain unresolved. Reviewed equivalent mutants may be listed in
+`.mutineer.yml` as mappings with an `id` and a nonblank `reason`. Only exclusions
+with such an approval are accepted; do not add suppressions merely for a score.
+A run containing only approved equivalents is recorded as reviewed, while an
+empty run remains unresolved. Constants and SQL comparisons need separate review.
+
+The Stop hook requests continuation once, then warns if unresolved. CI is the
+merge gate: it runs mutation analysis only on pull requests with relevant changes,
+using the PR base SHA and rename-aware path selection (`--no-renames`). It skips
+unrelated pull requests and main-branch pushes. CI retains both JSON and execution
+logs on failure.
 
 ## SQLite backup with Litestream (S3)
 
