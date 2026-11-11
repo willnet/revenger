@@ -25,9 +25,47 @@ describe Post do
   describe '#body' do
     subject { Fabricate.build(:post) }
 
-    it { is_expected.to accept_values_for(:body, "hoge", "!!!!!!", 'ほげほげ') }
-    it "#{Post::MAX_BODY_LENGTH + 1}文字のとき invalid になること" do
-      is_expected.not_to accept_values_for(:body, "", "a" * (Post::MAX_BODY_LENGTH + 1))
+    it { is_expected.to accept_values_for(:body, 'あ', "hoge", "!!!!!!", 'ほげほげ') }
+
+    it '3999文字と4000文字の本文を受け付けること' do
+      is_expected.to accept_values_for(:body, 'あ' * 3999, 'あ' * 4000)
+    end
+
+    it '空文字列や4001文字の本文を受け付けないこと' do
+      is_expected.not_to accept_values_for(:body, "", 'あ' * 4001)
+    end
+  end
+
+  describe '.reviewable' do
+    it '現在時刻より前に復習予定のある投稿だけを返すこと' do
+      Timecop.freeze(Time.zone.local(2026, 11, 6, 12))
+      user = Fabricate(:user)
+      overdue_post = Fabricate(:post, user: user, review_at: 1.second.ago)
+      Fabricate(:post, user: user, review_at: Time.zone.now)
+      Fabricate(:post, user: user, review_at: 1.second.from_now)
+      Fabricate(:post, user: user, review_at: nil)
+
+      expect(Post.reviewable).to contain_exactly(overdue_post)
+    end
+  end
+
+  describe '#refresh_review_at' do
+    before { Timecop.freeze(Time.zone.local(2026, 11, 6, 12)) }
+
+    it '復習間隔が1日なら翌日の同時刻に復習を予約すること' do
+      post = Fabricate.build(:post, duration: 1, review_at: nil)
+
+      post.refresh_review_at
+
+      expect(post.review_at).to eq 1.day.from_now
+    end
+
+    it '復習間隔が未設定なら既存の復習予定を解除すること' do
+      post = Fabricate.build(:post, duration: nil, review_at: 1.day.ago)
+
+      post.refresh_review_at
+
+      expect(post.review_at).to be_nil
     end
   end
 
@@ -154,6 +192,33 @@ describe Post do
           posts = Post.search_by_like(@user, {search: query})
 
           expect(posts.map(&:body)).to match_array %w[before-rails-after before-RAILS-after before-Rails-after]
+        end
+      end
+    end
+  end
+
+  describe '.search_by_like のページング' do
+    before { Timecop.freeze(Time.zone.local(2026, 11, 6, 12)) }
+
+    let(:user) { Fabricate(:user) }
+    let!(:posts) do
+      Array.new(11) do |i|
+        Fabricate(:post, user: user, body: "ページ境界#{i}", modified_at: (11 - i).minutes.ago)
+      end
+    end
+
+    before do
+      Fabricate(:post, body: 'ページ境界の他人の投稿', modified_at: Time.zone.now)
+    end
+
+    [nil, 'ページ境界'].each do |query|
+      context(query ? '検索するとき' : '検索しないとき') do
+        it '更新日時降順で10件ずつ返し、次ページに11件目だけを含めること' do
+          params = { search: query, modified_at: 'desc' }
+
+          expect(Post.search_by_like(user, params)).to eq posts.reverse.first(10)
+          expect(Post.search_by_like(user, params.merge(page: 2))).to eq [posts.first]
+          expect(Post.search_by_like(user, params.merge(page: 3))).to be_empty
         end
       end
     end

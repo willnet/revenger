@@ -35,6 +35,7 @@ group :development do
 end
 
 group :test do
+  gem 'mutineer', require: false
   gem 'rake_shared_context'
   gem 'timecop'
   gem 'capybara'

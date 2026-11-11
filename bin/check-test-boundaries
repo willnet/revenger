@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+set -euo pipefail
+repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+local_environment=false
+hook_event=""
+for arg in "$@"; do
+  case "$arg" in
+    --local) local_environment=true ;;
+    --hook-start|--hook-stop) hook_event="$arg" ;;
+  esac
+done
+if [[ "$local_environment" == true || -f /.dockerenv || -f /run/.containerenv || -n "${REMOTE_CONTAINERS:-}${CODESPACES:-}${container:-}" ]]; then
+  exec ruby "$repo_root/scripts/check_test_boundaries.rb" "$@"
+fi
+if [[ -z "$hook_event" ]]; then
+  exec "$repo_root/bin/dc" exec --workspace-folder "$repo_root" ruby scripts/check_test_boundaries.rb "$@"
+fi
+hook_output="$(mktemp)"
+hook_input="$(mktemp)"
+trap 'rm -f "$hook_output" "$hook_input"' EXIT
+cat > "$hook_input"
+if "$repo_root/bin/dc" exec --workspace-folder "$repo_root" ruby scripts/check_test_boundaries.rb "$@" < "$hook_input" > "$hook_output"; then
+  cat "$hook_output"
+elif [[ "$hook_event" == --hook-start ]]; then
+  printf '%s\n' '{"systemMessage":"境界値フックのDev Container転送に失敗しました。bin/dc up --workspace-folder . で起動し、次の入力前にフックを確認してください。"}'
+elif tr -d '\r\n' < "$hook_input" | grep -Eq '"stop_hook_active"[[:space:]]*:[[:space:]]*true'; then
+  printf '%s\n' '{"systemMessage":"境界値フックのDev Container転送が引き続き失敗しています。未確認の状態と起動エラーを利用者へ報告してください。"}'
+else
+  printf '%s\n' '{"decision":"block","reason":"境界値フックのDev Container転送に失敗しました。標準エラーを確認し、bin/dc up --workspace-folder . で起動してください。"}'
+fi

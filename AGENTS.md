@@ -47,6 +47,13 @@ This is a Ruby on Rails 7.2 app.
 - Keep examples behavior-focused and deterministic; avoid external network dependencies.
 - If running from host, execute tests via `bin/dc exec --workspace-folder .`.
 
+## Mutation Checks for AI Test Changes
+- After adding or changing model/context code or unit tests, run `bin/check-test-boundaries --run`. It runs Ruby inside the Dev Container when invoked on the host; use `--local` inside an environment the wrapper does not recognize.
+- Run after the final edit. The shared Codex/Claude Code Stop hook checks a content fingerprint and rejects stale results, including changes to specs alone.
+- Read `.mutineer/boundary-report.json` and `boundary-run.log` and strengthen tests for meaningful survivors, then rerun. Do not change application behaviour or weaken the gate merely to pass the check. Equivalent mutants can be recorded in `.mutineer.yml` as `ignore` mappings with `id` and a concrete `reason`, after reviewer approval; unexplained exclusions are rejected.
+- Check boundaries immediately before, at, and after each limit. Verify class-level constants and SQL comparisons separately because Mutineer does not generate those mutations.
+- If requirements are unclear or the environment fails, report the reason and leave the check unresolved. The hooks compare files before and after the current user input, without Git or a remote branch. Read-only turns do not require a run. After requesting continuation once, the Stop hook warns rather than looping indefinitely.
+
 ## Commit & Pull Request Guidelines
 - Follow concise, imperative commit subjects. Existing history includes both Japanese summaries and `build(deps-dev): ...` style for dependency bumps.
 - Keep commits scoped to one change.
