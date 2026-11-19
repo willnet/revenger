@@ -1,0 +1,7 @@
+framework: rspec
+rails: true
+jobs: 1
+operators:
+  - comparison
+  - literal_mutation
+  - condition_negation

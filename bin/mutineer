@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+ENV['RAILS_ENV'] = 'test'
+ENV['DISABLE_BOOTSNAP'] = '1'
+
+require 'bundler/setup'
+load Gem.bin_path('mutineer', 'mutineer')
