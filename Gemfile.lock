@@ -247,6 +247,8 @@ GEM
     net-smtp (0.5.1)
       net-protocol
     net-ssh (7.3.0)
+    newrelic_rpm (10.9.1)
+      logger
     nio4r (2.7.5)
     nokogiri (1.19.7-aarch64-linux-gnu)
       racc (~> 1.4)
@@ -374,12 +376,6 @@ GEM
       sendgrid-ruby (~> 6.4)
     sendgrid-ruby (6.7.0)
       ruby_http_client (~> 3.4)
-    sentry-rails (6.3.0)
-      railties (>= 5.2.0)
-      sentry-ruby (~> 6.3.0)
-    sentry-ruby (6.3.0)
-      bigdecimal
-      concurrent-ruby (~> 1.0, >= 1.0.2)
     set (1.1.2)
     solid_queue (1.3.1)
       activejob (>= 7.1)
@@ -458,6 +454,7 @@ DEPENDENCIES
   kaminari
   letter_opener_web
   litestream
+  newrelic_rpm
   puma
   pygments.rb
   rails (~> 8.1.4, >= 8.1.4.1)
@@ -471,8 +468,6 @@ DEPENDENCIES
   rusty_racer (>= 0.2.1)
   sendgrid-actionmailer
   sendgrid-ruby
-  sentry-rails
-  sentry-ruby
   solid_queue
   sorted_set
   sprockets-rails

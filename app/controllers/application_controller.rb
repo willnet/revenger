@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :set_sentry_context
+  before_action :set_new_relic_user
 
   unless Rails.env.development?
     rescue_from Exception, with: :error500
@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   private
 
   def error500(ex)
-    Sentry.capture_exception(ex)
+    Rails.error.report(ex, severity: :error)
     logger.error ex.inspect
     logger.error ex.backtrace
     render_error_page 'error500', 500
@@ -61,8 +61,8 @@ class ApplicationController < ActionController::Base
     accept_language && accept_language.scan(/^[a-z]{2}/).first
   end
 
-  def set_sentry_context
-    Sentry.set_user(id: session[:user_id])
-    Sentry.set_extras(params: params.to_unsafe_h, url: request.url)
+  def set_new_relic_user
+    user_id = current_user&.id
+    NewRelic::Agent.set_user_id(user_id.to_s) if user_id
   end
 end

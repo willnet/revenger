@@ -1,0 +1,52 @@
+<%
+  license_key = ''
+  if defined?(Rails) && Rails.env.production? && ENV['SECRET_KEY_BASE_DUMMY'].blank?
+    license_key = Rails.application.credentials.dig(:new_relic, :license_key).to_s
+  end
+%>
+common: &default
+  app_name: revenger
+  agent_enabled: false
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default
+  agent_enabled: <%= !license_key.empty? %>
+  license_key: <%= license_key.to_json %>
+  log_file_path: STDOUT
+  capture_params: false
+  distributed_tracing:
+    enabled: true
+  application_logging:
+    enabled: true
+    forwarding:
+      enabled: true
+      log_level: info
+  instrumentation:
+    rails_event_logger: disabled
+  browser_monitoring:
+    auto_instrument: false
+  rules:
+    ignore_url_regexes: ['^/up$']
+  error_collector:
+    ignore_classes:
+      - AbstractController::ActionNotFound
+      - ActionController::BadRequest
+      - ActionController::InvalidAuthenticityToken
+      - ActionController::InvalidCrossOriginRequest
+      - ActionController::MethodNotAllowed
+      - ActionController::NotImplemented
+      - ActionController::ParameterMissing
+      - ActionController::RoutingError
+      - ActionController::TooManyRequests
+      - ActionController::UnknownAction
+      - ActionController::UnknownFormat
+      - ActionController::UnknownHttpMethod
+      - ActionDispatch::Http::MimeNegotiation::InvalidType
+      - ActionDispatch::Http::Parameters::ParseError
+      - ActiveRecord::RecordNotFound
