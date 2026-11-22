@@ -38,6 +38,22 @@ eval "$(bin/devcontainer-env --export)"
 docker compose -f .devcontainer/compose.yaml down -v
 ```
 
+## Production monitoring with New Relic
+
+Before deploying, run `bin/dc exec --workspace-folder . bin/rails credentials:edit`
+to add the New Relic ingest license key to the encrypted Rails credentials and
+remove the old `sentry` entry.
+
+```yaml
+new_relic:
+  license_key: <NEW_RELIC_INGEST_LICENSE_KEY>
+```
+
+The production container uses the existing `RAILS_MASTER_KEY` to decrypt the
+credentials. After deploying, open a page and check that `revenger` appears in
+New Relic APM. Rails logs at `INFO` and above appear in Logs, and reported
+exceptions appear in Errors Inbox.
+
 ## SQLite backup with Litestream (S3)
 
 Production continuously replicates both SQLite databases to S3 using Litestream:

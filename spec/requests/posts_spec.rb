@@ -69,7 +69,7 @@ describe 'メモの表示と編集' do
   end
 
   it 'JSON 形式を要求されたら 404 を返し、エラーとして通知しないこと' do
-    expect(Sentry).not_to receive(:capture_exception)
+    expect(Rails.error).not_to receive(:report).with(an_instance_of(ActionController::UnknownFormat), any_args)
 
     get posts_path(format: :json)
 
